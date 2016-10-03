@@ -22,12 +22,12 @@ CheckMate is a web application inspired by Splitwise built using Ruby on Rails a
 * [Redux Structure][redux-structure]
 * [Sample State][sample-state]
 
-[wireframes]: docs/wireframes
-[components]: docs/component-heirarchy.md
-[api-endpoints]: docs/api-endpoints.md
-[schema]: docs/schema.md
-[redux-structure]: docs/redux-structure.md
-[sample-state]: docs/sample-state.md
+[wireframes]: wireframes
+[components]: component-heirarchy.md
+[api-endpoints]: api-endpoints.md
+[schema]: schema.md
+[redux-structure]: redux-structure.md
+[sample-state]: sample-state.md
 
 ## Implementation Timeline
 

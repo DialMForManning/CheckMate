@@ -27,31 +27,33 @@
   * Accepts: username, password
 - `DELETE /api/session`
 
+### Friends
+- `GET /api/friends`
+- `POST /api/friends`
+  * Accepds: friend_id
+- `DELETE /api/friends/:id`
+
 ### Expenses
 - `GET /api/expense/:id`
-- `GET /api/expenses`
-  * Accepts: friend_id
-- `POST /api/expenses/`
-  * Accepts: friend_id, current_user_paid_boolean, current_user_owed, total, description
+- `GET /api/friends/:id/expenses`
+- `POST /api/friends/:id/expenses`
+  * Accepts: current_user_paid_boolean, current_user_owed, total, description, date
 - `PATCH /api/expense/:id`
 * Accepts: current_user_paid_boolean, current_user_owed, total, description
 - `DELETE /api/expense/:id`
 
 ### Transactions
-- `GET /api/transaction/:id`
-- `GET /api/transactions/`
-  * Accepts: friend_id
-- `POST /api/transactions/`
-  * Accepts: friend_id, current_user_paid_boolean, amount
-- `PATCH /api/transaction/:id`
+- `GET /api/transactions/:id`
+- `GET /api/friends/:id/transactions`
+- `POST /api/friends/:id/transactions`
   * Accepts: current_user_paid_boolean, amount
-- `DELETE /api/transaction/:id`
+- `PATCH /api/transactions/:id`
+  * Accepts: current_user_paid_boolean, amount
+- `DELETE /api/transactions/:id`
 
 ### Comments
-- `GET /api/comments/`
+- `GET /api/expenses/:id/comments`
   * Accepts: expense_id
-- `POST /api/comments`
+- `POST /api/expenses/:id/comments`
   * Accepts: expense_id, body
-- `PATCH /api/comment/:id`
-  * Accepts: body
 - `DELETE /api/comment/id`

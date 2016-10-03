@@ -17,10 +17,10 @@
     lname: "Bucket",
   }],
 
-  expense_index: {
+  expenses: {
     friend_id: '6',
 
-    expense_index_items: [{
+    expense_items: [{
       date: '2016-4-18',
       description: 'Everlasting Gobstoppers',
       user_paid_id: '1',

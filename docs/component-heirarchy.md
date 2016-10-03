@@ -6,42 +6,45 @@
 - AuthFormContainer
 
 **AuthFormContainer**
-- AuthForm
+- SignupForm
+- LoginForm
 
 **NavBar**
 - NavLogo
-- AuthDropdownForm
+- LoginDropdownForm
 
 **DashboardContainer**
 - FriendBar
 - ExpensePaneContainer
 - DetailBar
   * DebtDetail
-- AddBillFormContainer
+- ExpenseFormContainer
+- TransactionFormContainer
 
 **FriendBar**
 - DashLogo
 - SearchForm
-- FriendIndex
+- FriendsIndex
  * FriendIndexItem
 
 **ExpensePaneContainer**
 - PaneTitle
-  * AddBillButton
-  * SettleUpButton
 - BalanceBar
 - DebtTable
-  * OweColumn
-    + OweRow
-  * OwedColumn
-    + OwedRow
+  * OweItem
+  * OwedItem
 - ExpenseIndex
   * ExpenseIndexItem
+    + ExpenseDetail
+    + CommentsIndex
+      - CommentsIndexItem
+    + CommentForm
 
-**AddBillFormContainer**
-- AddBillForm
-  * ChoosePayerForm
-  * SplitOptionsForm
+**ExpenseFormContainer**
+- ExpenseForm
+
+**TransactionFormContainer**
+- TransactionForm
 
   ## Routes
 

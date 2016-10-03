@@ -49,6 +49,6 @@
 |-------|-------------|
 | "/" | "HomeContainer" |
 | "/dashboard" | "DashboardContainer" |
-| "/sign-up" | "AuthFormContainer" |
-| "/sign-in" | "AuthFormContainer" |
+| "/signup" | "AuthFormContainer" |
+| "/login" | "AuthFormContainer" |
 | "/friends/:id" | "ExpensePaneContainer" |

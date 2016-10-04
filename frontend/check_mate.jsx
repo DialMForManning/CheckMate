@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // window.store = configureStore(); //for testing
+  window.store = configureStore(); //for testing
   const root = document.getElementById('root');
   ReactDOM.render(<h1>CheckMate</h1>, root);
 });

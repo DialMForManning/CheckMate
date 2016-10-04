@@ -5,7 +5,9 @@ class Api::SessionsController < ApplicationController
       params[:user][:password]
     )
 
-    if @user
+    if logged_in?
+      render json: ["Already logged in"], status: 422
+    elsif @user
       login!(@user)
       render 'api/users/show'
     else

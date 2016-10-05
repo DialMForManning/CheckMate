@@ -14,6 +14,12 @@ class NavLogin extends React.Component {
     this.displayForm = this.displayForm.bind(this);
   }
 
+  componentDidMount() {
+    $(".logo, .get_started, .sign_up").on('click', () => {
+      this.removeForm();
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = {
@@ -28,8 +34,23 @@ class NavLogin extends React.Component {
     this.setState({inputClass: 'nav_form_input_displayed'});
   }
 
+  removeForm() {
+    this.setState({inputClass: 'nav_form_input'});
+  }
+
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value });
+  }
+
+  renderErrors() {
+    return(
+      <ul className="errors group">
+        { this.props.errors.map((error, idx) => {
+          return(<li key={ idx }>{ error }</li>);
+        })
+      }
+      </ul>
+    );
   }
 
   render() {
@@ -39,10 +60,9 @@ class NavLogin extends React.Component {
           <ul className="nav_buttons group">
 
             <li className="nav_signup">
-              <button >
-                { "Sign up" }
-              </button>
+              <Link to="/signup" className="sign_up">{ "Sign up" }</Link>
             </li>
+
             <li className="or">{ "or" }</li>
             <li className="nav_login">
               <button onClick={ this.displayForm }>
@@ -65,7 +85,9 @@ class NavLogin extends React.Component {
             <input
               type='submit'
               value='Log in to CheckMate' />
+            { this.renderErrors() }
           </section>
+
         </form>
       </nav>
     );

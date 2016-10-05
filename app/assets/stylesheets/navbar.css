@@ -15,6 +15,7 @@
   font-size: 19px;
   float: left;
   padding: 10px 0;
+  cursor: pointer;
 }
 
 .nav_login_form {
@@ -38,6 +39,10 @@
   text-align: center;
 }
 
+.nav_buttons button {
+  cursor: pointer;
+}
+
 .nav_login{
   text-align: center;
   border-radius: 5px;
@@ -53,6 +58,7 @@
   padding: 0 5px;
   width: 60px;
   text-align: center;
+  cursor: pointer;
 }
 
 .nav_form_input {
@@ -82,6 +88,7 @@
   text-align: center;
   border-radius: 5px;
   box-shadow: 0 0 1px #000;
+  cursor: pointer;
 }
 
 input[type=text],
@@ -89,4 +96,31 @@ input[type=password] {
   background-color: #fff;
   box-shadow: 0 0 1px #000;
   color: #000;
+}
+
+.nav_login_form .errors {
+  margin: 5px;
+  color: #000;
+}
+
+.nav_login_form .errors > li {
+  position: relative;
+  font-size: 14px;
+  float: left;
+  padding: 3px;
+  box-shadow: -1px 1px 1px #000;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.nav_login_form .errors > li:before {
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -3px;
+  content: "";
+  background-color: rgb(91, 197, 167);
+  width: 3px;
+  margin-right: 10px;
 }

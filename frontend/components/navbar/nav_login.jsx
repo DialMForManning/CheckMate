@@ -15,8 +15,13 @@ class NavLogin extends React.Component {
   }
 
   componentDidMount() {
-    debugger
     $("input").on('click', () => this.props.clearErrors());
+  }
+
+  componentWillUnmount() {
+    $(".logo, .get_started, .sign_up, .signup_form input").off('click', () => {
+      this.removeForm();
+    });
   }
 
   handleSubmit(e) {
@@ -36,6 +41,11 @@ class NavLogin extends React.Component {
     });
 
     this.setState({inputClass: 'nav_form_input_displayed'});
+
+  }
+
+  componentDidUpdate() {
+    $("#login_focus").focus();  
   }
 
   removeForm() {
@@ -60,7 +70,7 @@ class NavLogin extends React.Component {
   render() {
     return(
       <nav className={"nav_login_form"}>
-        <form onSubmit={ this.handleSubmit }>
+        <section onSubmit={ this.handleSubmit }>
           <ul className="nav_buttons group">
 
             <li className="nav_signup">
@@ -75,8 +85,9 @@ class NavLogin extends React.Component {
             </li>
           </ul>
 
-          <section className={ this.state.inputClass }>
+          <form className={ this.state.inputClass }>
             <input
+              id="login_focus"
               type="text"
               value={ this.state.email }
               placeholder="email"
@@ -86,15 +97,16 @@ class NavLogin extends React.Component {
               type="password"
               value={ this.state.password }
               placeholder="Password"
+              onSubmit={ () => console.log("submit!")}
               onChange={ this.update('password') } />
 
             <input
               type='submit'
               value='Log in to CheckMate' />
             { this.renderErrors() }
-          </section>
+          </form>
 
-        </form>
+        </section>
       </nav>
     );
   }

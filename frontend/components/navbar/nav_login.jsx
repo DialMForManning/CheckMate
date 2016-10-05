@@ -14,6 +14,12 @@ class NavLogin extends React.Component {
     this.displayForm = this.displayForm.bind(this);
   }
 
+  componentDidMount() {
+    $(".logo, .get_started, .sign_up").on('click', () => {
+      this.removeForm();
+    });
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = {
@@ -26,6 +32,10 @@ class NavLogin extends React.Component {
   displayForm(e) {
     e.preventDefault();
     this.setState({inputClass: 'nav_form_input_displayed'});
+  }
+
+  removeForm() {
+    this.setState({inputClass: 'nav_form_input'});
   }
 
   update(field) {
@@ -50,10 +60,9 @@ class NavLogin extends React.Component {
           <ul className="nav_buttons group">
 
             <li className="nav_signup">
-              <button >
-                { "Sign up" }
-              </button>
+              <Link to="/signup" className="sign_up">{ "Sign up" }</Link>
             </li>
+
             <li className="or">{ "or" }</li>
             <li className="nav_login">
               <button onClick={ this.displayForm }>

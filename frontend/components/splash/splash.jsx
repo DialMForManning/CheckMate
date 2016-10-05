@@ -5,7 +5,7 @@ const Splash = () => {
 
   return(
     <main className="splash">
-      <header className="group">
+      <header>
         <h1>{ "Split expenses with friends" }</h1>
       </header>
       <h3>{ "Keep track of expenses among friends, roommates, coworkers . . ." }</h3>

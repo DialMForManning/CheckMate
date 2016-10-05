@@ -1,0 +1,52 @@
+.signup_content {
+  width: 960px;
+  margin: 0 auto;
+  font-family: sans-serif;
+  text-shadow: 0 0 1px #ccc;
+  box-shadow: 0 1px 1px #ccc;
+}
+
+.signup_content::before {
+  display: inline-block;
+  vertical-align: middle;
+  background: image-url("CheckMate-logo.png");
+  content: "";
+  background-size: cover;
+  height: 300px;
+  width: 450px;
+}
+
+.signup_form {
+  float: right;
+  width: 500px;
+  height: 250px;
+  padding: 25px 0;
+}
+
+.signup_form > h2 {
+  float: left;
+  width: 100%;
+  color: #ccc;
+  text-shadow: 0 0 1px #ccc;
+  font-size: 24px;
+}
+.signup_form > h3 {
+  padding-top: 20px;
+  font-weight: 400;
+}
+
+.signup_form input {
+  padding: 5px;
+  margin: 10px;
+  float: left;
+}
+
+.signup_form input[type=submit]{
+  color: #fff;
+  background-color: rgb(255, 101, 47);
+  padding: 20px;
+  text-shadow: 0 0 1px #000;
+  box-shadow: 0 0 1px #000;
+  border-radius: 10px;
+  cursor: pointer;
+}

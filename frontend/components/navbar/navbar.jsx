@@ -1,12 +1,12 @@
 import React from 'react';
 import NavLogin from './nav_login';
 
-const Navbar = ({ currentUser, logout}) => {
+const Navbar = ({ currentUser, errors, logout, login }) => {
   return(
     <header className="header">
       <nav className="navbar group">
           <h1 className="logo">CheckMate</h1>
-          <NavLogin />
+          <NavLogin login={ login } />
       </nav>
     </header>
   );

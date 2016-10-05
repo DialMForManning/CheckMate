@@ -3,26 +3,27 @@
 # Table name: users
 #
 #  id              :integer          not null, primary key
-#  username        :string           not null
 #  fname           :string           not null
 #  lname           :string
 #  password_digest :string           not null
 #  session_token   :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  email           :string           not null
 #
+
 require 'bcrypt'
 
 class User < ApplicationRecord
-  validates :username, :fname, :password_digest, presence: true
-  validates :username, uniqueness: true
+  validates :email, :fname, :password_digest, presence: true
+  validates :email, uniqueness: true
   validates :password, length: { minimum: 6, allow_nil: true }
   before_validation :ensure_session_token
 
   attr_reader :password
 
-  def self.find_by_credentials(username, password)
-    user = User.find_by_username(username);
+  def self.find_by_credentials(email, password)
+    user = User.find_by_email(email);
     return user if user && user.valid_password?(password)
     return nil
   end

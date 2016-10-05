@@ -1,2 +1,2 @@
-json.extract! user, :id, :username, :fname
+json.extract! user, :id, :email, :fname
 json.(user, :lname) if user.lname

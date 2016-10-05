@@ -17,8 +17,9 @@
   padding: 10px 0;
 }
 
-.nav_signin {
+.nav_login_form {
   float: right;
+  position: relative;
 }
 
 .nav_buttons {
@@ -37,7 +38,7 @@
   text-align: center;
 }
 
-.nav_login {
+.nav_login{
   text-align: center;
   border-radius: 5px;
   box-shadow: 0 0 1px #000;
@@ -52,4 +53,40 @@
   padding: 0 5px;
   width: 60px;
   text-align: center;
+}
+
+.nav_form_input {
+  display: none;
+}
+
+.nav_form_input_displayed {
+  position: absolute;
+  top: 43px;
+  right: 0;
+  background-color: #eee;
+  padding: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  box-shadow: 0 1px 1px #000;
+  z-index: 1;
+}
+
+.nav_form_input_displayed input {
+    width: 220px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+.nav_form_input_displayed input[type=submit] {
+  background-color: rgb(91, 197, 167);
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #000;
+}
+
+input[type=text],
+input[type=password] {
+  background-color: #fff;
+  box-shadow: 0 0 1px #000;
+  color: #000;
 }

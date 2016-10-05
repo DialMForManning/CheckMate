@@ -1,0 +1,57 @@
+.splash {
+  width: 960px;
+  margin: 0 auto;
+  color: #000;
+  font-family: sans-serif;
+  text-shadow: 0 0 1px #ccc;
+}
+
+.splash > header {
+  margin: 0 auto;
+}
+
+.splash h1::before {
+  display: inline-block;
+  vertical-align: middle;
+  background: image-url("CheckMate-logo.png");
+  content: "";
+  background-size: cover;
+  height: 150px;
+  width: 225px;
+}
+
+.splash h1 {
+  display: inline-block;
+  margin: 0 auto;
+  padding-top: 20px;
+  text-align: center;
+  font-size: 46px;
+  font-weight: 900;
+  width: 100%;
+}
+
+.splash > h3 {
+  font-size: 24px;
+  text-align: center;
+}
+
+.get_started {
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  text-align: center;
+  background-color: rgb(255, 101, 47);
+  border-radius: 10px;
+  padding: 10px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
+}
+
+.get_started h4 {
+  margin: 5px;
+  font-size: 24px;
+}
+
+.get_started aside {
+  margin: 5px;
+}

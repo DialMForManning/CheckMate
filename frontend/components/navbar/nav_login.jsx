@@ -14,6 +14,11 @@ class NavLogin extends React.Component {
     this.displayForm = this.displayForm.bind(this);
   }
 
+  componentDidMount() {
+    debugger
+    $("input").on('click', () => this.props.clearErrors());
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     const user = {

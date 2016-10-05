@@ -1,5 +1,5 @@
 import React from 'react';
-import App from './App.jsx';
+import App from './app.jsx';
 import { Provider } from 'react-redux';
 import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 

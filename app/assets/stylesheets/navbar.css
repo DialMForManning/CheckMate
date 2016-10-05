@@ -1,0 +1,55 @@
+.header {
+  background-color: rgb(91, 197, 167);
+  color: #fff;
+  box-shadow: 0 0 5px #000;
+}
+
+.navbar {
+  width: 960px;
+  margin: 0 auto;
+  padding: 0 6px;
+}
+
+.logo {
+  font-family: 'Merriweather', serif;
+  font-size: 19px;
+  float: left;
+  padding: 10px 0;
+}
+
+.nav_signin {
+  float: right;
+}
+
+.nav_buttons {
+  display: block;
+  height: 39px;
+  height: 50%;
+  text-shadow: 0 0 1px #000;
+}
+
+.nav_buttons > li {
+  float: right;
+  margin: 0 5px;
+  height: 30px;
+  line-height: 30px;
+  margin-top: 7px;
+  text-align: center;
+}
+
+.nav_login {
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #000;
+  padding: 0 5px;
+  width: 60px;
+}
+
+.nav_signup {
+  background-color: rgb(255, 101, 47);
+  border-radius: 5px;
+  box-shadow: 0 0 1px #000;
+  padding: 0 5px;
+  width: 60px;
+  text-align: center;
+}

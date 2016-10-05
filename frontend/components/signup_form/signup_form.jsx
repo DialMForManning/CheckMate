@@ -16,6 +16,7 @@ class SignupForm extends React.Component {
 
   componentDidMount() {
     $("input").on('click', () => this.props.clearErrors());
+    $("#signup_focus").focus();
   }
 
   update(field) {
@@ -58,6 +59,7 @@ class SignupForm extends React.Component {
           <h2>{ "INTRODUCE YOURSELF" }</h2>
           <h3>{ "Hi there! My name is:" }</h3>
           <input
+            id="signup_focus"
             type="text"
             className="fname"
             placeholder="First Name"

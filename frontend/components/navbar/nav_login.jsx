@@ -42,10 +42,9 @@ class NavLogin extends React.Component {
 
     this.setState({inputClass: 'nav_form_input_displayed'});
 
-  }
-
-  componentDidUpdate() {
-    $("#login_focus").focus();  
+    setTimeout(()=>{
+      $("#login_focus").focus();
+    }, 10);
   }
 
   removeForm() {

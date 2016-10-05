@@ -6,7 +6,7 @@ const Navbar = ({ currentUser, errors, logout, login }) => {
     <header className="header">
       <nav className="navbar group">
           <h1 className="logo">CheckMate</h1>
-          <NavLogin login={ login } />
+          <NavLogin login={ login } errors={ errors } />
       </nav>
     </header>
   );

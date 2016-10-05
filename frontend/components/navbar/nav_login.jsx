@@ -32,6 +32,17 @@ class NavLogin extends React.Component {
     return (e) => this.setState({ [field]: e.currentTarget.value });
   }
 
+  renderErrors() {
+    return(
+      <ul className="errors group">
+        { this.props.errors.map((error, idx) => {
+          return(<li key={ idx }>{ error }</li>);
+        })
+      }
+      </ul>
+    );
+  }
+
   render() {
     return(
       <nav className={"nav_login_form"}>
@@ -65,7 +76,9 @@ class NavLogin extends React.Component {
             <input
               type='submit'
               value='Log in to CheckMate' />
+            { this.renderErrors() }
           </section>
+
         </form>
       </nav>
     );

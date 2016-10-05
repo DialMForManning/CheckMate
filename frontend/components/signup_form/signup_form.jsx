@@ -26,8 +26,6 @@ class SignupForm extends React.Component {
       lnameSubmit = null;
     }
 
-    debugger
-
     const user = {
       email: this.state.email,
       password: this.state.password,
@@ -36,6 +34,17 @@ class SignupForm extends React.Component {
     };
 
     this.props.signup(user);
+  }
+
+  renderErrors() {
+    return(
+      <ul className="signup_errors group">
+        { this.props.errors.map((error, idx) => {
+          return(<li key={ idx }>{ error }</li>);
+        })
+      }
+      </ul>
+    );
   }
 
   render() {
@@ -72,7 +81,9 @@ class SignupForm extends React.Component {
           <input
             type="submit"
             value="Sign me up!" />
+
         </form>
+        { this.renderErrors() }
       </main>
     );
   }

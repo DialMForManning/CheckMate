@@ -14,12 +14,6 @@ class NavLogin extends React.Component {
     this.displayForm = this.displayForm.bind(this);
   }
 
-  componentDidMount() {
-    $(".logo, .get_started, .sign_up").on('click', () => {
-      this.removeForm();
-    });
-  }
-
   handleSubmit(e) {
     e.preventDefault();
     const user = {
@@ -31,6 +25,11 @@ class NavLogin extends React.Component {
 
   displayForm(e) {
     e.preventDefault();
+
+    $(".logo, .get_started, .sign_up, main input").on('click', () => {
+      this.removeForm();
+    });
+
     this.setState({inputClass: 'nav_form_input_displayed'});
   }
 

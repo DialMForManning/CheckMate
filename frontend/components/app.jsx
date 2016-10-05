@@ -1,9 +1,10 @@
 import React from 'react';
+import NavbarContainer from './navbar/navbar_container';
 
 const App = ({ children }) => {
   return(
     <div>
-      <h1>CheckMate</h1>
+      <NavbarContainer />
       { children }
     </div>
   );

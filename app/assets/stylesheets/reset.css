@@ -1,0 +1,44 @@
+/*RESET*/
+html, body, header, nav, h1, a, ul, li,
+strong, main, section, img, div, h2, p,
+form, fieldset, label, input, textarea,
+button, article, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  box-sizing: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  color: inherit;
+  background: transparent;
+}
+
+/*ELEMENTS*/
+body {
+  font-size: 16px;
+  font-family: sans-serif;
+  box-sizing: content-box;
+  line-height: 1.1666666666;
+  background: #fff;
+  color: #000;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/*CLEARFIX*/
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}

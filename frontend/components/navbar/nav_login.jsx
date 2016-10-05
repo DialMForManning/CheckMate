@@ -5,8 +5,8 @@ class NavLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Email',
-      password: 'Password',
+      email: '',
+      password: '',
       inputClass: 'nav_form_input'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,7 +26,7 @@ class NavLogin extends React.Component {
   displayForm(e) {
     e.preventDefault();
 
-    $(".logo, .get_started, .sign_up, main input").on('click', () => {
+    $(".logo, .get_started, .sign_up, .signup_form input").on('click', () => {
       this.removeForm();
     });
 
@@ -74,11 +74,13 @@ class NavLogin extends React.Component {
             <input
               type="text"
               value={ this.state.email }
+              placeholder="email"
               onChange={ this.update('email') }
               />
             <input
               type="password"
               value={ this.state.password }
+              placeholder="Password"
               onChange={ this.update('password') } />
 
             <input

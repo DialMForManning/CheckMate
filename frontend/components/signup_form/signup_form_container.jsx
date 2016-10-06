@@ -3,6 +3,7 @@ import { signup, clearErrors } from '../../actions/session_actions';
 import SignupForm from './signup_form';
 
 const mapStateToProps = ({ session }) => {
+  debugger
   return({
     loggedIn: !!session.currentUser,
     errors: session.errors

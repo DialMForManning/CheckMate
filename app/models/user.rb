@@ -32,6 +32,11 @@ class User < ApplicationRecord
     source: :friend,
     class_name: 'User'
 
+  def self.search(fname_query, lname_query)
+    User.where("lower(fname) like ?", "%#{fname_query}%")
+        .where("lower(lname) like ?", "%#{lname_query}%")
+  end
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email);
     return user if user && user.valid_password?(password)

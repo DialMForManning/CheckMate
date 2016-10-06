@@ -111,7 +111,6 @@ class NavLogin extends React.Component {
               type="password"
               value={ this.state.password }
               placeholder="Password"
-              onSubmit={ () => console.log("submit!")}
               onChange={ this.update('password') } />
 
             <input

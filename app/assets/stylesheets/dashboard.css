@@ -1,0 +1,30 @@
+.dashboard {
+  width: 960px;
+  height: 100vh;
+  margin: 0 auto;
+}
+
+.friends_pane {
+  float: left;
+  width: 200px;
+  display: block;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.expenses_pane {
+  float: left;
+  width: 560px;
+  display: block;
+  box-shadow: 0 5px 10px #ccc;
+  height: 100%;
+  padding-top: 10px;
+}
+
+.detail_pane {
+  float: left;
+  width: 200px;
+  display: block;
+  height: 100%;
+  padding-top: 10px;
+}

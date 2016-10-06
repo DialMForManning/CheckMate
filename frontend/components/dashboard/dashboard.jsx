@@ -6,11 +6,13 @@ import DetailPane from '../detail_pane/detail_pane';
 
 const Dashboard = ({ currentUser }) => {
   return(
-    <main className='dashboard'>
+    <main>
       <NavbarContainer />
-      <FriendsPane />
-      <ExpensesPane />
-      <DetailPane />
+      <article className='dashboard group'>
+        <FriendsPane />
+        <ExpensesPane />
+        <DetailPane />
+      </article>
     </main>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
 
 const AccountMenu = ({ logout, currentUser }) => {
-  console.log(logout);
   return(
     <section className="account_menu group">
       <button onClick={ logout } className='logoutbutton'>Logout</button>

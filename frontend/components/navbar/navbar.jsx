@@ -1,13 +1,13 @@
 import React from 'react';
 import NavLogin from './nav_login';
 import AccountMenu from './account_menu';
-import { Link, hashHistory } from 'react-router';
+import { Link } from 'react-router';
 
 const Navbar = ({ currentUser, errors, logout, login, clearErrors }) => {
   const rightNav = () => {
     if(!!currentUser) {
-      hashHistory.push("/dashboard");
-      return <AccountMenu logout={ logout } currentUser={ currentUser }/>; }
+      return <AccountMenu logout={ logout } currentUser={ currentUser }/>;
+    }
 
     return <NavLogin
       login={ login }

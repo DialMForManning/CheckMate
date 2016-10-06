@@ -92,8 +92,8 @@ class NavLogin extends React.Component {
             </li>
 
             <li className="or">{ "or" }</li>
-            <li className="nav_login">
-              <button onClick={ this.displayForm }>
+            <li className="nav_login" onClick={ this.displayForm }>
+              <button >
                 { "Log in" }
               </button>
             </li>

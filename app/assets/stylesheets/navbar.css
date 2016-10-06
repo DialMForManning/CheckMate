@@ -39,6 +39,7 @@
   line-height: 30px;
   margin-top: 7px;
   text-align: center;
+  cursor: pointer;
 }
 
 .nav_buttons button {

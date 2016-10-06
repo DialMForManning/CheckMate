@@ -2,12 +2,12 @@ class Api::FriendshipsController < ApplicationController
   def create
     pending = Friendship.new({
       user_id: current_user.id,
-      friend_id: friendship_params[:friend_id],
+      friend_id: params[:friend_id],
       status: 'pending'
       })
 
     requesting = Friendship.new({
-      user_id: friendship_params[:friend_id],
+      user_id: params[:friend_id],
       friend_id: current_user.id,
       status: 'requested'
       })
@@ -23,17 +23,19 @@ class Api::FriendshipsController < ApplicationController
 
   def update
     pending = Friendship.find_by({
-      user_id: friendship_params[:friend_id],
+      user_id: params[:friend_id],
       friend_id: current_user.id
       })
 
     accepting = Friendship.find_by({
       user_id: current_user.id,
-      friend_id: friendship_params[:friend_id]
+      friend_id: params[:friend_id]
       })
 
     if pending && accepting
       Friendship.accept(pending, accepting)
+      pending.save
+      accepting.save
       render json: ["accepted"]
     else
       render json: ["invalid accept request"], status: 422
@@ -42,21 +44,22 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def destroy
-    to_delete = Friendship.find_by({
+    to_delete_1 = Friendship.find_by({
       user_id: current_user.id,
-      friend_id: friendship_params[:friend_id]
+      friend_id: params[:friend_id]
       })
 
-    if to_delete
-      Friendship.destroy(to_delete)
+    to_delete_2 = Friendship.find_by({
+      user_id: params[:friend_id],
+      friend_id: current_user.id
+      })
+
+    if to_delete_1 && to_delete_2
+      Friendship.destroy(to_delete_1)
+      Friendship.destroy(to_delete_2)
       render json: ["deleted"]
     else
       render json: ["invalid delete request"], status: 422
     end
-  end
-
-  private
-  def friendship_params
-    params.require(:friendship).permit(:friend_id)
   end
 end

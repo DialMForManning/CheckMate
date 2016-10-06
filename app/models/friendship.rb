@@ -13,6 +13,8 @@
 class Friendship < ApplicationRecord
   STATUSES = ['requested', 'pending', 'accepted']
   validates :user_id, :friend_id, :status, presence: true
+  validates_uniqueness_of :user_id, scope: [:friend_id]
+  validates_uniqueness_of :friend_id, scope: [:user_id]
   validates :status, inclusion: {in: STATUSES,
     message: 'invalid status'}
 

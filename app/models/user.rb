@@ -22,6 +22,16 @@ class User < ApplicationRecord
 
   attr_reader :password
 
+  has_many :friendships,
+    class_name: 'Friendship',
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :friends,
+    through: :friendships,
+    source: :friend,
+    class_name: 'User'
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email);
     return user if user && user.valid_password?(password)

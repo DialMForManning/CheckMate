@@ -30,7 +30,9 @@
 ### Friends
 - `GET /api/friends`
 - `POST /api/friends`
-  * Accepds: friend_id
+  * Accepts: friend_id
+- `PATCH /api/friends`
+  * For accepting pending requests
 - `DELETE /api/friends/:id`
 
 ### Expenses

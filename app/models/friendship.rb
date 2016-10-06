@@ -11,9 +11,16 @@
 #
 
 class Friendship < ApplicationRecord
-  belongs_to :requester,
+  validates :user_id, :friend_id, :status, presence: true
+
+  belongs_to :user,
     class_name: 'User',
     primary_key: :id,
-    foreign_key: :requester_id
+    foreign_key: :user_id
+
+  belongs_to :friend,
+    class_name: 'User',
+    primary_key: :id,
+    foreign_key: :friend_id
 
 end

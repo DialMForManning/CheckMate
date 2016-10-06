@@ -14,9 +14,9 @@ session_token   | string    | not null, indexed, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-requester_id    | integer   | not null, indexed, foreign key
+user_id         | integer   | not null, indexed, foreign key
 friend_id       | integer   | not null, indexed, foreign key
-accepted        | boolean   | not null, default: false
+status          | string    | not null
 
 ## expenses
 column name     | data type | details

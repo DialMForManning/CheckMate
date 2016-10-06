@@ -5,8 +5,8 @@ class NavLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: 'Email',
-      password: 'Password',
+      email: '',
+      password: '',
       inputClass: 'nav_form_input'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,7 +15,11 @@ class NavLogin extends React.Component {
   }
 
   componentDidMount() {
-    $(".logo, .get_started, .sign_up").on('click', () => {
+    $("input").on('click', () => this.props.clearErrors());
+  }
+
+  componentWillUnmount() {
+    $(".logo, .get_started, .sign_up, .signup_form input").off('click', () => {
       this.removeForm();
     });
   }
@@ -31,7 +35,16 @@ class NavLogin extends React.Component {
 
   displayForm(e) {
     e.preventDefault();
+
+    $(".logo, .get_started, .sign_up, .signup_form input").on('click', () => {
+      this.removeForm();
+    });
+
     this.setState({inputClass: 'nav_form_input_displayed'});
+
+    setTimeout(()=>{
+      $("#login_focus").focus();
+    }, 10);
   }
 
   removeForm() {
@@ -56,7 +69,7 @@ class NavLogin extends React.Component {
   render() {
     return(
       <nav className={"nav_login_form"}>
-        <form onSubmit={ this.handleSubmit }>
+        <section onSubmit={ this.handleSubmit }>
           <ul className="nav_buttons group">
 
             <li className="nav_signup">
@@ -71,24 +84,28 @@ class NavLogin extends React.Component {
             </li>
           </ul>
 
-          <section className={ this.state.inputClass }>
+          <form className={ this.state.inputClass }>
             <input
+              id="login_focus"
               type="text"
               value={ this.state.email }
+              placeholder="email"
               onChange={ this.update('email') }
               />
             <input
               type="password"
               value={ this.state.password }
+              placeholder="Password"
+              onSubmit={ () => console.log("submit!")}
               onChange={ this.update('password') } />
 
             <input
               type='submit'
               value='Log in to CheckMate' />
             { this.renderErrors() }
-          </section>
+          </form>
 
-        </form>
+        </section>
       </nav>
     );
   }

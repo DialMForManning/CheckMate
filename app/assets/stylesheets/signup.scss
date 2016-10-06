@@ -4,6 +4,7 @@
   font-family: sans-serif;
   text-shadow: 0 0 1px #ccc;
   box-shadow: 0 1px 1px #ccc;
+  padding-bottom: 5px;
 }
 
 .signup_content::before {
@@ -49,4 +50,34 @@
   box-shadow: 0 0 1px #000;
   border-radius: 10px;
   cursor: pointer;
+}
+
+.signup_errors {
+  display: block;
+  float: right;
+  width: 500px;
+  // margin-right: 280px;
+}
+
+.signup_errors > li {
+  position: relative;
+  font-size: 14px;
+  float: left;
+  padding: 3px;
+  box-shadow: -1px 1px 1px #000;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin: 2px 10px;
+}
+
+.signup_errors > li:before {
+  display: block;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: -3px;
+  content: '';
+  background-color: rgb(255, 101, 47);
+  width: 3px;
+  margin-right: 10px;
 }

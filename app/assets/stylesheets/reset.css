@@ -1,7 +1,7 @@
 /*RESET*/
 html, body, header, nav, h1, a, ul, li,
-strong, main, section, img, div, h2, p,
-form, fieldset, label, input, textarea,
+strong, main, section, img, div, h2, h3, p,
+h4, h5, h6, form, fieldset, label, input, textarea,
 button, article, footer, small {
   margin: 0;
   padding: 0;

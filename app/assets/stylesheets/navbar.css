@@ -124,3 +124,27 @@ input[type=password] {
   width: 3px;
   margin-right: 10px;
 }
+
+.account_menu {
+  height: 42px;
+}
+
+.account_menu > h3 {
+  float: right;
+  height: 42px;
+  line-height: 42px;
+  padding-right: 10px;
+}
+
+.account_menu > button {
+  float: right;
+  cursor: pointer;
+  background-color: rgb(255, 101, 47);
+  padding: 5px;
+  border-radius: 5px;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 7px 0;
+  text-shadow: 0 0 1px #000;
+  box-shadow: 0 0 1px #000;
+}

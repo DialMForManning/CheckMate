@@ -4,7 +4,7 @@ const AccountMenu = ({ logout, currentUser }) => {
   return(
     <section className="account_menu group">
       <button onClick={ logout } className='logoutbutton'>Logout</button>
-      <h3>{ currentUser.fname }</h3>
+      <h3>{ currentUser.fname + " " + currentUser.lname }</h3>
     </section>
   );
 };

@@ -15,13 +15,22 @@ class SignupForm extends React.Component {
   }
 
   componentDidMount() {
-    $("input").on('click', () => this.props.clearErrors());
+    this.props.clearErrors();
     $("#signup_focus").focus();
+  }
+
+  componendDidUpdate() {
+    this.props.clearErrors();
+  }
+
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   update(field) {
     return (e) => this.setState({ [field]: e.currentTarget.value});
   }
+
 
   handleSubmit(e) {
     e.preventDefault();

@@ -22,6 +22,7 @@ class NavLogin extends React.Component {
     $(".logo, .get_started, .sign_up, .signup_form input").off('click', () => {
       this.removeForm();
     });
+    this.props.clearErrors();
   }
 
   handleSubmit(e) {
@@ -31,6 +32,7 @@ class NavLogin extends React.Component {
       password: this.state.password
     };
     this.props.login(user);
+    this.props.clearErrors();
   }
 
   displayForm(e) {

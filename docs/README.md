@@ -1,6 +1,7 @@
 # CheckMate
 
-[Heroku link][heroku] **Note:** Insert link to production site here.
+[Heroku link][heroku]
+[heroku]: https://checkmate-bm.herokuapp.com/
 
 ## Minimum Viable Product
 

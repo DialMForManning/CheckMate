@@ -22,13 +22,19 @@ accepted        | boolean   | not null, default: false
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-author_id       | integer   | not null, indexed, foreign key
 payer_id        | integer   | not null, indexed, foreign key
-ower_id         | integer   | not null, indexed, foreign key
-owed_amt        | money     | not null
+payer_owes      | money     | not null
 total           | money     | not null
 description     | string    | not null
 settled         | boolean   | not null, default: false
+
+## expenseshares
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+expense_id      | integer   | not null, indexed, foreign key
+debtor_id       | integer   | not null, indexed, foreign key
+amount          | money     | not null
 
 ## transactions
 column name     | data type | details

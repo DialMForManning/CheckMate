@@ -26,4 +26,8 @@ class Friendship < ApplicationRecord
     primary_key: :id,
     foreign_key: :friend_id
 
+  def self.accept(pending, accepting)
+    pending.status = 'accepted'
+    accepting.status = 'accepted'
+  end
 end

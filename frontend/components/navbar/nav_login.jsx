@@ -10,6 +10,7 @@ class NavLogin extends React.Component {
       inputClass: 'nav_form_input'
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.demoLogin = this.demoLogin.bind(this);
     this.inputClass = 'nav_form_input';
     this.displayForm = this.displayForm.bind(this);
   }
@@ -18,10 +19,12 @@ class NavLogin extends React.Component {
     $("input").on('click', () => this.props.clearErrors());
   }
 
+
   componentWillUnmount() {
     $(".logo, .get_started, .sign_up, .signup_form input").off('click', () => {
       this.removeForm();
     });
+
     this.props.clearErrors();
   }
 
@@ -30,6 +33,16 @@ class NavLogin extends React.Component {
     const user = {
       email: this.state.email,
       password: this.state.password
+    };
+    this.props.login(user);
+    this.props.clearErrors();
+  }
+
+  demoLogin(e) {
+    e.preventDefault();
+    const user = {
+      email: "test",
+      password: "testing"
     };
     this.props.login(user);
     this.props.clearErrors();
@@ -104,6 +117,8 @@ class NavLogin extends React.Component {
             <input
               type='submit'
               value='Log in to CheckMate' />
+
+            <button onClick={ this.demoLogin }>{ "Demo Account" }</button>
             { this.renderErrors() }
           </form>
 

@@ -32,9 +32,10 @@ class User < ApplicationRecord
     source: :friend,
     class_name: 'User'
 
-  def self.search(fname_query, lname_query)
-    User.where("lower(fname) like ?", "%#{fname_query}%")
-        .where("lower(lname) like ?", "%#{lname_query}%")
+  def self.search(fname_query, lname_query, current_user)
+    User.where("lower(fname) like ?", "%#{fname_query.downcase}%")
+        .where("lower(lname) like ?", "%#{lname_query.downcase}%")
+        .reject { |result| current_user.friends.include?(result) }
   end
 
   def self.find_by_credentials(email, password)

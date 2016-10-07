@@ -41,8 +41,8 @@ class NavLogin extends React.Component {
   demoLogin(e) {
     e.preventDefault();
     const user = {
-      email: "demo",
-      password: "demoing"
+      email: "willyw",
+      password: "willyw"
     };
     this.props.login(user);
     this.props.clearErrors();

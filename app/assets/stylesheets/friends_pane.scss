@@ -1,0 +1,17 @@
+.dash_header {
+  font-family: sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgb(91, 197, 167);
+  position: relative;
+  text-shadow: 0 0 1px #ccc;
+}
+
+.dash_header::before {
+  display: inline-block;
+  background: image-url("CheckMate-image.png");
+  content: "";
+  background-size: cover;
+  height: 25px;
+  width: 25px;
+}

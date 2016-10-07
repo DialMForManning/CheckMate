@@ -1,8 +1,10 @@
 import { applyMiddleware } from 'redux';
 import SessionMiddleware from './session_middleware';
+import FriendsMiddleware from './friends_middleware';
 
 const RootMiddleware = applyMiddleware(
-  SessionMiddleware
+  SessionMiddleware,
+  FriendsMiddleware
 );
 
 export default RootMiddleware;

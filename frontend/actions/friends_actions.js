@@ -1,35 +1,58 @@
-const REQUEST_FRIENDSHIP = "REQUEST_FRIENDSHIP";
-const APPROVE_FRIENDSHIP = "APPROVE_FRIENDSHIP";
-const DENY_FRIENDSHIP = "DENY_FRIENDSHIP";
-const FETCH_FRIENDS = "FETCH_FRIENDS";
-const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
-const RECEIVE_SINGLE_FRIEND = "RECEIVE_SINGLE_FRIEND";
+export const REQUEST_FRIEND = "REQUEST_FRIENDSHIP";
+export const APPROVE_FRIEND= "APPROVE_FRIENDSHIP";
+export const DENY_FRIEND = "DENY_FRIENDSHIP";
+export const FETCH_FRIENDS = "FETCH_FRIENDS";
+export const RECEIVE_FRIENDS = "RECEIVE_FRIENDS";
+export const RECEIVE_SINGLE_FRIEND = "RECEIVE_SINGLE_FRIEND";
+export const RECEIVE_APPROVED_FRIEND = "RECEIVE_APPROVED_FRIEND";
+export const RECEIVE_DENIED_FRIEND = "RECEIVE_DENIED_FRIEND";
+export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const CLEAR_ERRORS = "CLEAR_ERRORS";
 
-const requestFriendship = (friend) => ({
-  type: REQUEST_FRIENDSHIP,
+export const requestFriend = (friend) => ({
+  type: REQUEST_FRIEND,
   friend
 });
 
-const approveFriendship = (friend) => ({
-  type: APPROVE_FRIENDSHIP,
-  friend
-
-});
-const denyFriendship = (friend) => ({
-  type: DENY_FRIENDSHIP,
+export const approveFriend = (friend) => ({
+  type: APPROVE_FRIEND,
   friend
 });
 
-const fetchFriends = () => ({
+export const denyFriend= (friend) => ({
+  type: DENY_FRIEND,
+  friend
+});
+
+export const fetchFriends = () => ({
   type: FETCH_FRIENDS
 });
 
-const receiveFriends = (friends) => ({
+export const receiveFriends = (friends) => ({
   type: RECEIVE_FRIENDS,
   friends
 });
 
-const receiveSingleFriend = (friend) => ({
+export const receiveSingleFriend = (friend) => ({
   type: RECEIVE_SINGLE_FRIEND,
   friend
+});
+
+export const receiveApprovedFriend = (friend) => ({
+  type: RECEIVE_APPROVED_FRIEND,
+  friend
+});
+
+export const receiveDeniedFriend = (friend) => ({
+  type: RECEIVE_DENIED_FRIEND,
+  friend
+});
+
+export const receiveErrors = (errors) => ({
+  type: RECEIVE_ERRORS,
+  errors
+});
+
+export const clearErrors = () => ({
+  type: CLEAR_ERRORS
 });

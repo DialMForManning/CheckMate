@@ -24,14 +24,15 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
-import { fetchFriends, requestFriendship, approveFriendship, denyFriendship } from './util/friends_api_util';
+import { requestFriend, approveFriend, denyFriend,
+  fetchFriends, receiveFriends, receiveSingleFriend,
+  receiveErrors, clearErrors } from './actions/friends_actions';
+
+window.requestFriend = requestFriend;
+window.approveFriend = approveFriend;
+window.denyFriend = denyFriend;
 window.fetchFriends = fetchFriends;
-window.requestFriendship = requestFriendship;
-window.approveFriendship = approveFriendship;
-window.denyFriendship = denyFriendship;
-
-window.success = (friends) => {
-  console.log(friends);
-};
-
-window.errors = (errors) => {console.log(errors);};
+window.receiveFriends = receiveFriends;
+window.receiveSingleFriend = receiveSingleFriend;
+window.receiveErrors = receiveErrors;
+window.clearErrors = clearErrors;

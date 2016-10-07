@@ -62,6 +62,16 @@ Using this document, you should be able to trace an **action** starting with whe
   0. `POST /api/friends` is called
   0. `receiveSingleFriend` is set as the success callback
 
+- `approveFriendship`
+  0. invoked from approve friend button `onClick`
+  0. `PATCH /api/friendships` is called
+  0. `receiveSingleFriend` is set as the success callback
+
+- `denyFriendship`
+  0. invoked from deny friend button 'onClick'
+  0. `DELETE /api/friendships` is called
+  0. `receiveSingleFriend` is set as the success callback
+
 ### Friendship API Response Actions
 
 - `receiveFriends`
@@ -69,7 +79,7 @@ Using this document, you should be able to trace an **action** starting with whe
   0. the `FriendReducer` updates `friends` in the application state
 
 - `receiveSingleFriend`
-  0. invoked from the API success callback for `createFriendship`
+  0. invoked from the API success callback for `createFriendship`, `approveFriendship`, or `denyFriendship`
   0. the `FriendReducer` adds a `friend` to the `friends` array in the application state
 
 ## Expenses Cycles

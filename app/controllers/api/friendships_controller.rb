@@ -12,10 +12,12 @@ class Api::FriendshipsController < ApplicationController
       status: 'requested'
       })
 
+      @friendship = pending
+
       if pending.valid? && requesting.valid?
         pending.save
         requesting.save
-        render json: ["requested"]
+        render 'api/friends/show'
       else
         render json: ["invalid friend request"], status: 422
       end
@@ -36,7 +38,7 @@ class Api::FriendshipsController < ApplicationController
       Friendship.accept(pending, accepting)
       pending.save
       accepting.save
-      render json: ["accepted"]
+      render json: 'api/friends/show'
     else
       render json: ["invalid accept request"], status: 422
     end
@@ -57,7 +59,7 @@ class Api::FriendshipsController < ApplicationController
     if to_delete_1 && to_delete_2
       Friendship.destroy(to_delete_1)
       Friendship.destroy(to_delete_2)
-      render json: ["deleted"]
+      render json: ["friend deleted"]
     else
       render json: ["invalid delete request"], status: 422
     end

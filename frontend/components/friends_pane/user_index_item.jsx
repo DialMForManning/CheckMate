@@ -7,8 +7,10 @@ const UserIndexItem = ({ user, requestFriend }) => {
 
   return(
     <ul>
-      <li>{ user.fname + " " + user.lname }</li>
-      <li onClick={ sendRequest }>{ "Request Friend" }</li>
+      <li className="search_name">{ user.fname + " " + user.lname }</li>
+      <li onClick={ sendRequest } className="req_button">
+        { "+add" }
+      </li>
     </ul>
   );
 };

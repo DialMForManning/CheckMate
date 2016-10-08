@@ -24,7 +24,7 @@ class RequestItem extends React.Component {
 
     if (friend.status === 'requested') {
       return(
-        <ul>
+        <ul className="group">
           <li className="req_name">{ name }</li>
           <li className="approve_friend"
             onClick={ this.sendApprove }>

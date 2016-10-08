@@ -18,7 +18,7 @@ class FriendRequests extends React.Component {
 
   render() {
     return(
-      <div className="friend_requests">
+      <div className="friend_requests group">
         <h1>Pending Friends</h1>
         { this.allRequests() }
       </div>

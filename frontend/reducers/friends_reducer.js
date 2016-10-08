@@ -2,6 +2,7 @@ import { RECEIVE_FRIENDS,
          RECEIVE_SINGLE_FRIEND,
          RECEIVE_APPROVED_FRIEND,
          RECEIVE_DENIED_FRIEND,
+         RECEIVE_USERS,
          RECEIVE_ERRORS,
          CLEAR_ERRORS } from '../actions/friends_actions';
 import merge from 'lodash/merge';
@@ -10,6 +11,7 @@ const defaultState = {
   accepted: [],
   pending: [],
   requests: [],
+  users: [],
   errors: []
 };
 
@@ -26,11 +28,17 @@ const FriendsReducer = ( state = defaultState, action ) => {
         requests: action.friends.filter((friend) => {
           return friend.status === 'requested';
         }),
+        users: [],
         errors: []
       };
 
     case RECEIVE_SINGLE_FRIEND:
-      return merge({}, state, { pending: [action.friend] });
+      return Object.assign({}, state, {
+        pending: state.pending.concat([action.friend]),
+        users: state.users.filter((user) => {
+          return user.id !== action.friend.id;
+        })
+      });
 
     case RECEIVE_APPROVED_FRIEND:
       return Object.assign({}, state, {
@@ -48,6 +56,11 @@ const FriendsReducer = ( state = defaultState, action ) => {
         accepted: state.accepted.filter((friend) => {
           return friend.id !== action.friend.id;
         })
+      });
+
+    case RECEIVE_USERS:
+      return Object.assign({}, state, {
+        users: action.users
       });
 
     case RECEIVE_ERRORS:

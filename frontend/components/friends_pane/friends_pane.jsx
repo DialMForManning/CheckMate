@@ -1,6 +1,7 @@
 import React from 'react';
 import FriendsFilter from './friends_filter';
 import FriendRequests from './friend_requests';
+import UserSearch from './user_search'
 
 class FriendsPane extends React.Component {
   constructor(props) {
@@ -18,6 +19,10 @@ class FriendsPane extends React.Component {
             pending={ this.props.pending.concat(this.props.requests) }
             approveFriend={ this.props.approveFriend }
             denyFriend={ this.props.denyFriend } />
+          <UserSearch
+            users={ this.props.users }
+            requestFriend={ this.props.requestFriend }
+            searchUsers={ this.props.searchUsers }/>
         </content>
     );
   }

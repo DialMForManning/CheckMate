@@ -33,10 +33,8 @@ class User < ApplicationRecord
     class_name: 'User'
 
   def self.search(fname_query, lname_query, current_user)
-    return [] if fname_query.nil? && lname_query.nil?
-    fname_query = '' if fname_query.nil?
-    lname_query = '' if lname_query.nil?
-    
+    return [] if fname_query.length == 0 && lname_query.length == 0
+
     User.where("lower(fname) like ?", "%#{fname_query.downcase}%")
         .where("lower(lname) like ?", "%#{lname_query.downcase}%")
         .reject { |result| current_user.friends.include?(result) }

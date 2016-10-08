@@ -36,3 +36,13 @@ export const denyFriendship = (friend, success, error) => {
     error
   });
 };
+
+export const searchUsers = (query, success, error) => {
+  $.ajax({
+    method: 'POST',
+    url: 'api/users/search',
+    data: { fname_query: query.fname_query, lname_query: query.lname_query },
+    success,
+    error
+  });
+};

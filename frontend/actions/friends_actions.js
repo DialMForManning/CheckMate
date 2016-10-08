@@ -8,6 +8,8 @@ export const RECEIVE_APPROVED_FRIEND = "RECEIVE_APPROVED_FRIEND";
 export const RECEIVE_DENIED_FRIEND = "RECEIVE_DENIED_FRIEND";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const SEARCH_USERS = "SEARCH_USERS";
+export const RECEIVE_USERS = "RECEIVE_USERS";
 
 export const requestFriend = (friend) => ({
   type: REQUEST_FRIEND,
@@ -46,6 +48,16 @@ export const receiveApprovedFriend = (friend) => ({
 export const receiveDeniedFriend = (friend) => ({
   type: RECEIVE_DENIED_FRIEND,
   friend
+});
+
+export const searchUsers = (query) => ({
+  type: SEARCH_USERS,
+  query
+});
+
+export const receiveUsers = (users) => ({
+  type: RECEIVE_USERS,
+  users
 });
 
 export const receiveErrors = (errors) => ({

@@ -1,7 +1,8 @@
 import { FETCH_FRIENDS,
          REQUEST_FRIEND,
          APPROVE_FRIEND,
-         DENY_FRIEND } from '../actions/friends_actions';
+         DENY_FRIEND,
+         SEARCH_USERS } from '../actions/friends_actions';
 import { fetchFriends,
          receiveFriends,
          requestFriend,
@@ -10,18 +11,20 @@ import { fetchFriends,
          receiveSingleFriend,
          receiveApprovedFriend,
          receiveDeniedFriend,
+         receiveUsers,
          receiveErrors } from '../actions/friends_actions';
 import { fetchAllFriends,
          requestFriendship,
          approveFriendship,
-         denyFriendship } from '../util/friends_api_util';
+         denyFriendship,
+         searchUsers } from '../util/friends_api_util';
 
 const FriendsMiddleware = ({getState, dispatch}) => (next) => (action) => {
   const fetchSuccess = (friends) => dispatch(receiveFriends(friends));
   const requestSuccess = (friend) => dispatch(receiveSingleFriend(friend));
   const approveSuccess = (friend) => dispatch(receiveApprovedFriend(friend));
-  const denySuccess = (friend) => {
-    dispatch(receiveDeniedFriend(friend));}
+  const denySuccess = (friend) => dispatch(receiveDeniedFriend(friend));
+  const searchSuccess = (users) => dispatch(receiveUsers(users));
   const error = (xhr) => receiveErrors(xhr.responseJSON);
 
   switch(action.type) {
@@ -36,6 +39,9 @@ const FriendsMiddleware = ({getState, dispatch}) => (next) => (action) => {
       return next(action);
     case DENY_FRIEND:
       denyFriendship(action.friend, denySuccess, error);
+      return next(action);
+    case SEARCH_USERS:
+      searchUsers(action.query, searchSuccess, error)
       return next(action);
     default:
       return next(action);

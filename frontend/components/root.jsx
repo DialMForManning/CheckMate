@@ -1,7 +1,7 @@
 import React from 'react';
 import App from './app';
 import Splash from './splash/splash';
-import Dashboard from './dashboard/dashboard';
+import Dashboard from './dashboard';
 import SignupFormContainer from './signup_form/signup_form_container';
 
 import { Provider } from 'react-redux';

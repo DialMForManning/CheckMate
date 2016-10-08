@@ -26,11 +26,16 @@ Friendship.destroy_all
 willy_id = User.find_by(fname: 'Willy').id
 charlie_id = User.find_by(fname: 'Charlie').id
 grandpa_id = User.find_by(fname: 'Grandpa').id
+violet_id = User.find_by(fname: 'Violet').id
 
 #willy to charlie, accepted
 Friendship.create(user_id: willy_id, friend_id: charlie_id, status: 'accepted')
 Friendship.create(user_id: charlie_id, friend_id: willy_id, status: 'accepted')
 
 #willy to grandpa, pending
-Friendship.create(user_id: willy_id, friend_id: grandpa_id, status: 'pending')
-Friendship.create(user_id: grandpa_id, friend_id: willy_id, status: 'requested')
+Friendship.create(user_id: willy_id, friend_id: grandpa_id, status: 'accepted')
+Friendship.create(user_id: grandpa_id, friend_id: willy_id, status: 'accepted')
+
+#willy to violet, pending
+Friendship.create(user_id: willy_id, friend_id: violet_id, status: 'pending')
+Friendship.create(user_id: violet_id, friend_id: willy_id, status: 'requested')

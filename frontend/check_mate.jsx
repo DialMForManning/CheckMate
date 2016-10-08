@@ -24,15 +24,3 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
-import { requestFriend, approveFriend, denyFriend,
-  fetchFriends, receiveFriends, receiveSingleFriend,
-  receiveErrors, clearErrors } from './actions/friends_actions';
-
-window.requestFriend = requestFriend;
-window.approveFriend = approveFriend;
-window.denyFriend = denyFriend;
-window.fetchFriends = fetchFriends;
-window.receiveFriends = receiveFriends;
-window.receiveSingleFriend = receiveSingleFriend;
-window.receiveErrors = receiveErrors;
-window.clearErrors = clearErrors;

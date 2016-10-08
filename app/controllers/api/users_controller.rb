@@ -12,7 +12,8 @@ class Api::UsersController < ApplicationController
   def index
     @users = User.search(
       params[:fname_query],
-      params[:lname_query]
+      params[:lname_query],
+      current_user
     )
     render 'api/users/index'
   end

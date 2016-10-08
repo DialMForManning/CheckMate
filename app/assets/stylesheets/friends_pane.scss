@@ -83,8 +83,16 @@
   background-color: rgb(91, 197, 167);
 }
 
+.approve_friend:hover {
+  background-color: rgb(91, 205, 167);
+}
+
 .deny_friend {
   background-color: rgb(255, 101, 47);
+}
+
+.deny_friend:hover {
+  background-color: rgb(255, 120, 47);
 }
 
 .pending_name {
@@ -115,4 +123,8 @@
   text-shadow: 0 0 1px #000;
   height: 14px;
   line-height: 14px;
+}
+
+.req_button:hover {
+  background-color: rgb(91, 205, 167);
 }

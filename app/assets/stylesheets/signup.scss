@@ -43,6 +43,10 @@
   float: left;
 }
 
+.signup_form input:focus {
+  box-shadow: 0 0 3px rgb(255, 101, 47)
+}
+
 .signup_form input[type=submit]{
   color: #fff;
   background-color: rgb(255, 101, 47);
@@ -53,11 +57,14 @@
   cursor: pointer;
 }
 
+.signup_form input[type=submit]:hover {
+  background-color: rgb(255, 120, 47);
+}
+
 .signup_errors {
   display: block;
   float: right;
   width: 500px;
-  // margin-right: 280px;
 }
 
 .signup_errors > li {

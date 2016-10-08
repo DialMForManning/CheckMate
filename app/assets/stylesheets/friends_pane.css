@@ -1,0 +1,70 @@
+.friend_filter,
+.friend_requests {
+  margin-top: 10px;
+  font-size: 14px;
+  width: 180px;
+}
+
+.friend_filter input {
+  margin-bottom: 10px;
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.friend_filter input:focus {
+  box-shadow: 0 0 3px rgb(255, 101, 47);
+}
+
+.friend_filter h1,
+.friend_requests h1 {
+  background: #eee;
+  border-radius: 5px;
+  padding: 3px;
+  width: 180px;
+  color: #aaa;
+  box-shadow: 0 0 1px #ccc;
+  margin-bottom: 3px;
+}
+
+.friend_filter > ul > li {
+  color: 	#696969;
+  padding: 3px;
+}
+
+.friend_requests > ul > li {
+  height: 20px;
+  line-height: 20px;
+  margin: 2px 0;
+}
+
+.req_name, .pending_name {
+  float: left;
+  color: 	#696969;
+  padding-left: 3px;
+}
+
+.approve_friend, .deny_friend {
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 1px #000;
+  margin: 2px 0;
+  float: right;
+  padding: 0 5px;
+  text-shadow: 0 0 1px #000;
+}
+
+.approve_friend {
+  background-color: rgb(91, 197, 167);
+}
+
+.deny_friend {
+  background-color: rgb(255, 101, 47);
+}
+
+.pending_name {
+  width: 180px;
+  background-color: rgb(255, 101, 47);
+  opacity: 0.5;
+  border-radius: 5px;
+}

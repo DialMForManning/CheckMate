@@ -27,15 +27,31 @@ willy_id = User.find_by(fname: 'Willy').id
 charlie_id = User.find_by(fname: 'Charlie').id
 grandpa_id = User.find_by(fname: 'Grandpa').id
 violet_id = User.find_by(fname: 'Violet').id
+augustus_id = User.find_by(fname: 'Augustus').id
+mike_id = User.find_by(fname: 'Mike').id
+veruca_id = User.find_by(fname: 'Veruca').id
+
 
 #willy to charlie, accepted
 Friendship.create(user_id: willy_id, friend_id: charlie_id, status: 'accepted')
 Friendship.create(user_id: charlie_id, friend_id: willy_id, status: 'accepted')
 
-#willy to grandpa, pending
+#willy to grandpa, accepted
 Friendship.create(user_id: willy_id, friend_id: grandpa_id, status: 'accepted')
 Friendship.create(user_id: grandpa_id, friend_id: willy_id, status: 'accepted')
 
 #willy to violet, pending
 Friendship.create(user_id: willy_id, friend_id: violet_id, status: 'pending')
 Friendship.create(user_id: violet_id, friend_id: willy_id, status: 'requested')
+
+#willy to mike, pending
+Friendship.create(user_id: willy_id, friend_id: mike_id, status: 'pending')
+Friendship.create(user_id: mike_id, friend_id: willy_id, status: 'requested')
+
+#willy to augustus, requested
+Friendship.create(user_id: willy_id, friend_id: augustus_id, status: 'requested')
+Friendship.create(user_id: augustus_id, friend_id: willy_id, status: 'pending')
+
+#willy to veruca, requested
+Friendship.create(user_id: willy_id, friend_id: veruca_id, status: 'requested')
+Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')

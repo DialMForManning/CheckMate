@@ -50,13 +50,14 @@ class FriendsFilter extends React.Component {
 
   render() {
     return(
-      <div>
+      <div className="friend_filter">
         <input
           type="text"
+          placeholder="Filter by name"
           onChange={ this.handleInput }/>
 
         <h1>Friends</h1>
-        <ul>
+        <ul className="friend_list">
           { this.filteredList() }
         </ul>
       </div>

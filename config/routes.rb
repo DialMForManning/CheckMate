@@ -5,8 +5,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create]
     resource :session, only: [:create, :destroy]
     resource :friendships, only: [:create, :update, :destroy]
+    resources :expenses, only: [:create, :update, :destroy]
   end
 
+  get 'api/friends/:id/expenses', to: 'api/expenses/#index', defaults: { format: :json }
   get 'api/friends', to: 'api/friends#index', defaults: { format: :json }
   post 'api/users/search', to: 'api/users#index', defaults: { format: :json }
 end

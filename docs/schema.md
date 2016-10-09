@@ -23,18 +23,18 @@ column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 payer_id        | integer   | not null, indexed, foreign key
-payer_owes      | money     | not null
-total           | money     | not null
+payer_owes      | decimal   | not null
+total           | decimal   | not null
 description     | string    | not null
-settled         | boolean   | not null, default: false
 
-## expenseshares
+## expense_shares
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
 expense_id      | integer   | not null, indexed, foreign key
 debtor_id       | integer   | not null, indexed, foreign key
-amount          | money     | not null
+amount          | decimal   | not null
+settled         | decimal   | not null, default: false
 
 ## transactions
 column name     | data type | details
@@ -43,7 +43,7 @@ id              | integer   | not null, primary key
 author_id       | integer   | not null, indexed, foreign key
 debtor_id       | integer   | not null, indexed, foreign key
 receiver_id     | integer   | not null, indexed, foreign key
-amount          | money     | not null
+amount          | decimal   | not null
 
 ## comments
 column name     | data type | details

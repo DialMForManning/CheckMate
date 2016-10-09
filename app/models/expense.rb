@@ -13,4 +13,25 @@
 #
 
 class Expense < ApplicationRecord
+  validates :total, :payer_owes,
+    format: { with: /\A\d+(?:\.\d{0,2})?\z/,
+    message: "Use valid money format (ex: 5, 5.1, or 5.10)" }
+  validate :owes_less_than_total
+
+  belongs_to :payer,
+    class_name: 'User',
+    primary_key: :id,
+    foreign_key: :payer_id
+
+  has_many :expense_shares,
+    class_name: 'ExpenseShare',
+    primary_key: :id,
+    foreign_key: :expense_id,
+    dependent: :destroy
+
+  def owes_less_than_total
+    unless payer_owes.to_f < total.to_f
+      errors.add(:payer_owes, "Payer must owe less than expense total")
+    end
+  end
 end

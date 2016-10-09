@@ -12,4 +12,17 @@
 #
 
 class ExpenseShare < ApplicationRecord
+  validates :amount, format: { with: /\A\d+(?:\.\d{0,2})?\z/,
+    message: "Use valid money format (ex: 5, 5.1, or 5.10)" }
+
+  belongs_to :expense,
+    class_name: 'Expense',
+    primary_key: :id,
+    foreign_key: :expense_id
+
+  belongs_to :debtor,
+    class_name: 'User',
+    primary_key: :id,
+    foreign_key: :debtor_id
+
 end

@@ -32,6 +32,16 @@ class User < ApplicationRecord
     source: :friend,
     class_name: 'User'
 
+  has_many :expenses,
+    class_name: 'Expense',
+    primary_key: :id,
+    foreign_key: :payer_id
+
+  has_many :expense_shares,
+    class_name: 'ExpenseShare',
+    primary_key: :id,
+    foreign_key: :debtor_id
+
   def self.search(fname_query, lname_query, current_user)
     return [] if fname_query.length == 0 && lname_query.length == 0
 

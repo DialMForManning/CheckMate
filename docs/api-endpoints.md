@@ -38,10 +38,10 @@
 ### Expenses
 - `GET /api/expense/:id`
 - `GET /api/friends/:id/expenses`
-- `POST /api/friends/:id/expenses`
-  * Accepts: current_user_paid_boolean, current_user_owed, total, description, date
+- `POST /api/expenses`
+  * Accepts: payer_id, payer_owes, total, description, debtors array
 - `PATCH /api/expense/:id`
-* Accepts: current_user_paid_boolean, current_user_owed, total, description
+  * Accepts: payer_id, payer_owes, total, description, debtors array
 - `DELETE /api/expense/:id`
 
 ### Transactions

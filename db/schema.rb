@@ -10,10 +10,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161006153155) do
+ActiveRecord::Schema.define(version: 20161009160818) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "expense_shares", force: :cascade do |t|
+    t.integer  "expense_id",                 null: false
+    t.integer  "debtor_id",                  null: false
+    t.decimal  "amount",                     null: false
+    t.boolean  "settled",    default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["expense_id"], name: "index_expense_shares_on_expense_id", using: :btree
+  end
+
+  create_table "expenses", force: :cascade do |t|
+    t.integer  "payer_id",    null: false
+    t.decimal  "payer_owes",  null: false
+    t.decimal  "total",       null: false
+    t.string   "description", null: false
+    t.date     "date",        null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["payer_id"], name: "index_expenses_on_payer_id", using: :btree
+  end
 
   create_table "friendships", force: :cascade do |t|
     t.integer  "friend_id",  null: false

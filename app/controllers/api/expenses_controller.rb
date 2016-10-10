@@ -39,11 +39,26 @@ class Api::ExpensesController < ApplicationController
   end
 
   def index
+    debts = Expense.find_by(payer_id: params[:id])
+    loans = Expense.joins(:expense_shares).where("debtor_id = #{params[:id]}")
 
+    loans ||= []
+    debts ||= []
+
+    @expenses = loans + debts
+
+    render 'api/expenses/index'
   end
 
   def destroy
+    @expense = Expense.find(params[:id])
 
+    if @expense
+      @expense.destroy
+      render 'api/expenses/show'
+    else
+      render json: ["no such expense"], status: 422
+    end
   end
 
   private

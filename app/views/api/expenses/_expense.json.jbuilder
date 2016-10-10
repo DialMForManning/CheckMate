@@ -1,4 +1,4 @@
-json.extract! expense, :id, :payer_id, :total, :date
+json.extract! expense, :id, :payer_id, :total, :date, :description
 
 json.payerFname expense.payer.fname
 

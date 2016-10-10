@@ -14,7 +14,7 @@ const defaultState = {
 const ExpensesReducer = ( state = defaultState, action ) => {
   switch(action.type) {
     case RECEIVE_EXPENSES:
-      return merge({}, state, {
+      return Object.assign({}, state, {
         items: action.expenses,
         errors: []
       });

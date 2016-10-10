@@ -51,9 +51,14 @@
   margin-bottom: 3px;
 }
 
-.friend_filter > ul > li {
+.friend_filter a {
+  display: block;
   color: 	#696969;
-  padding: 3px;
+  padding: 5px;
+}
+
+.friend_filter a:hover {
+  background-color: #eee;
 }
 
 .friend_requests > ul > li {

@@ -9,9 +9,6 @@
 #Users
 User.destroy_all
 
-#Demo Account
-User.create(email: 'demo', password: 'demoing', fname: 'Demo', lname: 'Demington')
-
 #Seeded Users
 User.create(email: 'willyw', password: 'willyw', fname: 'Willy', lname: 'Wonka')
 User.create(email: 'charlie', password: 'charlie', fname: 'Charlie', lname: 'Bucket')
@@ -55,3 +52,22 @@ Friendship.create(user_id: augustus_id, friend_id: willy_id, status: 'pending')
 #willy to veruca, requested
 Friendship.create(user_id: willy_id, friend_id: veruca_id, status: 'requested')
 Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
+
+#expense seeds
+Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
+  description: 'Gobstoppers', date: '2016-06-05')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
+  amount: 10)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: augustus_id,
+  amount: 10)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: mike_id,
+  amount: 10)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: veruca_id,
+  amount: 10)
+
+Expense.create(payer_id: willy_id, payer_owes: 5, total: 35,
+  description: 'Fizzy Lifting Drinks', date: '2016-08-13')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
+  amount: 15)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
+  amount: 15)

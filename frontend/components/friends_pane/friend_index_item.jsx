@@ -1,10 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class FriendIndexItem extends React.Component {
   render() {
     return(
       <li>
-        { this.props.fname + " " + this.props.lname }
+        <Link to={ `/dashboard/friends/${this.props.id}` }>
+          { this.props.fname + " " + this.props.lname }
+        </Link>
       </li>
     );
   }

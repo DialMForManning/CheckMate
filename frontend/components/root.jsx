@@ -2,6 +2,8 @@ import React from 'react';
 import App from './app';
 import Splash from './splash/splash';
 import Dashboard from './dashboard';
+import SummaryPane from './summary_pane';
+import ExpensesPane from './expenses_pane/expenses_pane';
 import SignupFormContainer from './signup_form/signup_form_container';
 
 import { Provider } from 'react-redux';
@@ -23,6 +25,7 @@ const Root = ({ store }) => {
   return(
   <Provider store={ store }>
     <Router history={ hashHistory }>
+
       <Route
         path="/"
         component={ App }
@@ -34,12 +37,25 @@ const Root = ({ store }) => {
           path="/signup"
           component={ SignupFormContainer }
           onEnter={ _redirectIfLoggedIn } />
+
       </Route>
 
       <Route
         path="/dashboard"
         component={ Dashboard }
-        onEnter={ _redirectIfLoggedOut } />
+        onEnter={ _redirectIfLoggedOut }>
+
+        <IndexRoute component={ SummaryPane } />
+      </Route>
+
+      <Route
+        path="/dashboard/friends/:id"
+        component={ Dashboard }
+        onEnter={ _redirectIfLoggedOut}>
+
+        <IndexRoute component={ ExpensesPane } />
+      </Route>
+
     </Router>
   </Provider>
   );

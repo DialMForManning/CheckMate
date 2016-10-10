@@ -41,7 +41,8 @@ class FriendsFilter extends React.Component {
         <FriendIndexItem
           key = { idx }
           fname={ friend.fname }
-          lname={ friend.lname } />
+          lname={ friend.lname }
+          id={ friend.id } />
       );
     });
 

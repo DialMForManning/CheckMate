@@ -7,7 +7,7 @@ import {
 import merge from 'lodash/merge';
 
 const defaultState = {
-  expenseItems: {},
+  items: {},
   errors: []
 };
 
@@ -15,17 +15,20 @@ const ExpensesReducer = ( state = defaultState, action ) => {
   switch(action.type) {
     case RECEIVE_EXPENSES:
       return merge({}, state, {
-        expenseItems: action.expenses
+        items: action.expenses,
+        errors: []
       });
     case RECEIVE_SINGLE_EXPENSE:
-      return merge({}, state, {
-        expenseItems: {[action.expense.id]: action.expense}
+      return Object.assign({}, state, {
+        items: {[action.expense.id]: action.expense},
+        errors: []
       });
     case RECEIVE_DELETION:
-      const newItems = merge({}, state.expenseItems);
+      const newItems = merge({}, state.items);
       delete newItems[action.expense.id];
       return Object.assign({}, state, {
-        expenseItems: newItems
+        items: newItems,
+        errors: []
       });
     case RECEIVE_EXPENSE_ERRORS:
       return Object.assign({}, state, {

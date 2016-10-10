@@ -3,7 +3,7 @@ import App from './app';
 import Splash from './splash/splash';
 import Dashboard from './dashboard';
 import SummaryPane from './summary_pane';
-import ExpensesPane from './expenses_pane/expenses_pane';
+import ExpensesPaneContainer from './expenses_pane/expenses_pane_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 
 import { Provider } from 'react-redux';
@@ -53,7 +53,7 @@ const Root = ({ store }) => {
         component={ Dashboard }
         onEnter={ _redirectIfLoggedOut}>
 
-        <IndexRoute component={ ExpensesPane } />
+        <IndexRoute component={ ExpensesPaneContainer } />
       </Route>
 
     </Router>

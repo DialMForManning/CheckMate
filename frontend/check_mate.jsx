@@ -24,3 +24,55 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
+import{ fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
+window.fetchExpenses = fetchExpenses;
+window.createExpense = createExpense;
+window.updateExpense = updateExpense;
+window.destroyExpense = destroyExpense;
+window.success = (res) => console.log(res);
+window.error = (error) => console.log(error);
+window.goodExpense = {
+  expense: {
+    description: 'Wonka Bars',
+    date: '2016-10-05',
+    payer_id: 276,
+    total: 20,
+    payer_owes: 5
+  },
+  shares: {
+    281: 5,
+    282: 5,
+    279: 5
+  }
+};
+
+window.goodUpdate = {
+  expense: {
+    description: 'Wonka Bars',
+    date: '2016-10-05',
+    payer_id: 276,
+    total: 25,
+    payer_owes: 5
+  },
+  shares: {
+    281: 5,
+    282: 5,
+    279: 5,
+    280: 5
+  }
+};
+
+window.badExpense = {
+  expense: {
+    description: 'Wonka Bars',
+    date: '2016-10-05',
+    payer_id: 276,
+    total: 20.66666,
+    payer_owes: 5
+  },
+  shares: {
+    281: 5,
+    282: 5,
+    279: 5
+  }
+};

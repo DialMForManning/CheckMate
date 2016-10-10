@@ -28,7 +28,7 @@ augustus_id = User.find_by(fname: 'Augustus').id
 mike_id = User.find_by(fname: 'Mike').id
 veruca_id = User.find_by(fname: 'Veruca').id
 
-
+Friendship.destroy_all
 #willy to charlie, accepted
 Friendship.create(user_id: willy_id, friend_id: charlie_id, status: 'accepted')
 Friendship.create(user_id: charlie_id, friend_id: willy_id, status: 'accepted')
@@ -53,6 +53,7 @@ Friendship.create(user_id: augustus_id, friend_id: willy_id, status: 'pending')
 Friendship.create(user_id: willy_id, friend_id: veruca_id, status: 'requested')
 Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
 
+Expense.destroy_all
 #expense seeds
 Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
   description: 'Gobstoppers', date: '2016-06-05')
@@ -71,3 +72,8 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
   amount: 15)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
   amount: 15)
+
+Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,
+  description: 'Oompa Loompa Food', date: '2016-08-13')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
+  amount: 30)

@@ -1,39 +1,39 @@
 class Api::ExpensesController < ApplicationController
   def create
-    expense = Expense.new(expense_params)
+    @expense = Expense.new(expense_params)
 
-    if expense.save
+    if @expense.save
       shares = new_shares
       if shares && shares.all? { |share| share.valid? }
         shares.each { |share| share.save }
         render 'api/expenses/show'
       else
         Expense.last.destroy
-        render_expense_errors(expense)
+        render_expense_errors(@expense)
       end
 
     else
-      render_expense_errors(expense)
+      render_expense_errors(@expense)
     end
   end
 
   def update
-    expense = Expense.find(params[:id])
+    @expense = Expense.find(params[:id])
 
     if Expense.new(expense_params).valid?
-      test_shares = new_shares(expense)
+      test_shares = new_shares(@expense)
 
       if test_shares && test_shares.all? { |share| share.valid? }
-        expense.update(expense_params)
-        expense.expense_shares.destroy_all
+        @expense.update(expense_params)
+        @expense.expense_shares.destroy_all
         test_shares.each { |share| share.save }
 
         render 'api/expenses/show'
       else
-        render_expense_errors(expense)
+        render_expense_errors(@expense)
       end
     else
-      render_expense_errors(expense)
+      render_expense_errors(@expense)
     end
 
   end

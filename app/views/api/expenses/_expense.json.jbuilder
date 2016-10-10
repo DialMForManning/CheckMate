@@ -8,6 +8,7 @@ expense.expense_shares.each do |share|
   shares[share.debtor_id] = {
     debtorFname: share.debtor.fname,
     payerLeant: share.amount,
+    settled: share.settled
   }
 end
 

@@ -1,0 +1,44 @@
+.expense_item {
+  width: 550px;
+  margin: 0 auto;
+  height: 60px;
+  display: block;
+  border-bottom: 1px solid #ccc;
+  padding: 0 5px;
+}
+
+.expense_date {
+  float: left;
+  display: block;
+  font-size: 14px;
+  width: 40px;
+  word-wrap: break-word;
+  font-weight: 600;
+}
+
+.expense_date > strong {
+  font-size: 24px;
+  text-align: center;
+  padding: 0 2px;
+}
+
+.loan_summary {
+  float: right;
+}
+
+.loan_summary li {
+  float: left;
+}
+
+.loan_summary h5 {
+  font-size: 10px;
+}
+
+.payer_summary h5 {
+  text-align: right;
+}
+
+.debtor_summary {
+  display: block;
+  width: 80px;
+}

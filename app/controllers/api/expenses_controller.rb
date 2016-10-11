@@ -49,6 +49,8 @@ class Api::ExpensesController < ApplicationController
     debts ||= []
 
     @expenses = loans + debts
+    friend = User.find(params[:id])
+    @friend_name = "#{friend.fname} #{friend.lname}"
 
     render 'api/expenses/index'
   end

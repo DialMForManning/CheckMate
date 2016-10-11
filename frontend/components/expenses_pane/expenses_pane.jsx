@@ -23,8 +23,13 @@ class ExpensesPane extends React.Component {
 
   expenseList() {
     if (Object.keys(this.props.items).length === 0) { return []; }
+
     const that = this;
-    return Object.keys(this.props.items).map((expense_id) => {
+    const expenseKeys = Object.keys(this.props.items).filter((key) => {
+      return !!Number(key);
+    });
+
+    return expenseKeys.map((expense_id) => {
       return <ExpenseIndexItem
                 key={ expense_id }
                 expense={ that.props.items[expense_id] }
@@ -35,6 +40,10 @@ class ExpensesPane extends React.Component {
   render() {
     return (
       <content className="expenses_pane">
+        <header className="expenses_header">
+          <h1>{ this.props.items.friendName }</h1>
+          <button>{ "Add expense"}</button>
+        </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
 
       </content>

@@ -3,9 +3,10 @@
   margin: 0 auto;
   height: 40px;
   display: block;
-  box-shadow: 0 3px 1px -2px gray;
+  box-shadow: 0 3px 1px -2px #aaa;
   padding: 10px 5px;
   position: relative;
+  cursor: pointer;
 }
 
 .expense_date {
@@ -16,6 +17,7 @@
   word-wrap: break-word;
   font-weight: 600;
   margin-right: 20px;
+  color: #696969;
 }
 
 .expense_date > strong {
@@ -74,4 +76,31 @@
 
 .user_leant_summary h6 {
   color: rgb(91, 197, 167);
+}
+
+.expenses_header {
+  padding: 10px 20px 35px 5px;
+  background: #eee;
+  box-shadow: 0 3px 1px -2px #aaa;
+}
+
+.expenses_header h1 {
+  float: left;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.expenses_header button {
+  float: right;
+  background-color: rgb(255, 120, 47);
+  border-radius: 5px;
+  padding: 5px;
+  color: #fff;
+  text-shadow: 0 0 1px #000;
+  cursor: pointer;
+  box-shadow: 0 0 1px #aaa;
+}
+
+.expenses_header button:hover {
+  background-color: rgb(255, 120, 47);
 }

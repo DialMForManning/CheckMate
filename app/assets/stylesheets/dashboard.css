@@ -18,7 +18,7 @@
   display: block;
   box-shadow: 0 5px 10px #ccc;
   height: 100%;
-  padding-top: 10px;
+  padding-top: 1px;
 }
 
 .detail_pane {

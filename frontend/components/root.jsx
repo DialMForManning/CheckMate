@@ -46,15 +46,16 @@ const Root = ({ store }) => {
         onEnter={ _redirectIfLoggedOut }>
 
         <IndexRoute component={ SummaryPane } />
+        
+        <Route
+          path="/friends/:id"
+          component={ ExpensesPaneContainer }
+          onEnter={ _redirectIfLoggedOut}>
+
+
+        </Route>
       </Route>
 
-      <Route
-        path="/dashboard/friends/:id"
-        component={ Dashboard }
-        onEnter={ _redirectIfLoggedOut}>
-
-        <IndexRoute component={ ExpensesPaneContainer } />
-      </Route>
 
     </Router>
   </Provider>

@@ -1,5 +1,7 @@
 export const FETCH_EXPENSES = "FETCH_EXPENSES";
 export const RECEIVE_EXPENSES = "RECEIVE_EXPENSES";
+export const FETCH_FRIEND = "FETCH_FRIEND";
+export const RECEIVE_FRIEND_DETAILS = "RECEIVE_FRIEND_DETAILS";
 export const CREATE_EXPENSE = "CREATE_EXPENSE";
 export const UPDATE_EXPENSE = "UPDATE_EXPENSE";
 export const DESTROY_EXPENSE = "DESTROY_EXPENSE";
@@ -15,6 +17,16 @@ export const fetchExpenses = (friend_id) => ({
 export const receiveExpenses = (expenses) => ({
   type: RECEIVE_EXPENSES,
   expenses
+});
+
+export const fetchFriend = (friend_id) => ({
+  type: FETCH_FRIEND,
+  friend_id
+});
+
+export const receiveFriendDetails = (friend) => ({
+  type: RECEIVE_FRIEND_DETAILS,
+  friend
 });
 
 export const createExpense = (expense) => ({

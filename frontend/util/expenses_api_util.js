@@ -7,6 +7,15 @@ export const fetchAllExpenses = (friend_id, success, error) => {
   });
 };
 
+export const fetchFriendDetails = (friend_id, success, error) => {
+  $.ajax({
+    method: 'GET',
+    url: `api/users/${friend_id}`,
+    success,
+    error
+  });
+};
+
 export const reqCreateExpense = (expense, success, error) => {
   $.ajax({
     method: 'POST',

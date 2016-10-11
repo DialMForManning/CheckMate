@@ -19,7 +19,7 @@ class FriendIndexItem extends React.Component {
   render() {
     return(
       <li>
-        <Link to={ `/dashboard/friends/${this.props.id}` }
+        <Link to={ `/friends/${this.props.id}` }
           onClick={ this.sendDetails }>
           { this.props.fname + " " + this.props.lname }
         </Link>

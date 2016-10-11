@@ -12,7 +12,8 @@
 }
 
 .logo {
-  font-family: 'Merriweather', serif;
+  /*font-family: 'Merriweather', serif;*/
+  font-family: sans-serif;
   font-size: 19px;
   float: left;
   padding: 10px 0;

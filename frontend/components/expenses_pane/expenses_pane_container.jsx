@@ -1,20 +1,21 @@
 import { connect } from 'react-redux';
-import { fetchExpenses, createExpense,
+import { fetchFriend, createExpense,
   updateExpense, destroyExpense } from '../../actions/expenses_actions';
 import ExpensesPane from './expenses_pane';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ expenses, friendDetail }) => {
+const mapStateToProps = ({ expenses, friends, friendDetail }) => {
   return({
     items: expenses.items,
-    friendDetail: friendDetail,
+    friend: expenses.friend,
+    accepted: friends.accepted,
     errors: expenses.errors
   });
 };
 
 const mapDispatchToProps = (dispatch) => {
   return({
-    fetchExpenses: (friend_id) => dispatch(fetchExpenses(friend_id)),
+    fetchFriend: (friend_id) => dispatch(fetchFriend(friend_id)),
     createExpense: (expense) => dispatch(createExpense(expense)),
     updateExpense: (expense_id, expense) => dispatch(updateExpense(expense_id, expense)),
     destroyExpense: (expense_id) => dispatch(destroyExpense(expense_id))

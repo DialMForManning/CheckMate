@@ -5,6 +5,7 @@ import ExpenseForm from './expense_form';
 class ExpensesPane extends React.Component {
   constructor(props) {
     super(props);
+
     this.expenseList = this.expenseList.bind(this);
   }
 
@@ -12,13 +13,11 @@ class ExpensesPane extends React.Component {
     if (this.props.params.id === nextProps.params.id) {
       return;
     }
-
-    this.friendId = nextProps.params.id;
-    this.props.fetchExpenses(this.friendId);
+    this.props.fetchFriend(nextProps.params.id);
   }
 
-  componentDidMount() {
-    this.props.fetchExpenses(this.props.params.id);
+  componentDidMount () {
+    this.props.fetchFriend(this.props.params.id);
   }
 
   expenseList() {
@@ -30,24 +29,30 @@ class ExpensesPane extends React.Component {
       return <ExpenseIndexItem
                 key={ expense_id }
                 expense={ that.props.items[expense_id] }
-                friendId={ that.props.friendDetail.id }
+                friendId={ that.props.params.id }
                 destroyExpense={ that.props.destroyExpense } />
     });
   }
 
   render() {
+    if (Object.keys(this.props.friend).length === 0) {
+      return(
+        <content className="expenses_pane"></content>
+      );
+    }
+
     return (
       <content className="expenses_pane">
         <header className="expenses_header">
           <h1>
-            { this.props.friendDetail.fname + " " +
-            this.props.friendDetail.lname }
+            { this.props.friend.fname + " " +
+            this.props.friend.lname }
           </h1>
           <button>{ "Add expense"}</button>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
         <ExpenseForm
-          friend={ this.props.friendDetail }
+          friend={ this.props.friend }
           createExpense={ this.props.createExpense }/>
       </content>
     );

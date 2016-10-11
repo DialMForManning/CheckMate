@@ -2,11 +2,13 @@ import {
   RECEIVE_EXPENSES,
   RECEIVE_SINGLE_EXPENSE,
   RECEIVE_DELETION,
-  RECEIVE_EXPENSE_ERRORS
+  RECEIVE_EXPENSE_ERRORS,
+  RECEIVE_FRIEND_DETAILS
 } from '../actions/expenses_actions';
 import merge from 'lodash/merge';
 
 const defaultState = {
+  friend: {},
   items: {},
   errors: []
 };
@@ -21,6 +23,10 @@ const ExpensesReducer = ( state = defaultState, action ) => {
     case RECEIVE_SINGLE_EXPENSE:
       return merge({}, state, {
         items: {[action.expense.id]: action.expense}
+      });
+    case RECEIVE_FRIEND_DETAILS:
+      return Object.assign({}, state, {
+        friend: action.friend
       });
     case RECEIVE_DELETION:
       const newItems = merge({}, state.items);

@@ -24,7 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
-import{ fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
+import{ fetchFriend, fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
+window.fetchFriend = fetchFriend;
 window.fetchExpenses = fetchExpenses;
 window.createExpense = createExpense;
 window.updateExpense = updateExpense;

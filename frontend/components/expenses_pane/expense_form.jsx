@@ -72,7 +72,6 @@ class ExpenseForm extends React.Component {
     return(
       <div className="form_overlay">
         <form className="expense_form" onSubmit={ this.handleSubmit }>
-          <a name="add_expense_form"></a>
           <header className="add_expense_header">{ "Add an expense" }</header>
           <p>
             { `With you and ${this.props.friend.fname}`}

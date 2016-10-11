@@ -19,9 +19,8 @@ const ExpensesReducer = ( state = defaultState, action ) => {
         errors: []
       });
     case RECEIVE_SINGLE_EXPENSE:
-      return Object.assign({}, state, {
-        items: {[action.expense.id]: action.expense},
-        errors: []
+      return merge({}, state, {
+        items: {[action.expense.id]: action.expense}
       });
     case RECEIVE_DELETION:
       const newItems = merge({}, state.items);

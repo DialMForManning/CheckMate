@@ -1,5 +1,6 @@
 import React from 'react';
 import ExpenseIndexItem from './expense_index_item';
+import ExpenseForm from './expense_form';
 
 class ExpensesPane extends React.Component {
   constructor(props) {
@@ -44,7 +45,9 @@ class ExpensesPane extends React.Component {
           <button>{ "Add expense"}</button>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
-
+        <ExpenseForm
+          friend={ this.props.friendDetail }
+          createExpense={ this.props.createExpense }/>
       </content>
     );
   }

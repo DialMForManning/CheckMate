@@ -4,11 +4,10 @@ import { fetchFriend, createExpense,
 import ExpensesPane from './expenses_pane';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ expenses, friends, friendDetail }) => {
+const mapStateToProps = ({ expenses }) => {
   return({
     items: expenses.items,
     friend: expenses.friend,
-    accepted: friends.accepted,
     errors: expenses.errors
   });
 };

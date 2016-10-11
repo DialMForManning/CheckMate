@@ -22,10 +22,7 @@ const ExpensesMiddleWare = ({ getState, dispatch }) => (next) => (action) => {
   const fetchSuccess = (expenses) => dispatch(receiveExpenses(expenses));
   const saveSuccess = (expense) => dispatch(receiveSingleExpense(expense));
   const destroySuccess = (expense) => dispatch(receiveDeletion(expense));
-  const friendSuccess = (friend) => {
-    dispatch(receiveFriendDetails(friend));
-    dispatch(fetchExpenses(friend.id));
-  };
+  const friendSuccess = (friend) => dispatch(receiveFriendDetails(friend));
   const error = (xhr) => dispatch(receiveErrors(xhr.responseJSON));
 
   switch(action.type) {

@@ -26,7 +26,8 @@ const ExpensesReducer = ( state = defaultState, action ) => {
       });
     case RECEIVE_FRIEND_DETAILS:
       return Object.assign({}, state, {
-        friend: action.friend
+        friend: action.friend.user,
+        items: action.friend.expenses
       });
     case RECEIVE_DELETION:
       const newItems = merge({}, state.items);

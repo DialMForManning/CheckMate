@@ -1,10 +1,11 @@
 .expense_item {
   width: 550px;
   margin: 0 auto;
-  height: 60px;
+  height: 40px;
   display: block;
-  border-bottom: 1px solid #ccc;
-  padding: 0 5px;
+  box-shadow: 0 3px 1px -2px gray;
+  padding: 10px 5px;
+  position: relative;
 }
 
 .expense_date {
@@ -14,6 +15,7 @@
   width: 40px;
   word-wrap: break-word;
   font-weight: 600;
+  margin-right: 20px;
 }
 
 .expense_date > strong {
@@ -23,22 +25,53 @@
 }
 
 .loan_summary {
-  float: right;
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .loan_summary li {
   float: left;
+  padding-left: 10px;
+}
+
+.payer_summary h6 {
+  text-align: right;
 }
 
 .loan_summary h5 {
-  font-size: 10px;
+  font-size: 12px;
+  color: #aaa;
+  font-weight: 600;
+}
+
+.loan_summary h6 {
+  font-weight: 700;
 }
 
 .payer_summary h5 {
   text-align: right;
+  float: right;
 }
 
 .debtor_summary {
   display: block;
-  width: 80px;
+  width: 120px;
+}
+
+.expense_description {
+  height: 40px;
+  line-height: 40px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.user_debt_summary h6 {
+  color: rgb(255, 101, 47);
+}
+
+.user_leant_summary h6 {
+  color: rgb(91, 197, 167);
 }

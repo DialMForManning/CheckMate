@@ -27,13 +27,13 @@ class ExpenseIndexItem extends React.Component {
     if (this.expense.payer_id === window.currentUser.id) {
       return(
         <ul className="loan_summary">
-          <li>
+          <li className="payer_summary">
             <h5>{ "you paid" }</h5>
             <h6>
               { "$" + Number(this.expense.total).toFixed(2) }
             </h6>
           </li>
-          <li>
+          <li className="user_leant_summary">
             <h5>{ "you lent " +
               this.expense.shares[this.props.friendId].debtorFname }
             </h5>
@@ -50,11 +50,11 @@ class ExpenseIndexItem extends React.Component {
           <h5>{ this.expense.payerFname + " paid" }</h5>
           <h6>{ "$" + Number(this.expense.total).toFixed(2) }</h6>
         </li>
-        <li className="debtor_summary">
+        <li className="user_debt_summary">
           <h5>{ this.expense.payerFname +
             " lent you" }</h5>
           <h6>
-            { Number(this.expense.shares[window.currentUser.id].payerLeant).toFixed(2) }
+            { "$" + Number(this.expense.shares[window.currentUser.id].payerLeant).toFixed(2) }
           </h6>
         </li>
       </ul>

@@ -74,6 +74,6 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
   amount: 15)
 
 Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,
-  description: 'Oompa Loompa Food', date: '2016-08-13')
+  description: 'Oompa Loompa Food', date: '2016-10-17')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
   amount: 30)

@@ -30,7 +30,7 @@ class ExpenseForm extends React.Component {
       this.setState({ error: 'Invalid prices'});
       return;
     }
-    else if (this.state.friendOwes > this.state.total) {
+    else if (Number(this.state.friendOwes) > Number(this.state.total)) {
       this.setState({ error: `Friend doesn't owe more than you paid`} );
       return;
     }

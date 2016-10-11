@@ -26,7 +26,6 @@ class ExpenseIndexItem extends React.Component {
 
   deleteExpense(e) {
     e.preventDefault();
-    debugger
     this.props.destroyExpense(this.props.expense.id);
   }
 

@@ -17,19 +17,20 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidMount() {
+    $(document).on('click', '.expense_item', function(e) {
+      $(e.currentTarget).find(".expense_detail").toggle();
+    });
+    $(document).on('click', '#add_expense', function(e) {
+      debugger
+      $(".expense_form").toggle();
+    });
     this.props.fetchFriend(this.props.params.id);
   }
 
   componentDidUpdate() {
     $(".expense_item").find(".expense_detail").hide();
     $(".expense_form").hide();
-    $('.expense_item').on('click',function(e) {
-      $(e.currentTarget).find(".expense_detail").toggle();
-    });
-    $('.expenses_header').find('button').on('click',function(e) {
-      debugger
-      $(".expense_form").toggle();
-    });
+
   }
 
   toggleClass(e) {
@@ -65,7 +66,7 @@ class ExpensesPane extends React.Component {
             { this.props.friend.fname + " " +
             this.props.friend.lname }
           </h1>
-          <button>{ "Add expense"}</button>
+          <button id="add_expense">{ "Add expense"}</button>
           <ExpenseForm
             friend={ this.props.friend }
             createExpense={ this.props.createExpense }/>

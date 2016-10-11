@@ -49,7 +49,7 @@ class UserSearch extends React.Component {
              placeholder="Last Name"
              onChange = { this.update('lname_query') }
              />
-           <input type='submit'/>
+           <input type='submit' value="Search!"/>
        </form>
 
        <ul>{ this.renderUsers() }</ul>

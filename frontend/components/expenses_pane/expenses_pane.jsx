@@ -9,15 +9,25 @@ class ExpensesPane extends React.Component {
     this.expenseList = this.expenseList.bind(this);
   }
 
-  componentWillReceiveProps (nextProps) {
+  componentWillReceiveProps(nextProps) {
     if (this.props.params.id === nextProps.params.id) {
       return;
     }
     this.props.fetchFriend(nextProps.params.id);
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.props.fetchFriend(this.props.params.id);
+  }
+
+  componentDidUpdate() {
+    $('.expense_item').on('click',function(e) {
+      $(e.currentTarget).find(".expense_detail").toggle();
+    });
+  }
+
+  toggleClass(e) {
+    debugger
   }
 
   expenseList() {

@@ -6,6 +6,7 @@ class ExpenseIndexItem extends React.Component {
     this.expense = this.props.expense;
     this.monthNum = this.expense.date.split("-")[1];
     this.dayNum = this.expense.date.split("-")[2];
+    this.year = this.expense.date.split("-")[0];
     this.months = {
       "01": "JAN",
       "02": "FEB",
@@ -22,6 +23,8 @@ class ExpenseIndexItem extends React.Component {
     };
     this.expenseSummary = this.expenseSummary.bind(this);
     this.deleteExpense = this.deleteExpense.bind(this);
+    this.expenseDetail = this.expenseDetail.bind(this);
+    this.sharesDetail = this.sharesDetail.bind(this);
   }
 
   deleteExpense(e) {
@@ -36,7 +39,7 @@ class ExpenseIndexItem extends React.Component {
           <li className="payer_summary">
             <h5>{ "you paid" }</h5>
             <h6>
-              { "$" + Number(this.expense.total).toFixed(2) }
+              { this.toDollars(this.expense.total) }
             </h6>
           </li>
           <li className="user_leant_summary">
@@ -44,7 +47,7 @@ class ExpenseIndexItem extends React.Component {
               this.expense.shares[this.props.friendId].debtorFname }
             </h5>
             <h6>
-              { "$" + Number(this.expense.shares[this.props.friendId].payerLeant).toFixed(2) }
+              { Number(this.expense.shares[this.props.friendId].payerLeant).toFixed(2) }
             </h6>
           </li>
           <button onClick={ this.deleteExpense }>{ `X` }</button>
@@ -55,14 +58,14 @@ class ExpenseIndexItem extends React.Component {
       <ul className="loan_summary">
         <li className="payer_summary">
           <h5>{ this.expense.payerFname + " paid" }</h5>
-          <h6>{ "$" + Number(this.expense.total).toFixed(2) }</h6>
+          <h6>{ this.toDollars(this.expense.total) }</h6>
         </li>
         <li className="user_debt_summary">
           <h5>{ this.expense.payerFname +
             " lent you" }
           </h5>
           <h6>
-            { "$" + Number(this.expense.shares[window.currentUser.id].payerLeant).toFixed(2) }
+            { this.toDollars(this.expense.shares[window.currentUser.id].payerLeant) }
           </h6>
         </li>
         <button onClick={ this.deleteExpense }>{ `X` }</button>
@@ -71,17 +74,61 @@ class ExpenseIndexItem extends React.Component {
     }
   }
 
+  toDollars(num) {
+    return "$" + Number(num).toFixed(2);
+  }
+
+  expenseDetail() {
+    return(
+      <section className="expense_detail">
+        <content className="expense_detail_header">
+          <h1>{ this.expense.description }</h1>
+          <h2>{ this.toDollars(this.expense.total) }</h2>
+          <p>{ `Added by ${this.expense.payerFname} on
+            ${this.months[this.monthNum]} ${ this.dayNum }, ${ this.year }` }
+          </p>
+        </content>
+        <content className="expense_share_detail">
+          <ul className="shares_list">
+            <li>
+              { `${this.expense.payerFname} paid
+              ${this.toDollars(this.expense.total)} and owes
+              ${this.toDollars(this.expense.payer_owes)}` }
+            </li>
+            { this.sharesDetail() }
+          </ul>
+        </content>
+      </section>
+    );
+  }
+
+  sharesDetail() {
+    const shareKeys = Object.keys(this.expense.shares);
+    return shareKeys.map((key) => {
+      return(
+      <li key={ key }>
+        { `${this.expense.shares[key].debtorFname} owes
+        ${this.toDollars(this.expense.shares[key].payerLeant)}` }
+      </li>
+    );
+    })
+  }
+
   render() {
     return(
-      <li className="expense_item group">
-        <h3 className="expense_date">
-          { this.months[this.monthNum] }
-          <strong>{ this.dayNum }</strong>
-        </h3>
-        <p className="expense_description">
-          { this.expense.description }
-        </p>
-        { this.expenseSummary() }
+      <li className="expense_item">
+        <section className="expense_summary group">
+
+            <h3 className="expense_date">
+              { this.months[this.monthNum] }
+              <strong>{ this.dayNum }</strong>
+            </h3>
+            <p className="expense_description">
+              { this.expense.description }
+            </p>
+            { this.expenseSummary() }
+        </section>
+        { this.expenseDetail() }
       </li>
     );
   }

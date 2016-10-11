@@ -17,23 +17,19 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidMount() {
-    this.friendId = this.props.params.id;
-    this.props.fetchExpenses(this.friendId);
+    this.props.fetchExpenses(this.props.params.id);
   }
 
   expenseList() {
     if (Object.keys(this.props.items).length === 0) { return []; }
 
     const that = this;
-    const expenseKeys = Object.keys(this.props.items).filter((key) => {
-      return !!Number(key);
-    });
 
-    return expenseKeys.map((expense_id) => {
+    return Object.keys(this.props.items).map((expense_id) => {
       return <ExpenseIndexItem
                 key={ expense_id }
                 expense={ that.props.items[expense_id] }
-                friendId={ that.friendId } />
+                friendId={ that.props.friendDetail.id } />
     });
   }
 
@@ -41,7 +37,10 @@ class ExpensesPane extends React.Component {
     return (
       <content className="expenses_pane">
         <header className="expenses_header">
-          <h1>{ this.props.items.friendName }</h1>
+          <h1>
+            { this.props.friendDetail.fname + " " +
+            this.props.friendDetail.lname }
+          </h1>
           <button>{ "Add expense"}</button>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>

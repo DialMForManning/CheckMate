@@ -4,9 +4,10 @@ import { fetchExpenses, createExpense,
 import ExpensesPane from './expenses_pane';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ expenses }) => {
+const mapStateToProps = ({ expenses, friendDetail }) => {
   return({
     items: expenses.items,
+    friendDetail: friendDetail,
     errors: expenses.errors
   });
 };

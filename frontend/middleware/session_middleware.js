@@ -6,6 +6,7 @@ import { hashHistory } from 'react-router';
 const SessionMiddleware = ({ getState, dispatch }) => (next) => (action) => {
   const success = (user) => {
     dispatch(receiveCurrentUser(user));
+    window.currentUser = user;
     hashHistory.push("/dashboard")
   };
 

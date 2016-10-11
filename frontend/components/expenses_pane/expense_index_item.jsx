@@ -24,7 +24,6 @@ class ExpenseIndexItem extends React.Component {
   }
 
   expenseSummary() {
-    debugger
     if (this.expense.payer_id === window.currentUser.id) {
       return(
         <ul className="loan_summary">

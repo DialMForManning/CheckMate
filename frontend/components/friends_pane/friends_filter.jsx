@@ -42,7 +42,9 @@ class FriendsFilter extends React.Component {
           key = { idx }
           fname={ friend.fname }
           lname={ friend.lname }
-          id={ friend.id } />
+          id={ friend.id }
+          receiveFriendDetail={ this.props.receiveFriendDetail }
+           />
       );
     });
 

@@ -14,7 +14,8 @@ class FriendsPane extends React.Component {
         <content className="friends_pane">
           <h1 className="dash_header">Dashboard</h1>
 
-          <FriendsFilter accepted={ this.props.accepted }/>
+          <FriendsFilter accepted={ this.props.accepted }
+            receiveFriendDetail={ this.props.receiveFriendDetail }/>
           <FriendRequests
             pending={ this.props.pending.concat(this.props.requests) }
             approveFriend={ this.props.approveFriend }

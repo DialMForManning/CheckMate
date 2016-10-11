@@ -90,7 +90,7 @@
   font-size: 24px;
 }
 
-.expenses_header button {
+.expenses_header a {
   float: right;
   background-color: rgb(255, 120, 47);
   border-radius: 5px;
@@ -101,7 +101,7 @@
   box-shadow: 0 0 1px #aaa;
 }
 
-.expenses_header button:hover {
+.expenses_header a:hover {
   background-color: rgb(255, 120, 47);
 }
 

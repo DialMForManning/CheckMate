@@ -114,7 +114,7 @@
   background-color: rgb(91, 205, 167);
 }
 
-input[type=text],
+.nav_form_input_displayed input[type=text],
 input[type=password] {
   background-color: #fff;
   box-shadow: 0 0 1px #000;

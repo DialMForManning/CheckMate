@@ -72,30 +72,33 @@ class ExpenseForm extends React.Component {
     return(
       <div className="form_overlay">
         <form className="expense_form" onSubmit={ this.handleSubmit }>
+          <a name="add_expense_form"></a>
+          <header className="add_expense_header">{ "Add an expense" }</header>
           <p>
             { `With you and ${this.props.friend.fname}`}
           </p>
           <input
             type="text"
-            className="expense_form_description"
+            id="expense_form_description"
             placeholder="Description"
             value={ this.state.description }
             onChange={ this.update('description') } />
-
-          <label>{ "You paid:" }
-          <input
-            type="text"
-            placeholder="0.00"
-            value={ this.state.total }
-            onChange={ this.update('total') } />
-          </label>
-
-          <label>{ `${this.props.friend.fname} owes you:` }
+          <section className="money_input group">
+            <label className="paid">{ "You paid: $" }
             <input
               type="text"
               placeholder="0.00"
-              onChange={ this.update('friendOwes')} />
-          </label>
+              value={ this.state.total }
+              onChange={ this.update('total') } />
+            </label>
+
+            <label className="leant">{ `${this.props.friend.fname} owes you: $` }
+              <input
+                type="text"
+                placeholder="0.00"
+                onChange={ this.update('friendOwes')} />
+            </label>
+          </section>
             <input
               type="submit"
               value="Add expense"

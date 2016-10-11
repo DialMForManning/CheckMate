@@ -1,0 +1,78 @@
+.form_overlay {
+  margin: 0 auto;
+}
+
+.expense_form {
+  margin: 0 auto;
+  padding-top: 5px;
+  width: 520px;
+  box-shadow: 0 1px 1px #aaa;
+}
+
+.add_expense_header {
+  background-color: rgb(91, 205, 167);
+  color: #fff;
+  box-shadow: 0 1px 1px #aaa;
+  font-size: 20px;
+  padding: 5px;
+}
+
+.expense_form p {
+  padding-top: 5px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 20px;
+}
+
+.expense_form input {
+  padding: 10px 5px 2px 5px;
+  border-bottom: 2px dashed #696969;
+  width: 60px;
+  margin: 20px;
+}
+
+#expense_form_description {
+  display: block;
+  margin: 0 auto;
+  width: 400px;
+  font-size: 20px;
+}
+
+.money_input {
+  display: inline-block;
+  margin: auto;
+  width: 520px;
+  text-align: center;
+  margin: 10px;
+  font-size: 18px;
+}
+
+.money_input label {
+  display: inline-block;
+}
+
+.money_input .paid {
+  float: left;
+}
+
+.money_input .leant {
+  float: right;
+}
+
+.expense_form input[type=submit] {
+  display: block;
+  margin: 0 auto;
+  width: 100px;
+  border: 0;
+  background-color: rgb(91, 205, 167);
+  text-align: center;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #000;
+  cursor: pointer;
+  color: #fff;
+}
+
+.expense_form .form_error {
+  color: rgb(255, 101, 47);
+}

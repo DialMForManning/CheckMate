@@ -49,7 +49,7 @@ class ExpensesPane extends React.Component {
             { this.props.friend.fname + " " +
             this.props.friend.lname }
           </h1>
-          <button>{ "Add expense"}</button>
+          <a href="#add_expense_form">{ "Add expense"}</a>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
         <ExpenseForm

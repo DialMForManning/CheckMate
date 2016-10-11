@@ -21,6 +21,7 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidUpdate() {
+    $(".expense_item").find(".expense_detail").toggle()
     $('.expense_item').on('click',function(e) {
       $(e.currentTarget).find(".expense_detail").toggle();
     });

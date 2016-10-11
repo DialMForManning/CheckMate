@@ -21,6 +21,13 @@ class ExpenseIndexItem extends React.Component {
       "12": "DEC"
     };
     this.expenseSummary = this.expenseSummary.bind(this);
+    this.deleteExpense = this.deleteExpense.bind(this);
+  }
+
+  deleteExpense(e) {
+    e.preventDefault();
+    debugger
+    this.props.destroyExpense(this.props.expense.id);
   }
 
   expenseSummary() {
@@ -41,6 +48,7 @@ class ExpenseIndexItem extends React.Component {
               { "$" + Number(this.expense.shares[this.props.friendId].payerLeant).toFixed(2) }
             </h6>
           </li>
+          <button onClick={ this.deleteExpense }>{ `X` }</button>
         </ul>
       );
     } else {
@@ -58,6 +66,7 @@ class ExpenseIndexItem extends React.Component {
             { "$" + Number(this.expense.shares[window.currentUser.id].payerLeant).toFixed(2) }
           </h6>
         </li>
+        <button onClick={ this.deleteExpense }>{ `X` }</button>
       </ul>
     );
     }

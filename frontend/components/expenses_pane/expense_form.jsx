@@ -30,6 +30,10 @@ class ExpenseForm extends React.Component {
       this.setState({ error: 'Invalid prices'});
       return;
     }
+    else if (this.state.friendOwes > this.state.total) {
+      this.setState({ error: `Friend doesn't owe more than you paid`} );
+      return;
+    }
     else {
       this.submitForm();
     }
@@ -94,7 +98,8 @@ class ExpenseForm extends React.Component {
           </label>
             <input
               type="submit"
-              value="Add expense" />
+              value="Add expense"
+              onSubmit={ this.handleSubmit } />
 
             <p className="form_error">{ this.state.error }</p>
         </form>

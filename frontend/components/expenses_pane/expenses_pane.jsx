@@ -30,7 +30,8 @@ class ExpensesPane extends React.Component {
       return <ExpenseIndexItem
                 key={ expense_id }
                 expense={ that.props.items[expense_id] }
-                friendId={ that.props.friendDetail.id } />
+                friendId={ that.props.friendDetail.id }
+                destroyExpense={ that.props.destroyExpense } />
     });
   }
 

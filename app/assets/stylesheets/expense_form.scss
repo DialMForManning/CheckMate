@@ -7,7 +7,14 @@
   padding-top: 2px;
   width: 520px;
   box-shadow: 0 1px 1px #aaa;
+  position: absolute;
+  background-color: #fff;
+  z-index: 99;
+  bottom: -250px;
+  left: 20px;
 }
+
+
 
 .add_expense_header {
   background-color: rgb(91, 205, 167);

@@ -21,9 +21,14 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidUpdate() {
-    $(".expense_item").find(".expense_detail").toggle()
+    $(".expense_item").find(".expense_detail").toggle();
+    $(".expense_form").toggle();
     $('.expense_item').on('click',function(e) {
       $(e.currentTarget).find(".expense_detail").toggle();
+    });
+    $('.expenses_header').find('button').on('click',function(e) {
+      debugger
+      $(".expense_form").toggle();
     });
   }
 
@@ -61,11 +66,11 @@ class ExpensesPane extends React.Component {
             this.props.friend.lname }
           </h1>
           <button>{ "Add expense"}</button>
+          <ExpenseForm
+            friend={ this.props.friend }
+            createExpense={ this.props.createExpense }/>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
-        <ExpenseForm
-          friend={ this.props.friend }
-          createExpense={ this.props.createExpense }/>
       </content>
     );
   }

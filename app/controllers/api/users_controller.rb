@@ -2,11 +2,9 @@ class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    debts = Expense.joins(:expense_shares)
-      .where("debtor_id = #{current_user.id} AND payer_id = #{params[:id]}")
+    debts = User.debts(current_user, params[:id])
 
-    loans = Expense.joins(:expense_shares)
-      .where("debtor_id = #{params[:id]} AND payer_id = #{current_user.id}")
+    loans = User.loans(current_user, params[:id])
 
     loans ||= []
     debts ||= []

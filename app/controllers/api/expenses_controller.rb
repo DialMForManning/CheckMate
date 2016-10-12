@@ -38,21 +38,6 @@ class Api::ExpensesController < ApplicationController
 
   end
 
-  def index
-    debts = Expense.joins(:expense_shares)
-      .where("debtor_id = #{current_user.id} AND payer_id = #{params[:id]}")
-
-    loans = Expense.joins(:expense_shares)
-      .where("debtor_id = #{params[:id]} AND payer_id = #{current_user.id}")
-
-    loans ||= []
-    debts ||= []
-
-    @expenses = loans + debts
-
-    render 'api/expenses/index'
-  end
-
   def destroy
     @expense = Expense.find(params[:id])
 

@@ -56,6 +56,16 @@ class User < ApplicationRecord
     return nil
   end
 
+  def self.debts(current_user, friend_id)
+    Expense.joins(:expense_shares)
+      .where("debtor_id = #{current_user.id} AND payer_id = #{friend_id}")
+  end
+
+  def self.loans(current_user, friend_id)
+    Expense.joins(:expense_shares)
+      .where("debtor_id = #{friend_id} AND payer_id = #{current_user.id}")
+  end
+
   def generate_session_token
     SecureRandom.urlsafe_base64(16)
   end

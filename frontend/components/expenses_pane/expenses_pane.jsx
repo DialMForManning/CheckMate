@@ -30,7 +30,6 @@ class ExpensesPane extends React.Component {
   componentDidUpdate() {
     $(".expense_item").find(".expense_detail").hide();
     $(".expense_form").hide();
-
   }
 
   toggleClass(e) {

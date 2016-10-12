@@ -11,21 +11,20 @@ class DetailPane extends React.Component {
     if ( Number(this.props.balance) < 0 ) {
       return (
         <strong className="in_debt">
-          { this.friendName() }
-          { this.toDollars(this.props.balance) }
+          { this.friendName("debt") }
+          { this.toDollars(this.props.balance * -1) }
         </strong>
       );
     } else if ( Number(this.props.balance) > 0) {
       return(
         <strong className="has_credit">
-          { this.friendName() }
+          { this.friendName("loan") }
           { this.toDollars(this.props.balance) }
         </strong>
       );
     } else {
       return(
         <strong className="settled_balance">
-          { this.friendName() }
           { this.toDollars(this.props.balance) }
         </strong>
       );
@@ -36,8 +35,13 @@ class DetailPane extends React.Component {
     return Number(num).toFixed(2)
   }
 
-  friendName() {
-    return <h4>{ `You owe ${this.props.fname}`}</h4>;
+  friendName(balance) {
+    switch(balance) {
+      case "debt":
+        return <h4>{ `You owe ${this.props.fname}`}</h4>;
+      case "loan":
+        return <h4>{ `${this.props.fname} owes you`}</h4>;
+    }
   }
 
   render() {

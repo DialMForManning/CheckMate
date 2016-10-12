@@ -10,7 +10,6 @@ class Navbar extends React.Component {
   }
 
   rightNav() {
-    debugger
     if(window.location.hash.startsWith("#/friends") ||
        window.location.hash.startsWith("#/dashboard")) {
       return <AccountMenu

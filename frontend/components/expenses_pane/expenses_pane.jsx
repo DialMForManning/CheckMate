@@ -18,13 +18,6 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidMount() {
-    $(document).on('click', '.expense_item', function(e) {
-      $(e.currentTarget).find(".expense_detail").toggle();
-    });
-    $(document).on('click', '#add_expense', function(e) {
-      debugger
-      $(".expense_form").toggle();
-    });
     this.props.fetchFriend(this.props.params.id);
   }
 

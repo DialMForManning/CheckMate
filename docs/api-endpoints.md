@@ -45,12 +45,9 @@
 - `DELETE /api/expense/:id`
 
 ### Transactions
-- `GET /api/transactions/:id`
 - `GET /api/friends/:id/transactions`
 - `POST /api/friends/:id/transactions`
-  * Accepts: current_user_paid_boolean, amount
-- `PATCH /api/transactions/:id`
-  * Accepts: current_user_paid_boolean, amount
+  * Accepts: amount
 - `DELETE /api/transactions/:id`
 
 ### Comments

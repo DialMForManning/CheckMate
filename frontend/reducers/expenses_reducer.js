@@ -10,6 +10,7 @@ import merge from 'lodash/merge';
 const defaultState = {
   friend: {},
   items: {},
+  balance: 0,
   errors: []
 };
 
@@ -27,7 +28,8 @@ const ExpensesReducer = ( state = defaultState, action ) => {
     case RECEIVE_FRIEND_DETAILS:
       return Object.assign({}, state, {
         friend: action.friend.user,
-        items: action.friend.expenses
+        items: action.friend.expenses,
+        balance: action.friend.balance
       });
     case RECEIVE_DELETION:
       const newItems = merge({}, state.items);

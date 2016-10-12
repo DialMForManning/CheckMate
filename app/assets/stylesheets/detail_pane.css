@@ -1,0 +1,28 @@
+.detail_pane {
+  padding: 20px;
+}
+
+.detail_pane h3 {
+  font-size: 18px;
+  color: #696969;
+  font-weight: 600;
+}
+
+.in_debt {
+  color: rgb(255, 101, 47);
+}
+
+.has_credit {
+  color: rgb(91, 205, 167);
+}
+
+.detail_pane h6 {
+  padding-top: 10px;
+  font-weight: 600px;
+}
+
+.detail_pane h4 {
+  pdding-top: 5px;
+  font-size: 36px;
+  font-weight: 700;
+}

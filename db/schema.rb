@@ -10,19 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161009160818) do
+ActiveRecord::Schema.define(version: 20161012132652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "expense_shares", force: :cascade do |t|
-    t.integer  "expense_id",                 null: false
-    t.integer  "debtor_id",                  null: false
-    t.decimal  "amount",                     null: false
-    t.boolean  "settled",    default: false, null: false
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.integer  "expense_id",                     null: false
+    t.integer  "debtor_id",                      null: false
+    t.decimal  "amount",                         null: false
+    t.boolean  "settled",        default: false, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "transaction_id"
     t.index ["expense_id"], name: "index_expense_shares_on_expense_id", using: :btree
+    t.index ["transaction_id"], name: "index_expense_shares_on_transaction_id", using: :btree
   end
 
   create_table "expenses", force: :cascade do |t|
@@ -44,6 +46,16 @@ ActiveRecord::Schema.define(version: 20161009160818) do
     t.string   "status",     null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id", using: :btree
     t.index ["user_id"], name: "index_friendships_on_user_id", using: :btree
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "debtor_id",   null: false
+    t.integer  "creditor_id", null: false
+    t.decimal  "amount",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["creditor_id"], name: "index_transactions_on_creditor_id", using: :btree
+    t.index ["debtor_id"], name: "index_transactions_on_debtor_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

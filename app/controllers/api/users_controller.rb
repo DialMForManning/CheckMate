@@ -1,9 +1,9 @@
 class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-
-    debts = User.debts(current_user, params[:id])
-    loans = User.loans(current_user, params[:id])
+    
+    debts = current_user.debts(params[:id])
+    loans = current_user.loans(params[:id])
     loans ||= []
     debts ||= []
 

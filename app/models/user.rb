@@ -56,14 +56,14 @@ class User < ApplicationRecord
     return nil
   end
 
-  def self.debts(current_user, friend_id)
+  def debts(friend_id)
     Expense.joins(:expense_shares)
-      .where("debtor_id = #{current_user.id} AND payer_id = #{friend_id}")
+      .where("debtor_id = #{self.id} AND payer_id = #{friend_id}")
   end
 
-  def self.loans(current_user, friend_id)
+  def loans(friend_id)
     Expense.joins(:expense_shares)
-      .where("debtor_id = #{friend_id} AND payer_id = #{current_user.id}")
+      .where("debtor_id = #{friend_id} AND payer_id = #{self.id}")
   end
 
   def balances

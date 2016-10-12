@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :expenses, only: [:create, :update, :destroy]
   end
 
+  get 'api/balances', to: 'api/users#balances', defaults: { format: :json }
   get 'api/friends/:id/expenses', to: 'api/expenses#index', defaults: { format: :json }
   get 'api/friends', to: 'api/friends#index', defaults: { format: :json }
   post 'api/users/search', to: 'api/users#index', defaults: { format: :json }

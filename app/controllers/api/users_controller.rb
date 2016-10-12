@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    
+
     debts = current_user.debts(params[:id])
     loans = current_user.loans(params[:id])
     loans ||= []
@@ -31,6 +31,12 @@ class Api::UsersController < ApplicationController
       current_user
     )
     render 'api/users/index'
+  end
+
+  def balances
+    balances = current_user.balances
+
+    render json: balances
   end
 
   private

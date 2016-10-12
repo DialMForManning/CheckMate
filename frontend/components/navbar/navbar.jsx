@@ -10,7 +10,9 @@ class Navbar extends React.Component {
   }
 
   rightNav() {
-    if(!!this.props.currentUser) {
+    debugger
+    if(window.location.hash.startsWith("#/friends") ||
+       window.location.hash.startsWith("#/dashboard")) {
       return <AccountMenu
               logout={ this.props.logout }
               currentUser={ this.props.currentUser }/>;

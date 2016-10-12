@@ -26,7 +26,7 @@ payer_id        | integer   | not null, indexed, foreign key
 payer_owes      | decimal   | not null
 total           | decimal   | not null
 description     | string    | not null
-date            | date      | not null 
+date            | date      | not null
 
 ## expense_shares
 column name     | data type | details
@@ -41,7 +41,6 @@ settled         | decimal   | not null, default: false
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-author_id       | integer   | not null, indexed, foreign key
 debtor_id       | integer   | not null, indexed, foreign key
 receiver_id     | integer   | not null, indexed, foreign key
 amount          | decimal   | not null

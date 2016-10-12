@@ -26,12 +26,8 @@ class ExpensesPane extends React.Component {
     $(".expense_form").hide();
   }
 
-  toggleClass(e) {
-    debugger
-  }
-
   expenseList() {
-    if (Object.keys(this.props.items).length === 0) { return []; }
+    if (!this.props.items) { return []; }
 
     const that = this;
     return Object.keys(this.props.items).map((expense_id) => {

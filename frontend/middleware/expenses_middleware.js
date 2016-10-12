@@ -33,13 +33,13 @@ const ExpensesMiddleWare = ({ getState, dispatch }) => (next) => (action) => {
       fetchFriendDetails(action.friend_id, friendSuccess, error)
       return next(action);
     case CREATE_EXPENSE:
-      reqCreateExpense(action.expense, saveSuccess, error);
+      reqCreateExpense(action.expense, action.friend_id, saveSuccess, error);
       return next(action);
     case UPDATE_EXPENSE:
       reqUpdateExpense(action.expense_id, action.expense, saveSuccess, error);
       return next(action);
     case DESTROY_EXPENSE:
-      reqDestroyExpense(action.expense_id, destroySuccess, error);
+      reqDestroyExpense(action.expense_id, action.friend_id, destroySuccess, error);
       return next(action);
     default:
       return next(action);

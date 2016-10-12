@@ -16,12 +16,13 @@ export const fetchFriendDetails = (friend_id, success, error) => {
   });
 };
 
-export const reqCreateExpense = (expense, success, error) => {
+export const reqCreateExpense = (expense, friend_id, success, error) => {
   $.ajax({
     method: 'POST',
     url: `api/expenses`,
     data: { expense: expense.expense,
-            shares: expense.shares },
+            shares: expense.shares,
+            friend_id: friend_id },
     success,
     error
   });
@@ -38,10 +39,11 @@ export const reqUpdateExpense = (id, expense, success, error) => {
   });
 };
 
-export const reqDestroyExpense = (id, success, error) => {
+export const reqDestroyExpense = (id, friend_id, success, error) => {
   $.ajax({
     method: 'DELETE',
-    url: `api/expenses/${id}`,
+    url: `api/expenses/${id}?friend_id=${friend_id}`,
+    data: { friend_id: friend_id },
     success,
     error
   });

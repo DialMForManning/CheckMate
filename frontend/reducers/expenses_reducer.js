@@ -23,7 +23,8 @@ const ExpensesReducer = ( state = defaultState, action ) => {
       });
     case RECEIVE_SINGLE_EXPENSE:
       return merge({}, state, {
-        items: {[action.expense.id]: action.expense}
+        items: {[action.expense.id]: action.expense},
+        balance: Number(state.balance) + Number(action.expense.balance_change)
       });
     case RECEIVE_FRIEND_DETAILS:
       return Object.assign({}, state, {
@@ -36,7 +37,8 @@ const ExpensesReducer = ( state = defaultState, action ) => {
       delete newItems[action.expense.id];
       return Object.assign({}, state, {
         items: newItems,
-        errors: []
+        errors: [],
+        balance: Number(state.balance) + Number(action.expense.balance_change)
       });
     case RECEIVE_EXPENSE_ERRORS:
       return Object.assign({}, state, {

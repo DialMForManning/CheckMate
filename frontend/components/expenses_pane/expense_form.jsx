@@ -53,7 +53,7 @@ class ExpenseForm extends React.Component {
       shares: { [this.props.friend.id]: Number(this.state.friendOwes) }
     };
 
-    this.props.createExpense(expense);
+    this.props.createExpense(expense, this.props.friend.id);
   }
 
   checkPrice(price) {

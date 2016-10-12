@@ -1,6 +1,8 @@
 class Api::ExpensesController < ApplicationController
   def create
     @expense = Expense.new(expense_params)
+    @friend_id = params[:friend_id]
+    @shares = @expense.expense_shares
 
     if @expense.save
       shares = new_shares
@@ -40,6 +42,9 @@ class Api::ExpensesController < ApplicationController
 
   def destroy
     @expense = Expense.find(params[:id])
+    @friend_id = params[:friend_id]
+    @shares = @expense.expense_shares.map{ |share| share.dup }
+    @deletion = true
 
     if @expense
       @expense.destroy

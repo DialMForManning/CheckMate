@@ -16,9 +16,9 @@ const mapStateToProps = ({ expenses }) => {
 const mapDispatchToProps = (dispatch) => {
   return({
     fetchFriend: (friend_id) => dispatch(fetchFriend(friend_id)),
-    createExpense: (expense) => dispatch(createExpense(expense)),
+    createExpense: (expense, friend_id) => dispatch(createExpense(expense, friend_id)),
     updateExpense: (expense_id, expense) => dispatch(updateExpense(expense_id, expense)),
-    destroyExpense: (expense_id) => dispatch(destroyExpense(expense_id))
+    destroyExpense: (expense_id, friend_id) => dispatch(destroyExpense(expense_id, friend_id))
   });
 };
 

@@ -29,9 +29,10 @@ export const receiveFriendDetails = (friend) => ({
   friend
 });
 
-export const createExpense = (expense) => ({
+export const createExpense = (expense, friend_id) => ({
   type: CREATE_EXPENSE,
-  expense
+  expense,
+  friend_id
 });
 
 export const updateExpense = (expense_id, expense) => ({
@@ -40,9 +41,10 @@ export const updateExpense = (expense_id, expense) => ({
   expense
 });
 
-export const destroyExpense = (expense_id) => ({
+export const destroyExpense = (expense_id, friend_id) => ({
   type: DESTROY_EXPENSE,
-  expense_id
+  expense_id,
+  friend_id
 });
 
 export const receiveSingleExpense = (expense) => ({

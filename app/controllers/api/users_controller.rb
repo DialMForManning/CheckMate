@@ -43,7 +43,7 @@ class Api::UsersController < ApplicationController
       friend_share = loan.expense_shares.find do |share|
         share.debtor_id == params[:id].to_i
       end
-      
+
       friend_share.amount
     end
 

@@ -29,7 +29,7 @@ class ExpenseIndexItem extends React.Component {
 
   deleteExpense(e) {
     e.preventDefault();
-    this.props.destroyExpense(this.props.expense.id);
+    this.props.destroyExpense(this.props.expense.id, this.props.friendId);
   }
 
   expenseSummary() {

@@ -12,7 +12,6 @@ const Dashboard = ({ children }) => {
       <article className='dashboard group'>
         <FriendsPaneContainer />
         { children }
-        <DetailPane />
       </article>
     </main>
   );

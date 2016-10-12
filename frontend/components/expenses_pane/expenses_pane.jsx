@@ -1,6 +1,7 @@
 import React from 'react';
 import ExpenseIndexItem from './expense_index_item';
 import ExpenseForm from './expense_form';
+import DetailPane from '../detail_pane/detail_pane';
 
 class ExpensesPane extends React.Component {
   constructor(props) {
@@ -71,6 +72,7 @@ class ExpensesPane extends React.Component {
             createExpense={ this.props.createExpense }/>
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
+        <DetailPane />
       </content>
     );
   }

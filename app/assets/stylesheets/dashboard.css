@@ -18,12 +18,16 @@
   display: block;
   box-shadow: 0 5px 10px #ccc;
   height: auto;
+  min-height: 100vh;
   padding-top: 1px;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .detail_pane {
-  float: left;
+  position: absolute;
+  left: 560px;
+  top: 0;
   width: 200px;
   display: block;
   height: 100%;

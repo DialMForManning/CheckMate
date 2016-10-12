@@ -8,6 +8,7 @@ const mapStateToProps = ({ expenses }) => {
   return({
     items: expenses.items,
     friend: expenses.friend,
+    balance: expenses.balance,
     errors: expenses.errors
   });
 };

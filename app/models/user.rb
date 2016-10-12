@@ -66,6 +66,20 @@ class User < ApplicationRecord
       .where("debtor_id = #{friend_id} AND payer_id = #{current_user.id}")
   end
 
+  def balances
+    balances = Hash.new { |balance, friend_id| balances[friend_id] = 0 }
+
+    all_loans.each do |loan|
+      balances[loan.debtor_id] += loan.amount
+    end
+
+    all_debts.each do |debt|
+      balances[debt.creditor_id] -= debt.amount
+    end
+
+    balances
+  end
+
   def generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
@@ -88,5 +102,15 @@ class User < ApplicationRecord
   private
   def ensure_session_token
     self.session_token ||= generate_session_token
+  end
+
+  def all_debts
+    ExpenseShare.select("expense_shares.*, expenses.payer_id AS creditor_id")
+                .joins(:expense)
+                .where("debtor_id = #{self.id}")
+  end
+
+  def all_loans
+    ExpenseShare.joins(:expense).where("payer_id = #{self.id}")
   end
 end

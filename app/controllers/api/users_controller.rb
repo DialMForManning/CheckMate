@@ -3,13 +3,13 @@ class Api::UsersController < ApplicationController
     @user = User.find(params[:id])
 
     debts = User.debts(current_user, params[:id])
-
     loans = User.loans(current_user, params[:id])
-
     loans ||= []
     debts ||= []
 
     @expenses = loans + debts
+
+    @balance = calculate_blance(loans, debts)
 
     render 'api/users/friend_expenses'
   end
@@ -36,5 +36,25 @@ class Api::UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:email, :password, :fname, :lname)
+  end
+
+  def calculate_blance(loans, debts)
+    loan_amounts = loans.map do |loan|
+      friend_share = loan.expense_shares.find do |share|
+        share.debtor_id == params[:id].to_i
+      end
+      
+      friend_share.amount
+    end
+
+    debt_amounts = debts.map do |loan|
+      friend_share = loan.expense_shares.find do |share|
+        share.debtor_id == current_user.id.to_i
+      end
+
+      -friend_share.amount
+    end
+
+    loan_amounts.concat(debt_amounts).inject(&:+)
   end
 end

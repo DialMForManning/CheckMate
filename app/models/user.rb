@@ -42,6 +42,11 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :debtor_id
 
+  has_many :comments,
+    class_name: 'Comment',
+    primary_key: :id,
+    foreign_key: :author_id
+
   def self.search(fname_query, lname_query, current_user)
     return [] if fname_query.length == 0 && lname_query.length == 0
 

@@ -29,6 +29,11 @@ class Expense < ApplicationRecord
     foreign_key: :expense_id,
     dependent: :destroy
 
+  has_many :comments,
+    class_name: 'Comment',
+    primary_key: :id,
+    foreign_key: :expense_id
+
   def owes_less_than_total
     unless payer_owes.to_f < total.to_f
       errors.add(:payer_owes, "Payer must owe less than expense total")

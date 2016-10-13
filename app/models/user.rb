@@ -66,6 +66,26 @@ class User < ApplicationRecord
       .where("debtor_id = #{friend_id} AND payer_id = #{self.id}")
   end
 
+  def balance(friend_id)
+    loan_amounts = loans(friend_id).map do |loan|
+      friend_share = loan.expense_shares.find do |share|
+        share.debtor_id == friend_id.to_i
+      end
+
+      friend_share.amount
+    end
+
+    debt_amounts = debts(friend_id).map do |loan|
+      friend_share = loan.expense_shares.find do |share|
+        share.debtor_id == self.id.to_i
+      end
+
+      -friend_share.amount
+    end
+
+    loan_amounts.concat(debt_amounts).inject(&:+)
+  end
+
   def balances
     balances = Hash.new { |balance, friend_id| balances[friend_id] = 0 }
 

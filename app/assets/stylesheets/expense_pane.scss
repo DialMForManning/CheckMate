@@ -93,15 +93,32 @@
   font-size: 24px;
 }
 
-.expenses_header button {
+.expenses_header ul{
   float: right;
-  background-color: rgb(255, 101, 47);
+}
+
+
+.expenses_header li {
+  margin-left: 10px;
+  display: block;
+  float: right;
+}
+
+.expenses_header button {
   border-radius: 5px;
   padding: 5px;
   color: #fff;
   text-shadow: 0 0 1px #000;
   cursor: pointer;
   box-shadow: 0 0 1px #aaa;
+}
+
+.expenses_header #record_transaction{
+  background-color: rgb(91, 197, 167);
+}
+
+.expenses_header #add_expense {
+  background-color: rgb(255, 101, 47);
 }
 
 .expenses_header button:hover {

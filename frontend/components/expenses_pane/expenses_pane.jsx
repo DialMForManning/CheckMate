@@ -54,7 +54,11 @@ class ExpensesPane extends React.Component {
           </h1>
           <ul className="expense_pane_buttons">
             <li><button id="add_expense">{ "Add expense"}</button></li>
-            <li><button id="record_transaction">{ "Record cash settlement"}</button></li>
+            <li>
+              <button id="record_transaction" onClick={ this.handleSettle }>
+                { "Record cash settlement"}
+              </button>
+            </li>
           </ul>
           <ExpenseForm
             friend={ this.props.friend }

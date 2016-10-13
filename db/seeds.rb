@@ -54,6 +54,22 @@ Friendship.create(user_id: willy_id, friend_id: veruca_id, status: 'requested')
 Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
 
 Expense.destroy_all
+Transaction.destroy_all
+#settled expenses and a transaction
+Transaction.create(creditor_id: willy_id, debtor_id: charlie_id, amount: 36)
+Expense.create(payer_id: willy_id, payer_owes: 8, total: 40,
+description: 'Schnozberries', date: '2016-02-19')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
+amount: 16, settled: true, transaction_id: Transaction.last.id)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
+amount: 16, settled: true, transaction_id: Transaction.last.id)
+
+Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
+description: 'Gobstoppers', date: '2016-02-19')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
+amount: 20)
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
+amount: 20)
 #expense seeds
 # Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
 #   description: 'Gobstoppers', date: '2016-06-05')
@@ -72,6 +88,7 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
   amount: 12)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
   amount: 12)
+
 
 Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,
   description: 'Oompa Loompa Food', date: '2016-10-17')

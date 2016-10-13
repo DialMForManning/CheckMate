@@ -11,6 +11,13 @@ class SummaryPane extends React.Component {
     this.props.fetchBalances();
   }
 
+  componentWillReceiveProps(nextProps) { 
+    if (JSON.stringify(this.props.balances) === JSON.stringify(nextProps.balances)) {
+      return;
+    }
+    this.props.fetchBalances();
+  }
+
   allBalances() {
     if (this.props.accepted.length === 0) { return []; }
     const that = this;

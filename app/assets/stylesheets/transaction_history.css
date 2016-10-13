@@ -1,0 +1,45 @@
+.transaction_history {
+  display: block;
+  padding-top: 20px;
+}
+
+.transaction_history h6 {
+  position: relative;
+}
+
+.transaction_history p {
+  font-size: 12px;
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
+}
+
+.transaction_history strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.transaction_history .got_paid {
+  color: rgb(91, 205, 167);
+}
+
+.transaction_history .paid_out {
+  color: rgb(255, 120, 47);
+}
+
+.transaction_history aside {
+  font-size: 12px;
+  display: inline-block;
+}
+
+.transaction_history button {
+  position: absolute;
+  top: 15px;
+  right: 5px;
+  color: #fff;
+  background-color: rgb(255, 120, 47);
+  padding: 2px;
+  border-radius: 5px;
+  box-shadow: 0 0 1px #ccc;
+  cursor: pointer;
+}

@@ -55,16 +55,16 @@ Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
 
 Expense.destroy_all
 #expense seeds
-Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
-  description: 'Gobstoppers', date: '2016-06-05')
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
-  amount: 10)
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: augustus_id,
-  amount: 10)
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: mike_id,
-  amount: 10)
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: veruca_id,
-  amount: 10)
+# Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
+#   description: 'Gobstoppers', date: '2016-06-05')
+# ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
+#   amount: 10)
+# ExpenseShare.create(expense_id: Expense.last.id, debtor_id: augustus_id,
+#   amount: 10)
+# ExpenseShare.create(expense_id: Expense.last.id, debtor_id: mike_id,
+#   amount: 10)
+# ExpenseShare.create(expense_id: Expense.last.id, debtor_id: veruca_id,
+#   amount: 10)
 
 Expense.create(payer_id: willy_id, payer_owes: 5, total: 35,
   description: 'Fizzy Lifting Drinks', date: '2016-08-13')

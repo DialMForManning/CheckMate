@@ -2,7 +2,7 @@ import React from 'react';
 import App from './app';
 import Splash from './splash/splash';
 import Dashboard from './dashboard';
-import SummaryPane from './summary_pane';
+import SummaryPaneContainer from './summary_pane/summary_pane_container';
 import ExpensesPaneContainer from './expenses_pane/expenses_pane_container';
 import SignupFormContainer from './signup_form/signup_form_container';
 
@@ -45,8 +45,8 @@ const Root = ({ store }) => {
         component={ Dashboard }
         onEnter={ _redirectIfLoggedOut }>
 
-        <IndexRoute component={ SummaryPane } />
-        
+        <IndexRoute component={ SummaryPaneContainer } />
+
         <Route
           path="/friends/:id"
           component={ ExpensesPaneContainer }

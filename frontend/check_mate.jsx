@@ -24,8 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
-import{ fetchBalances } from './actions/balances_actions';
-window.fetchBalances = fetchBalances;
+import{ deleteTransaction } from './actions/transactions_actions';
+window.deleteTransaction = deleteTransaction;
 
 import{ fetchFriend, fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
 window.fetchFriend = fetchFriend;

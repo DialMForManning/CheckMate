@@ -66,12 +66,12 @@ Expense.destroy_all
 # ExpenseShare.create(expense_id: Expense.last.id, debtor_id: veruca_id,
 #   amount: 10)
 
-Expense.create(payer_id: willy_id, payer_owes: 5, total: 35,
+Expense.create(payer_id: willy_id, payer_owes: 11, total: 35,
   description: 'Fizzy Lifting Drinks', date: '2016-08-13')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
-  amount: 15)
+  amount: 12)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
-  amount: 15)
+  amount: 12)
 
 Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,
   description: 'Oompa Loompa Food', date: '2016-10-17')

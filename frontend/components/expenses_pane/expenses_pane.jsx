@@ -40,7 +40,6 @@ class ExpensesPane extends React.Component {
   }
 
   render() {
-
     if (Object.keys(this.props.friend).length === 0 ||
         this.props.friend.id !== Number(this.props.params.id)) {
       return(

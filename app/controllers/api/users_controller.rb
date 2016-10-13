@@ -9,6 +9,11 @@ class Api::UsersController < ApplicationController
 
     @balance = current_user.balance(params[:id])
 
+    @transactions = Transaction.where("creditor_id = #{current_user.id}
+      OR debtor_id = #{current_user.id}")
+      .where("creditor_id = #{params[:id]}
+        OR debtor_id = #{params[:id]}")
+
     render 'api/users/friend_expenses'
   end
 

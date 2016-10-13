@@ -35,7 +35,7 @@ class SummaryPane extends React.Component {
       );
     } else if (balance < 0) {
       return(
-        <p className="owes_you">
+        <p className="you_owe">
           {`you owe `}
           <strong>{ this.toDollars(balance) }</strong>
         </p>

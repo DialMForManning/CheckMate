@@ -1,0 +1,33 @@
+.summary_pane {
+  padding: 20px;
+}
+
+.summary_pane h1 {
+  padding-top: 20px;
+  font-size: 36px;
+  font-weight: 700;
+  color: #696969;
+}
+
+.summary_pane > ul h2 {
+  padding-top: 10px;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.summary_pane > ul {
+  text-shadow: 0 0 1px #ccc;
+}
+
+.summary_pane > ul .you_owe {
+  color: rgb(255, 120, 47);
+}
+
+.summary_pane > ul .owes_you {
+  color: rgb(91, 205, 167);
+}
+
+.summary_pane strong {
+  font-weight: 900;
+  font-size: 28px;
+}

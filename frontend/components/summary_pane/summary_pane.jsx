@@ -11,7 +11,7 @@ class SummaryPane extends React.Component {
     this.props.fetchBalances();
   }
 
-  componentWillReceiveProps(nextProps) { 
+  componentWillReceiveProps(nextProps) {
     if (JSON.stringify(this.props.balances) === JSON.stringify(nextProps.balances)) {
       return;
     }
@@ -57,6 +57,11 @@ class SummaryPane extends React.Component {
   }
 
   render() {
+    if(this.props.accepted.length === 0) {
+      return (
+        <content className="summary_pane"></content>
+      );
+    }
     return (
       <content className="summary_pane">
         <h1>All Current Balances</h1>

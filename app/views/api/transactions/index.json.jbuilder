@@ -1,3 +1,5 @@
-json.array! @transactions do |transaction|
-  json.partial! 'api/transactions/transaction', transaction: transaction
+@transactions.each do |transaction|
+  json.set! transaction.id do
+    json.partial! 'api/transactions/transaction', transaction: transaction
+  end
 end

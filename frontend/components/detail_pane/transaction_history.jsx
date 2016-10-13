@@ -54,7 +54,7 @@ class TransactionHistory extends React.Component {
       return(
         <p>
           { "you paid " + this.props.fname }
-          <strong lassName="paid_out">{ this.toDollars(amount) }</strong>
+          <strong className="paid_out">{ this.toDollars(amount) }</strong>
         </p>
       )
     }

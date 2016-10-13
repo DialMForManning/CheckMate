@@ -44,8 +44,11 @@ const ExpensesReducer = ( state = defaultState, action ) => {
         balance: Number(state.balance) + Number(action.expense.balance_change)
       });
     case RECEIVE_SINGLE_TRANSACTION:
+      const newState = merge({}, state, {
+        transactions: { [action.transaction.id]: action.transaction }
+      });
       return merge({}, state, {
-        transactions: action.transaction
+        transactions: { [action.transaction.id]: action.transaction }
       });
     case RECEIVE_TRANSACTION_DELETION:
       const newTransactions = Object.assign({}, state.transactions);

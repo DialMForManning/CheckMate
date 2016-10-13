@@ -8,6 +8,8 @@ class ExpensesPane extends React.Component {
     super(props);
 
     this.expenseList = this.expenseList.bind(this);
+    this.handleSettle = this.handleSettle.bind(this);
+    this.expensePaneButtons = this.expensePaneButtons.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -24,6 +26,19 @@ class ExpensesPane extends React.Component {
     this.props.fetchFriend(this.props.params.id);
   }
 
+  handleSettle() {
+    let message = `Settle all expenses?`;
+    if (this.props.balance > 0 ) {
+      message = `Did you pay ${this.props.friend.fname}? This will settle all open expense shares.`;
+    } else {
+      message = `Did ${this.props.friend.fname} pay you? This will settle all open expense shares.`
+    }
+
+    const confirmed = window.confirm(message);
+
+    if (confirmed) {this.props.createTransaction(this.props.friend.id)};
+  }
+
   expenseList() {
     if (!this.props.items) { return []; }
 
@@ -35,6 +50,27 @@ class ExpensesPane extends React.Component {
                 friendId={ that.props.params.id }
                 destroyExpense={ that.props.destroyExpense } />
     });
+  }
+
+  expensePaneButtons() {
+    if (this.props.balance) {
+      return(
+        <ul className="expense_pane_buttons">
+          <li><button id="add_expense">{ "Add expense"}</button></li>
+          <li>
+            <button id="record_transaction" onClick={ this.handleSettle }>
+              { "Record cash settlement"}
+            </button>
+          </li>
+        </ul>
+      )
+    } else {
+      return(
+        <ul className="expense_pane_buttons">
+          <li><button id="add_expense">{ "Add expense"}</button></li>
+        </ul>
+      )
+    };
   }
 
   render() {
@@ -52,14 +88,7 @@ class ExpensesPane extends React.Component {
             { this.props.friend.fname + " " +
             this.props.friend.lname }
           </h1>
-          <ul className="expense_pane_buttons">
-            <li><button id="add_expense">{ "Add expense"}</button></li>
-            <li>
-              <button id="record_transaction" onClick={ this.handleSettle }>
-                { "Record cash settlement"}
-              </button>
-            </li>
-          </ul>
+          {this.expensePaneButtons()}
           <ExpenseForm
             friend={ this.props.friend }
             createExpense={ this.props.createExpense }/>

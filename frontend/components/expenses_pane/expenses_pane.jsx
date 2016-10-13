@@ -21,11 +21,6 @@ class ExpensesPane extends React.Component {
     this.props.fetchFriend(this.props.params.id);
   }
 
-  componentDidUpdate() {
-    $(".expense_item").find(".expense_detail").hide();
-    $(".expense_form").hide();
-  }
-
   expenseList() {
     if (!this.props.items) { return []; }
 

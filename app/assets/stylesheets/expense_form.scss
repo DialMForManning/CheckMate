@@ -3,6 +3,7 @@
 }
 
 .expense_form {
+  display: none;
   margin: 0 auto;
   padding-top: 2px;
   width: 520px;
@@ -13,8 +14,6 @@
   bottom: -250px;
   left: 20px;
 }
-
-
 
 .add_expense_header {
   background-color: rgb(91, 205, 167);

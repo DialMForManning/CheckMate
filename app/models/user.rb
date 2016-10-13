@@ -58,12 +58,12 @@ class User < ApplicationRecord
 
   def debts(friend_id)
     Expense.joins(:expense_shares)
-      .where("debtor_id = #{self.id} AND payer_id = #{friend_id}")
+      .where("debtor_id = #{self.id} AND payer_id = #{friend_id} AND settled = false")
   end
 
   def loans(friend_id)
     Expense.joins(:expense_shares)
-      .where("debtor_id = #{friend_id} AND payer_id = #{self.id}")
+      .where("debtor_id = #{friend_id} AND payer_id = #{self.id} AND settled = false")
   end
 
   def balance(friend_id)
@@ -127,10 +127,10 @@ class User < ApplicationRecord
   def all_debts
     ExpenseShare.select("expense_shares.*, expenses.payer_id AS creditor_id")
                 .joins(:expense)
-                .where("debtor_id = #{self.id}")
+                .where("debtor_id = #{self.id} AND settled = false")
   end
 
   def all_loans
-    ExpenseShare.joins(:expense).where("payer_id = #{self.id}")
+    ExpenseShare.joins(:expense).where("payer_id = #{self.id} AND settled = false")
   end
 end

@@ -1,4 +1,5 @@
 import React from 'react';
+import TransactionHistory from './transaction_history';
 
 class DetailPane extends React.Component {
   constructor(props) {
@@ -51,6 +52,9 @@ class DetailPane extends React.Component {
       <content className="detail_pane">
         <h3>{ "YOUR BALANCE" }</h3>
         { this.balanceDollars() }
+        <TransactionHistory
+          transactions={ this.props.transactions}
+          fname={ this.props.fname } />
       </content>
     );
   }

@@ -12,7 +12,7 @@ const mapStateToProps = ({ expenses, transactions }) => {
     items: expenses.items,
     friend: expenses.friend,
     balance: expenses.balance,
-    transactions: transactions,
+    transactions: expenses.transactions,
     errors: expenses.errors
   });
 };

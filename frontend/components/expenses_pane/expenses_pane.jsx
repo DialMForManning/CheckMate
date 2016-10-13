@@ -57,7 +57,8 @@ class ExpensesPane extends React.Component {
         <ul className="expense_list">{ this.expenseList() }</ul>
         <DetailPane
           balance={ this.props.balance }
-          fname={ this.props.friend.fname }/>
+          fname={ this.props.friend.fname }
+          transactions={ this.props.transactions }/>
       </content>
     );
   }

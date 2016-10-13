@@ -14,7 +14,7 @@ import { fetchAllTransactions,
 const TransactionsMiddleWare = ({ getState, dispatch }) => (next) => (action) => {
   const fetchSuccess = (transactions) => dispatch(receiveTransactions(transactions));
   const createSuccess = (transaction) => {dispatch(receiveSingleTransaction(transaction))};
-  const deleteSuccess = (transaction) => dispatch(receiveTransactionDeletion(transaction));
+  const deleteSuccess = (transaction) => { dispatch(receiveTransactionDeletion(transaction)) };
   const error = (xhr) => dispatch(receiveErrors(xhr.responseJSON));
 
   switch(action.type) {

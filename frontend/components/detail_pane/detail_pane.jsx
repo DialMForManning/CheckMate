@@ -6,6 +6,7 @@ class DetailPane extends React.Component {
     super(props);
     this.balanceDollars = this.balanceDollars.bind(this);
     this.friendName = this.friendName.bind(this);
+    this.transactionHistory = this.transactionHistory.bind(this);
   }
 
   balanceDollars() {
@@ -45,16 +46,24 @@ class DetailPane extends React.Component {
     }
   }
 
+  transactionHistory() {
+    if (this.props.transactions) {
+      return(
+        <TransactionHistory
+        transactions={ this.props.transactions}
+        fname={ this.props.fname }
+        deleteTransaction={ this.props.deleteTransaction } />
+      )
+    }
+  }
+
   render() {
     if (!this.props.balance) { return <h1></h1>; }
-
     return(
       <content className="detail_pane">
         <h3>{ "YOUR BALANCE" }</h3>
         { this.balanceDollars() }
-        <TransactionHistory
-          transactions={ this.props.transactions}
-          fname={ this.props.fname } />
+        { this.transactionHistory() }
       </content>
     );
   }

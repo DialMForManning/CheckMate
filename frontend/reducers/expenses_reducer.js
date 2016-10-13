@@ -3,8 +3,9 @@ import {
   RECEIVE_SINGLE_EXPENSE,
   RECEIVE_DELETION,
   RECEIVE_EXPENSE_ERRORS,
-  RECEIVE_FRIEND_DETAILS
-} from '../actions/expenses_actions';
+  RECEIVE_FRIEND_DETAILS } from '../actions/expenses_actions';
+import { RECEIVE_SINGLE_TRANSACTION,
+         RECEIVE_TRANSACTION_DELETION } from '../actions/transactions_actions';
 import merge from 'lodash/merge';
 
 const defaultState = {
@@ -41,6 +42,16 @@ const ExpensesReducer = ( state = defaultState, action ) => {
         items: newItems,
         errors: [],
         balance: Number(state.balance) + Number(action.expense.balance_change)
+      });
+    case RECEIVE_SINGLE_TRANSACTION:
+      return merge({}, state, {
+        transactions: action.transaction
+      });
+    case RECEIVE_TRANSACTION_DELETION:
+      const newTransactions = Object.assign({}, state.transactions);
+      delete newTransactions[action.transaction.id];
+      return Object.assign({}, state, {
+        transactions: newTransactions
       });
     case RECEIVE_EXPENSE_ERRORS:
       return Object.assign({}, state, {

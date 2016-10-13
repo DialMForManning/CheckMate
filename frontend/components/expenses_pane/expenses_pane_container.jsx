@@ -7,7 +7,7 @@ import { fetchTransactions,
 import ExpensesPane from './expenses_pane';
 import { withRouter } from 'react-router';
 
-const mapStateToProps = ({ expenses, transactions }) => {
+const mapStateToProps = ({ expenses }) => {
   return({
     items: expenses.items,
     friend: expenses.friend,

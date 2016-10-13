@@ -11,6 +11,9 @@ class ExpensesPane extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(this.props.transactions) !== JSON.stringify(nextProps.transactions)) {
+      this.props.fetchFriend(nextProps.params.id);
+    }
     if (this.props.params.id === nextProps.params.id) {
       return;
     }
@@ -49,7 +52,10 @@ class ExpensesPane extends React.Component {
             { this.props.friend.fname + " " +
             this.props.friend.lname }
           </h1>
-          <button id="add_expense">{ "Add expense"}</button>
+          <ul className="expense_pane_buttons">
+            <li><button id="add_expense">{ "Add expense"}</button></li>
+            <li><button id="record_transaction">{ "Record cash settlement"}</button></li>
+          </ul>
           <ExpenseForm
             friend={ this.props.friend }
             createExpense={ this.props.createExpense }/>
@@ -58,7 +64,8 @@ class ExpensesPane extends React.Component {
         <DetailPane
           balance={ this.props.balance }
           fname={ this.props.friend.fname }
-          transactions={ this.props.transactions }/>
+          transactions={ this.props.transactions }
+          deleteTransaction={ this.props.deleteTransaction }/>
       </content>
     );
   }

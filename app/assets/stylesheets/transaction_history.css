@@ -3,6 +3,16 @@
   padding-top: 20px;
 }
 
+.transaction_history h3 {
+  padding-left: 2px;
+}
+
+.transaction_history li {
+  box-shadow: 1px 1px 2px #ccc;
+  padding: 5px;
+  background-color: #f3f3f3;
+}
+
 .transaction_history h6 {
   position: relative;
 }
@@ -28,7 +38,7 @@
 }
 
 .transaction_history aside {
-  font-size: 12px;
+  font-size: 10px;
   display: inline-block;
 }
 

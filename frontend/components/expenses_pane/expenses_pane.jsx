@@ -40,7 +40,7 @@ class ExpensesPane extends React.Component {
   }
 
   expenseList() {
-    if (!this.props.items) { return []; }
+    if (!this.props.items) { return <h4>{"Settled up!"}</h4>; }
 
     const that = this;
     return Object.keys(this.props.items).map((expense_id) => {

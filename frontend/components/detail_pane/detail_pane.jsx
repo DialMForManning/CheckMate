@@ -61,7 +61,6 @@ class DetailPane extends React.Component {
     if (!this.props.balance) {
       return (
         <content className="detail_pane">
-          <h3>{"Settled up!"}</h3>
           { this.transactionHistory() }
         </content>
       );

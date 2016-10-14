@@ -26,6 +26,7 @@ class CommentField extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    debugger
     if (this.state.body.length > 140) {
       this.setState({ error: "comment too long" });
     } else if (this.state.formType === "Add") {

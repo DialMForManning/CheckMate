@@ -9,13 +9,24 @@ const CommentsReducer = (state = {}, action) => {
       return action.comments;
     case RECEIVE_SINGLE_COMMENT:
       if (!state[action.comment.expense_id]) {
-        newComments = [action.comment];
+        const newComments = [action.comment];
       } else {
-        newComments = state[action.comment.expense_id].concat(newComments);
-      }
-      return merge({}, state, {
-        [action.comment.expense_id]: newComments
-      });
+
+        const updateInd = state[action.comment.expense_id].findIndex((comment) => comment.id === action.comment.id);
+        if (updateInd !== -1) {
+          newComments = state[action.comment.expense_id];
+          newComments[updateInd] = action.comment;
+          return Object.assign({}, state, {
+            [action.comment.expense_id]: newComments
+          })
+        } else {
+          newComments = state[action.comment.expense_id].concat(action.comment);
+        }
+        return merge({}, state, {
+          [action.comment.expense_id]: newComments
+        });
+        }
+
     case RECEIVE_COMMENT_DELETION:
       let newComments = merge([], state[action.comment.expense_id]);
       newComments = newComments.filter((comment) => {

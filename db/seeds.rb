@@ -75,6 +75,7 @@ description: 'Schnozberries', date: '2016-02-19')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
 amount: 30)
 Comment.create(expense_id: Expense.last.id, author_id: willy_id, body: "Does this count as cannibalism?")
+Comment.create(expense_id: Expense.last.id, author_id: violet_id, body: "Can it Wonka!")
 #expense seeds
 # Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
 #   description: 'Gobstoppers', date: '2016-06-05')
@@ -94,7 +95,7 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
 fizzy_id = Expense.last.id;
 Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Did you clean my fan yet?")
 Comment.create(expense_id: fizzy_id, author_id: charlie_id, body: "I'll get to it...")
-Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Fine")
+Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "I expected more from the person taking over my chocolate factory")
 
 
 

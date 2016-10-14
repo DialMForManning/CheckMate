@@ -66,9 +66,9 @@ class CommentField extends React.Component {
   commentList(comments) {
     if (!comments || comments.length === 0) { return []; }
     const that = this;
-    return comments.map((comment) => {
+    return comments.map((comment, idx) => {
       return (
-        <li key={ comment.id }>
+        <li key={ idx }>
 
           <div>
            <label>{ comment.author.fname + ": " }</label>

@@ -8,8 +8,13 @@ const CommentsReducer = (state = {}, action) => {
     case RECEIVE_COMMENTS:
       return action.comments;
     case RECEIVE_SINGLE_COMMENT:
+      if (!state[action.comment.expense_id]) {
+        newComments = [action.comment];
+      } else {
+        newComments = state[action.comment.expense_id].concat(newComments);
+      }
       return merge({}, state, {
-        [action.comment.expense_id]: state[action.comment.expense_id].concat([action.comment])
+        [action.comment.expense_id]: newComments
       });
     case RECEIVE_COMMENT_DELETION:
       let newComments = merge([], state[action.comment.expense_id]);

@@ -24,6 +24,17 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidMount() {
+    const detailToggler = (e) => {
+      if (e.target.className === "expense_description"){
+        $(e.currentTarget).find(".expense_detail").toggle();
+      }
+    };
+
+    $(document).on('click', '.expense_item', detailToggler );
+    $(document).on('click', '#add_expense', function(e) {
+      $(".expense_form").toggle();
+    });
+
     this.props.fetchFriend(this.props.params.id);
     this.props.fetchComments(this.props.params.id);
   }

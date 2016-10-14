@@ -31,10 +31,10 @@ class CommentField extends React.Component {
       this.setState({ error: "comment too long" });
     } else if (this.state.formType === "Add") {
       this.props.createComment(this.state.body, this.props.expense.id )
-      this.setState({ body: "", error: "", fieldType: "Add" })
+      this.setState({ body: "", error: "", formType: "Add" })
     } else if (this.state.formType === "Edit") {
       this.props.updateComment(this.state.body, this.state.commentId)
-      this.setState({ body: "", error: "", fieldType: "Add" })
+      this.setState({ body: "", error: "", formType: "Add" })
     }
 
   }

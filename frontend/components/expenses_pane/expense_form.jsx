@@ -54,6 +54,7 @@ class ExpenseForm extends React.Component {
     };
 
     this.props.createExpense(expense, this.props.friend.id);
+    $(".expense_form").hide();
   }
 
   checkPrice(price) {

@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resources :expenses, only: [:create, :update, :destroy]
     resources :transactions, only: [:destroy]
     resources :expenses do
-      resources :comments, only: [:create, :update, :index]
+      resources :comments, only: [:create, :index]
     end
-    resources :comments, only: [:destroy]
+    resources :comments, only: [:update, :destroy]
   end
 
   get 'api/friends/:id/transactions', to: 'api/transactions#index', defaults: { format: :json }

@@ -38,8 +38,8 @@ Friendship.create(user_id: willy_id, friend_id: grandpa_id, status: 'accepted')
 Friendship.create(user_id: grandpa_id, friend_id: willy_id, status: 'accepted')
 
 #willy to violet, pending
-Friendship.create(user_id: willy_id, friend_id: violet_id, status: 'pending')
-Friendship.create(user_id: violet_id, friend_id: willy_id, status: 'requested')
+Friendship.create(user_id: willy_id, friend_id: violet_id, status: 'accepted')
+Friendship.create(user_id: violet_id, friend_id: willy_id, status: 'accepted')
 
 #willy to mike, pending
 Friendship.create(user_id: willy_id, friend_id: mike_id, status: 'pending')
@@ -70,6 +70,13 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
 amount: 20)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
 amount: 20)
+
+
+Expense.create(payer_id: willy_id, payer_owes: 8, total: 40,
+description: 'Schnozberries', date: '2016-02-19')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
+amount: 30)
+Comment.create(expense_id: Expense.last.id, author_id: willy_id, body: "Does this count as cannibalism?")
 #expense seeds
 # Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
 #   description: 'Gobstoppers', date: '2016-06-05')
@@ -85,9 +92,7 @@ amount: 20)
 Expense.create(payer_id: willy_id, payer_owes: 11, total: 35,
   description: 'Fizzy Lifting Drinks', date: '2016-08-13')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
-  amount: 12)
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
-  amount: 12)
+  amount: 24)
 fizzy_id = Expense.last.id;
 Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Did you clean my fan yet?")
 Comment.create(expense_id: fizzy_id, author_id: charlie_id, body: "I'll get to it...")
@@ -95,7 +100,7 @@ Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Fine")
 
 
 
-Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,
+Expense.create(payer_id: charlie_id, payer_owes: 10, total: 60,
   description: 'Oompa Loompa Food', date: '2016-10-17')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
-  amount: 30)
+  amount: 60)

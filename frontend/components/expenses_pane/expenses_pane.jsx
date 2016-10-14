@@ -20,6 +20,7 @@ class ExpensesPane extends React.Component {
       return;
     }
     this.props.fetchFriend(nextProps.params.id);
+    this.props.fetchComments(nextProps.params.id);
   }
 
   componentDidMount() {

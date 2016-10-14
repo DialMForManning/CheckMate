@@ -26,7 +26,12 @@ class Api::CommentsController < ApplicationController
                   .where("payer_id = #{params[:friend_id].to_i} OR debtor_id = #{params[:friend_id].to_i}")
                   .where("payer_id = #{current_user.id} OR debtor_id = #{current_user.id}")
 
-    render 'api/comments/index'
+    comments = Hash.new { |comment, expense_id| comments[expense_id] = [] }
+
+    @comments.each do |comment|
+      comments[comment.expense_id].push(comment)
+    end
+    render json: comments
   end
 
   def destroy

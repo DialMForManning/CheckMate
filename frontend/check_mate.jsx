@@ -24,8 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 //test imports and invocations
-import{ destroyComment } from './util/comments_api_util';
-window.destroyComment = destroyComment;
+import{ fetchComments, createComment, updateComment, deleteComment } from './actions/comments_actions';
+window.fetchComments = fetchComments;
+window.createComment = createComment;
+window.updateComment = updateComment;
+window.deleteComment = deleteComment;
 
 import{ fetchFriend, fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
 window.fetchFriend = fetchFriend;

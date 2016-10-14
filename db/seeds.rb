@@ -88,6 +88,10 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
   amount: 12)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
   amount: 12)
+fizzy_id = Expense.last.id;
+Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Did you clean my fan yet?")
+Comment.create(expense_id: fizzy_id, author_id: charlie_id, body: "I'll get to it...")
+
 
 
 Expense.create(payer_id: charlie_id, payer_owes: 10, total: 30,

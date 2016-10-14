@@ -9,7 +9,7 @@ const CommentsReducer = (state = {}, action) => {
       return action.comments;
     case RECEIVE_SINGLE_COMMENT:
       if (!state[action.comment.expense_id]) {
-        const newComments = [action.comment];
+        return Object.assign({}, state, { [action.comment.expense_id]: [action.comment] });
       } else {
 
         const updateInd = state[action.comment.expense_id].findIndex((comment) => comment.id === action.comment.id);

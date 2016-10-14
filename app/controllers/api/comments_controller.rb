@@ -25,11 +25,16 @@ class Api::CommentsController < ApplicationController
     @comments = Comment.joins(expense: :debtors)
                   .where("payer_id = #{params[:friend_id].to_i} OR debtor_id = #{params[:friend_id].to_i}")
                   .where("payer_id = #{current_user.id} OR debtor_id = #{current_user.id}")
-
     comments = Hash.new { |comment, expense_id| comments[expense_id] = [] }
 
     @comments.each do |comment|
-      comments[comment.expense_id].push(comment)
+      comments[comment.expense_id].push({
+          author_id: comment.author_id,
+          body: comment.body,
+          expense_id: comment.expense_id,
+          id: comment.id,
+          author: comment.author.fname
+        })
     end
     render json: comments
   end

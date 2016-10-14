@@ -89,7 +89,7 @@ class ExpenseIndexItem extends React.Component {
             ${this.months[this.monthNum]} ${ this.dayNum }, ${ this.year }` }
           </p>
         </content>
-        <content className="expense_share_detail">
+        <content className="expense_share_detail group">
           <ul className="shares_list">
             <li>
               { `${this.expense.payerFname} paid

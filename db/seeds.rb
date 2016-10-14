@@ -91,6 +91,7 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
 fizzy_id = Expense.last.id;
 Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Did you clean my fan yet?")
 Comment.create(expense_id: fizzy_id, author_id: charlie_id, body: "I'll get to it...")
+Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "Fine")
 
 
 

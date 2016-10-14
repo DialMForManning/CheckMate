@@ -25,6 +25,7 @@ class Api::CommentsController < ApplicationController
     @comments = Comment.select('comments.*, users.fname AS author').joins(expense: :debtors)
                   .where("payer_id = #{params[:friend_id].to_i} OR debtor_id = #{params[:friend_id].to_i}")
                   .where("payer_id = #{current_user.id} OR debtor_id = #{current_user.id}")
+                  .order('comments.id')
 
     comments = Hash.new { |comment, expense_id| comments[expense_id] = [] }
 

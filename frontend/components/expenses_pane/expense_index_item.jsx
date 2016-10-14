@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentField from './comment_field';
 
 class ExpenseIndexItem extends React.Component {
   constructor(props) {
@@ -97,6 +98,11 @@ class ExpenseIndexItem extends React.Component {
             </li>
             { this.sharesDetail() }
           </ul>
+          <CommentField
+            comments={ this.props.comments }
+            createComment={ this.props.createComment }
+            updateComment={ this.props.updateComment }
+            deleteComment={ this.props.deleteComment }/>
         </content>
       </section>
     );

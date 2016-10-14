@@ -24,6 +24,7 @@ class ExpensesPane extends React.Component {
 
   componentDidMount() {
     this.props.fetchFriend(this.props.params.id);
+    this.props.fetchComments(this.props.params.id);
   }
 
   handleSettle() {
@@ -44,11 +45,16 @@ class ExpensesPane extends React.Component {
 
     const that = this;
     return Object.keys(this.props.items).map((expense_id) => {
+
       return <ExpenseIndexItem
                 key={ expense_id }
                 expense={ that.props.items[expense_id] }
                 friendId={ that.props.params.id }
-                destroyExpense={ that.props.destroyExpense } />
+                destroyExpense={ that.props.destroyExpense }
+                comments={ that.props.comments[expense_id] }
+                createComment={ that.props.createComment }
+                updateComment={ that.props.updateComment }
+                deleteComment={ that.props.deleteComment } />
     });
   }
 

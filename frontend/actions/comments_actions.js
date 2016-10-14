@@ -30,7 +30,7 @@ export const receiveSingleComment = (comment) => ({
 export const updateComment = (body, comment_id) => ({
   type: UPDATE_COMMENT,
   body,
-  expense_id
+  comment_id
 });
 
 export const deleteComment = (comment_id) => ({

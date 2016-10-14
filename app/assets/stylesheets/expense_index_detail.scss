@@ -34,3 +34,96 @@
   line-height: 20px;
   font-weight: 700;
 }
+
+.shares_list {
+  float: left;
+  width: 220px;
+}
+
+.comment_field {
+  float: right;
+  width: 330px;
+}
+
+.comment_field h3 {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.comment_field .comment_list {
+  box-shadow: 0 0 1px #000;
+  padding: 2px;
+}
+
+.comment_field li label {
+  font-size: 10px;
+}
+
+.comment_field div {
+  font-size: 12px;
+  display: inline-block;
+  position: relative;
+  width: 290px;
+}
+
+.comment_edit_buttons {
+  display: inline-block;
+  position: absolute;
+  right: -36px;
+  top: 2px;
+}
+
+.comment_edit_buttons li {
+  float: right;
+  padding: 1px;
+  line-height: 12px;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: 200;
+  margin-left: 2px;
+  cursor: pointer;
+}
+
+.delete_comment {
+  background-color: rgb(255,101,47);
+}
+
+.edit_comment {
+  background-color: rgb(91,197,167);
+}
+
+.comment_form {
+  padding-top: 5px;
+}
+
+.comment_form input[type=text] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin: 3px 0;
+  border-radius: 3px;
+  padding: 3px;
+  width: 250px;
+}
+
+.comment_form input[type=text]:focus {
+  box-shadow: 0 0 1px rgb(255,101,47);
+}
+
+.comment_form input[type=submit] {
+  background-color: rgb(91, 197, 167);
+  color: #fff;
+  font-size: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 0 1px #000;
+  margin-left: 10px;
+  padding: 0 5px;
+  text-shadow: 0 0 1px #000;
+  height: 14px;
+  line-height: 14px;
+}
+
+.comment_error {
+  color: rgb(255,101,47);
+  font-size: 10px;
+}

@@ -102,7 +102,8 @@ class ExpenseIndexItem extends React.Component {
             comments={ this.props.comments }
             createComment={ this.props.createComment }
             updateComment={ this.props.updateComment }
-            deleteComment={ this.props.deleteComment }/>
+            deleteComment={ this.props.deleteComment }
+            expense={ this.expense }/>
         </content>
       </section>
     );

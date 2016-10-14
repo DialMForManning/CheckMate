@@ -6,7 +6,6 @@
   box-shadow: 0 3px 1px -2px #aaa;
   padding: 10px 5px;
   position: relative;
-  cursor: pointer;
   z-index: 5;
   background: transparent;
 }
@@ -77,6 +76,7 @@
   line-height: 40px;
   font-weight: 700;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .user_debt_summary h6 {

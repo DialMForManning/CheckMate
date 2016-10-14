@@ -1,6 +1,6 @@
 class Api::CommentsController < ApplicationController
   def create
-    @comment = Comment.new(body: comment_params[:body],
+    @comment = Comment.new(body: params[:body],
       author_id: current_user.id,
       expense_id: params[:expense_id])
 
@@ -14,7 +14,7 @@ class Api::CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    if @comment.update(comment_params)
+    if @comment.update(body: params[:body])
       render 'api/comments/show'
     else
       render json: @comment.errors.full_messages, status: 422
@@ -33,10 +33,5 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.destroy
     render 'api/comments/show'
-  end
-
-  private
-  def comment_params
-    params.require(:comment).permit(:body)
   end
 end

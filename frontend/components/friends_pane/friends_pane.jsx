@@ -9,6 +9,19 @@ class FriendsPane extends React.Component {
     this.props.fetchFriends();
   }
 
+  componentDidMount() {
+    const detailToggler = (e) => {
+      if (e.target.className === "expense_description"){
+        $(e.currentTarget).find(".expense_detail").toggle();
+      }
+    };
+
+    $(document).on('click', '.expense_item', detailToggler );
+    $(document).on('click', '#add_expense', function(e) {
+      $(".expense_form").toggle();
+    });
+  }
+
   render() {
     return (
         <content className="friends_pane">

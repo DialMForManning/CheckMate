@@ -29,6 +29,12 @@ class Expense < ApplicationRecord
     foreign_key: :expense_id,
     dependent: :destroy
 
+  has_many :debtors,
+  class_name: 'User',
+    through: :expense_shares,
+    source: :debtor
+
+
   has_many :comments,
     class_name: 'Comment',
     primary_key: :id,

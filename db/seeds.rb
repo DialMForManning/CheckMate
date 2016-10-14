@@ -56,13 +56,11 @@ Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
 Expense.destroy_all
 Transaction.destroy_all
 #settled expenses and a transaction
-Transaction.create(creditor_id: willy_id, debtor_id: charlie_id, amount: 16)
-Expense.create(payer_id: willy_id, payer_owes: 8, total: 40,
+Transaction.create(creditor_id: willy_id, debtor_id: charlie_id, amount: 34)
+Expense.create(payer_id: willy_id, payer_owes: 6, total: 40,
 description: 'Schnozberries', date: '2016-02-19')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
-amount: 16, settled: true, transaction_id: Transaction.last.id)
-ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
-amount: 16, settled: true, transaction_id: Transaction.last.id)
+amount: 34, settled: true, transaction_id: Transaction.last.id)
 
 Expense.create(payer_id: willy_id, payer_owes: 10, total: 50,
 description: 'Gobstoppers', date: '2016-02-19')

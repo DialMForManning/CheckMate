@@ -25,9 +25,13 @@ class Navbar extends React.Component {
   }
 
   componentDidMount() {
-    $(document).on('click', '.expense_item', function(e) {
-      $(e.currentTarget).find(".expense_detail").toggle();
-    });
+    const detailToggler = (e) => {
+      if (e.target.className === "expense_description"){
+        $(e.currentTarget).find(".expense_detail").toggle();
+      }
+    };
+
+    $(document).on('click', '.expense_item', detailToggler );
     $(document).on('click', '#add_expense', function(e) {
       $(".expense_form").toggle();
     });

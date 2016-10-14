@@ -30,7 +30,7 @@ class Expense < ApplicationRecord
     dependent: :destroy
 
   has_many :debtors,
-  class_name: 'User',
+    class_name: 'User',
     through: :expense_shares,
     source: :debtor
 
@@ -38,7 +38,8 @@ class Expense < ApplicationRecord
   has_many :comments,
     class_name: 'Comment',
     primary_key: :id,
-    foreign_key: :expense_id
+    foreign_key: :expense_id,
+    dependent: :destroy
 
   def owes_less_than_total
     unless payer_owes.to_f < total.to_f

@@ -33,6 +33,12 @@ class ExpenseIndexItem extends React.Component {
     this.props.destroyExpense(this.props.expense.id, this.props.friendId);
   }
 
+  toggleDetail(e) {
+    if (e.target.className === "expense_description"){
+        $(e.currentTarget).find(".expense_detail").toggle();
+      }
+  }
+
   expenseSummary() {
     if (this.expense.payer_id === window.currentUser.id) {
       return(
@@ -123,14 +129,18 @@ class ExpenseIndexItem extends React.Component {
 
   render() {
     return(
-      <li className="expense_item">
+      <li
+      onClick={ this.toggleDetail }
+      className="expense_item">
         <section className="expense_summary group">
 
             <h3 className="expense_date">
               { this.months[this.monthNum] }
               <strong>{ this.dayNum }</strong>
             </h3>
-            <p className="expense_description">
+            <p
+
+            className="expense_description">
               { this.expense.description }
             </p>
             { this.expenseSummary() }

@@ -24,10 +24,12 @@ class ExpensesPane extends React.Component {
   }
 
   componentDidMount() {
-
-
     this.props.fetchFriend(this.props.params.id);
     this.props.fetchComments(this.props.params.id);
+  }
+
+  showForm() {
+    $(".expense_form").toggle()
   }
 
   handleSettle() {
@@ -65,7 +67,13 @@ class ExpensesPane extends React.Component {
     if (this.props.balance) {
       return(
         <ul className="expense_pane_buttons">
-          <li><button id="add_expense">{ "Add expense"}</button></li>
+          <li>
+            <button
+              onClick={ this.showForm }
+              id="add_expense">
+                { "Add expense"}
+            </button>
+          </li>
           <li>
             <button id="record_transaction" onClick={ this.handleSettle }>
               { "Record cash settlement"}

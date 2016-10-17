@@ -16,12 +16,13 @@
   float: left;
   width: 560px;
   display: block;
-  box-shadow: 0 5px 10px #ccc;
+  box-shadow: 0 5px 10px #696969;
   height: auto;
   min-height: 100vh;
   padding-top: 1px;
   padding-bottom: 10px;
   position: relative;
+  z-index: 3;
 }
 
 .detail_pane {

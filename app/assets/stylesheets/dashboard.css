@@ -22,7 +22,7 @@
   padding-top: 1px;
   padding-bottom: 10px;
   position: relative;
-  z-index: 3;
+  z-index: 1;
 }
 
 .detail_pane {

@@ -42,3 +42,9 @@ img {
   display: block;
   clear: both;
 }
+
+.ReactModal__Overlay {
+  z-index: 999;
+  box-shadow: 0 0 50px #000;
+  overflow-x: none;
+}

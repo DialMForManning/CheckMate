@@ -2,14 +2,22 @@ import React from 'react';
 import ExpenseIndexItem from './expense_index_item';
 import ExpenseForm from './expense_form';
 import DetailPane from '../detail_pane/detail_pane';
+import Modal from 'react-modal';
+import expenseFormStyle from './expense_form_style';
 
 class ExpensesPane extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      expenseFormOpen: false
+    }
+
     this.expenseList = this.expenseList.bind(this);
     this.handleSettle = this.handleSettle.bind(this);
     this.expensePaneButtons = this.expensePaneButtons.bind(this);
+    this.showForm = this.showForm.bind(this);
+    this.closeForm = this.closeForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -29,7 +37,11 @@ class ExpensesPane extends React.Component {
   }
 
   showForm() {
-    $(".expense_form").toggle()
+    this.setState({ expenseFormOpen: true });
+  }
+
+  closeForm() {
+    this.setState({ expenseFormOpen: false });
   }
 
   handleSettle() {
@@ -106,9 +118,18 @@ class ExpensesPane extends React.Component {
             this.props.friend.lname }
           </h1>
           {this.expensePaneButtons()}
-          <ExpenseForm
-            friend={ this.props.friend }
-            createExpense={ this.props.createExpense }/>
+
+          <Modal
+            isOpen={ this.state.expenseFormOpen }
+            onRequestClose={ this.closeForm }
+            style={ expenseFormStyle() }>
+
+            <ExpenseForm
+              friend={ this.props.friend }
+              createExpense={ this.props.createExpense }
+              closeForm={ this.closeForm }/>
+          </Modal>
+
         </header>
         <ul className="expense_list">{ this.expenseList() }</ul>
         <DetailPane

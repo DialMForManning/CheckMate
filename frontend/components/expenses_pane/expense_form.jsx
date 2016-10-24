@@ -54,7 +54,7 @@ class ExpenseForm extends React.Component {
     };
 
     this.props.createExpense(expense, this.props.friend.id);
-    $(".expense_form").hide();
+    this.props.closeForm();
   }
 
   checkPrice(price) {
@@ -71,7 +71,6 @@ class ExpenseForm extends React.Component {
 
   render() {
     return(
-      <div className="form_overlay">
         <form className="expense_form" onSubmit={ this.handleSubmit }>
           <header className="add_expense_header">{ "Add an expense" }</header>
           <p>
@@ -106,7 +105,6 @@ class ExpenseForm extends React.Component {
 
             <p className="form_error">{ this.state.error }</p>
         </form>
-      </div>
     );
   }
 }

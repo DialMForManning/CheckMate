@@ -4,6 +4,7 @@ import ExpenseForm from './expense_form';
 import DetailPane from '../detail_pane/detail_pane';
 import Modal from 'react-modal';
 import expenseFormStyle from './expense_form_style';
+import confirmStyle from './confirm_style';
 
 class ExpensesPane extends React.Component {
   constructor(props) {
@@ -61,7 +62,7 @@ class ExpensesPane extends React.Component {
     }
 
     return(
-      <div>
+      <div className="settle_modal">
         <header className="form_header group">
           { "Record cash settlement" }
           <aside onClick={ this.closeSettle }>X</aside>
@@ -163,7 +164,7 @@ class ExpensesPane extends React.Component {
           <Modal
             isOpen={ this.state.settleConfirmOpen }
             onRequestClose={ this.closeSettle }
-            style={ expenseFormStyle() } >
+            style={ confirmStyle() } >
             { this.settleForm() }
           </Modal>
 

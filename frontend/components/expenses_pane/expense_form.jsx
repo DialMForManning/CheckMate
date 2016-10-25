@@ -71,13 +71,13 @@ class ExpenseForm extends React.Component {
   }
 
   close() {
-    this.props.closeForm();
+    this.props.closeExpenseForm();
   }
 
   render() {
     return(
         <form className="expense_form" onSubmit={ this.handleSubmit }>
-          <header className="add_expense_header">
+          <header className="form_header">
             { "Add an expense" }
             <aside onClick={ this.close }>X</aside>
           </header>

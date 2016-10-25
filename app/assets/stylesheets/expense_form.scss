@@ -4,7 +4,7 @@
   z-index: 99;
 }
 
-.add_expense_header {
+.form_header {
   background-color: rgb(91, 205, 167);
   color: #fff;
   box-shadow: 0 1px 1px #aaa;
@@ -70,7 +70,7 @@
   color: rgb(255, 101, 47);
 }
 
-.expense_form aside {
+.form_header aside {
   float: right;
   font-weight: 900;
   cursor: pointer;

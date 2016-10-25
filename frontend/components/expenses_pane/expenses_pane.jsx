@@ -10,14 +10,18 @@ class ExpensesPane extends React.Component {
     super(props);
 
     this.state = {
-      expenseFormOpen: false
+      expenseFormOpen: false,
+      settleConfirmOpen: false
     }
 
     this.expenseList = this.expenseList.bind(this);
-    this.handleSettle = this.handleSettle.bind(this);
     this.expensePaneButtons = this.expensePaneButtons.bind(this);
-    this.showForm = this.showForm.bind(this);
-    this.closeForm = this.closeForm.bind(this);
+    this.showExpenseForm = this.showExpenseForm.bind(this);
+    this.closeExpenseForm = this.closeExpenseForm.bind(this);
+    this.openSettleForm = this.openSettleForm.bind(this);
+    this.closeSettle = this.closeSettle.bind(this);
+    this.settleForm = this.settleForm.bind(this);
+    this.handleSettle = this.handleSettle.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -36,25 +40,56 @@ class ExpensesPane extends React.Component {
     this.props.fetchComments(this.props.params.id);
   }
 
-  showForm() {
+  showExpenseForm() {
     this.setState({ expenseFormOpen: true });
   }
 
-  closeForm() {
+  closeExpenseForm() {
     this.setState({ expenseFormOpen: false });
   }
 
-  handleSettle() {
-    let message = `Settle all expenses?`;
-    if (this.props.balance > 0 ) {
-      message = `Did you pay ${this.props.friend.fname}? This will settle all open expense shares.`;
+  settleForm() {
+    let settleMessage;
+    if (Number(this.props.balance) > 0) {
+      settleMessage = `Did ${this.props.friend.fname} really pay you?
+      Recording this transaction will close all open expenses (don't
+      worry, you can delete it later if you want to).`
     } else {
-      message = `Did ${this.props.friend.fname} pay you? This will settle all open expense shares.`
+      settleMessage = `This will settle all open expenses. Did you
+      really pay ${this.props.friend.fname}? Remember, they can delete
+      this transaction if you didn't.`
     }
 
-    const confirmed = window.confirm(message);
+    return(
+      <div>
+        <header className="form_header group">
+          { "Record cash settlement" }
+          <aside onClick={ this.closeSettle }>X</aside>
+        </header>
+        <p>{ settleMessage }</p>
+        <ul className="settle_buttons group">
+          <li className="settle" onClick={ this.handleSettle }>
+            { "Settle" }
+          </li>
+          <li className="cancel_settle" onClick={ this.closeSettle }>
+            { "Cancel" }
+          </li>
+        </ul>
+      </div>
+    )
+  }
 
-    if (confirmed) {this.props.createTransaction(this.props.friend.id)};
+  openSettleForm() {
+    this.setState({ settleConfirmOpen: true });
+  }
+
+  handleSettle() {
+    this.props.createTransaction(this.props.friend.id);
+    this.closeSettle();
+  }
+
+  closeSettle() {
+    this.setState({ settleConfirmOpen: false });
   }
 
   expenseList() {
@@ -81,13 +116,13 @@ class ExpensesPane extends React.Component {
         <ul className="expense_pane_buttons">
           <li>
             <button
-              onClick={ this.showForm }
+              onClick={ this.showExpenseForm }
               id="add_expense">
                 { "Add expense"}
             </button>
           </li>
           <li>
-            <button id="record_transaction" onClick={ this.handleSettle }>
+            <button id="record_transaction" onClick={ this.openSettleForm }>
               { "Record cash settlement"}
             </button>
           </li>
@@ -98,7 +133,7 @@ class ExpensesPane extends React.Component {
         <ul className="expense_pane_buttons">
         <li>
           <button
-            onClick={ this.showForm }
+            onClick={ this.showExpenseForm }
             id="add_expense">
               { "Add expense"}
           </button>
@@ -126,14 +161,21 @@ class ExpensesPane extends React.Component {
           {this.expensePaneButtons()}
 
           <Modal
+            isOpen={ this.state.settleConfirmOpen }
+            onRequestClose={ this.closeSettle }
+            style={ expenseFormStyle() } >
+            { this.settleForm() }
+          </Modal>
+
+          <Modal
             isOpen={ this.state.expenseFormOpen }
-            onRequestClose={ this.closeForm }
+            onRequestClose={ this.closeExpenseForm }
             style={ expenseFormStyle() }>
 
             <ExpenseForm
               friend={ this.props.friend }
               createExpense={ this.props.createExpense }
-              closeForm={ this.closeForm }/>
+              closeExpenseForm={ this.closeExpenseForm }/>
           </Modal>
 
         </header>

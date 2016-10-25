@@ -72,7 +72,10 @@ class ExpenseForm extends React.Component {
   render() {
     return(
         <form className="expense_form" onSubmit={ this.handleSubmit }>
-          <header className="add_expense_header">{ "Add an expense" }</header>
+          <header className="add_expense_header">
+            { "Add an expense" }
+            <aside>X</aside>
+          </header>
           <p>
             { `With you and ${this.props.friend.fname}`}
           </p>

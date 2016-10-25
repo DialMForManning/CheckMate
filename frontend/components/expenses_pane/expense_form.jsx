@@ -14,6 +14,7 @@ class ExpenseForm extends React.Component {
     this.update = this.update.bind(this);
     this.checkPrice = this.checkPrice.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.close = this.close.bind(this);
   }
 
   update(field) {
@@ -54,7 +55,7 @@ class ExpenseForm extends React.Component {
     };
 
     this.props.createExpense(expense, this.props.friend.id);
-    this.props.closeForm();
+    this.close();
   }
 
   checkPrice(price) {
@@ -69,12 +70,16 @@ class ExpenseForm extends React.Component {
     }
   }
 
+  close() {
+    this.props.closeForm();
+  }
+
   render() {
     return(
         <form className="expense_form" onSubmit={ this.handleSubmit }>
           <header className="add_expense_header">
             { "Add an expense" }
-            <aside>X</aside>
+            <aside onClick={ this.close }>X</aside>
           </header>
           <p>
             { `With you and ${this.props.friend.fname}`}

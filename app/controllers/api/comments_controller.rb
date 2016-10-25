@@ -22,9 +22,10 @@ class Api::CommentsController < ApplicationController
   end
 
   def index
+    current_user_id = current_user.id;
     @comments = Comment.select('comments.*, users.fname AS author').joins(expense: :debtors)
                   .where("payer_id = #{params[:friend_id].to_i} OR debtor_id = #{params[:friend_id].to_i}")
-                  .where("payer_id = #{current_user.id} OR debtor_id = #{current_user.id}")
+                  .where("payer_id = #{current_user_id} OR debtor_id = #{current_user_id}")
                   .order('comments.id')
 
     comments = Hash.new { |comment, expense_id| comments[expense_id] = [] }

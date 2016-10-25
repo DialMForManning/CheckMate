@@ -1,4 +1,6 @@
 import React from 'react';
+import Modal from 'react-modal';
+import confirmStyle from '../expenses_pane/confirm_style';
 
 class TransactionHistory extends React.Component {
   constructor(props) {
@@ -6,21 +8,25 @@ class TransactionHistory extends React.Component {
     this.transactionList = this.transactionList.bind(this);
     this.transactionTag = this.transactionTag.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.openTransConfirm = this.openTransConfirm.bind(this);
+    this.closeTransConfirm = this.closeTransConfirm.bind(this);
+    this.delete = this.delete.bind(this);
+
+    this.state = {
+      transDeleteOpen: false,
+      idToDelete: ''
+    }
   }
 
-  handleDelete(gotPaid, transaction_id) {
+  handleDelete(transactionId) {
     return (e) => {
-      let message = `Delete transaction?`;
-      if (gotPaid) {
-        message = `Delete transaction? I guess ${this.props.fname} lied about paying up.`;
-      } else {
-        message = `Delete transaction? I wouldn't suggest this if you already paid up.`
-      }
-
-      const confirmed = window.confirm(message);
-
-      if (confirmed) {this.props.deleteTransaction(transaction_id)};
+      this.setState({ idToDelete: transactionId });
+      this.openTransConfirm();
     }
+  }
+
+  delete() {
+    this.props.deleteTransaction(this.state.idToDelete);
   }
 
   transactionList() {
@@ -32,7 +38,7 @@ class TransactionHistory extends React.Component {
         <li key={ transaction.id } className="group">
           <h6 className="group">
             { this.transactionTag(gotPaid, transaction.amount) }
-            <button onClick={ that.handleDelete(gotPaid, transaction.id) }>
+            <button onClick={ that.handleDelete(transaction.id) }>
               { "X" }
             </button>
           </h6>
@@ -64,6 +70,14 @@ class TransactionHistory extends React.Component {
     return "$" + Number(num).toFixed(2);
   }
 
+  openTransConfirm() {
+    this.setState({ deleteTransConfirmOpen: true });
+  }
+
+  closeTransConfirm() {
+    this.setState({ deleteTransConfirmOpen: false });
+  }
+
   render() {
     return(
       <content className="transaction_history">
@@ -71,6 +85,29 @@ class TransactionHistory extends React.Component {
         <ul className="transaction_list">
           { this.transactionList() }
         </ul>
+
+        <Modal
+          isOpen={ this.state.deleteTransConfirmOpen }
+          onRequestClose={ this.closeTransConfirm }
+          style={ confirmStyle() } >
+          <div className="transaction_delete_modal">
+            <header className="form_header group">
+              { "Delete transaction" }
+              <aside onClick={ this.closeTransConfirm }>X</aside>
+            </header>
+            <p>{ `Are your sure you'd like to delete this? Deleting a
+                  transaction will reopen all expense shares that
+                  were settled when it was originally recorded.` }</p>
+            <ul className="settle_buttons group">
+              <li className="delete_transaction" onClick={ this.delete }>
+                { "Delete" }
+              </li>
+              <li className="cancel_transaction_delete" onClick={ this.closeTransConfirm }>
+                { "Cancel" }
+              </li>
+            </ul>
+          </div>
+        </Modal>
       </content>
     );
   }

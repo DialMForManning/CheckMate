@@ -96,7 +96,13 @@ class ExpensesPane extends React.Component {
     } else {
       return(
         <ul className="expense_pane_buttons">
-          <li><button id="add_expense">{ "Add expense"}</button></li>
+        <li>
+          <button
+            onClick={ this.showForm }
+            id="add_expense">
+              { "Add expense"}
+          </button>
+        </li>
         </ul>
       )
     };

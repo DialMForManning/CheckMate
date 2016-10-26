@@ -68,10 +68,11 @@ ExpenseShare.create(expense_id: Expense.last.id, debtor_id: charlie_id,
 amount: 20)
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: grandpa_id,
 amount: 20)
+Comment.create(expense_id: Expense.last.id, author_id: charlie_id, body: "Still hasn't shrunk!")
 
 
 Expense.create(payer_id: willy_id, payer_owes: 8, total: 40,
-description: 'Schnozberries', date: '2016-02-19')
+description: 'Schnozberries', date: '2016-08-13')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: violet_id,
 amount: 30)
 Comment.create(expense_id: Expense.last.id, author_id: willy_id, body: "Does this count as cannibalism?")

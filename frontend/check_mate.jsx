@@ -18,70 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     store = configureStore();
   }
 
-  window.store = store;
-
   const root = document.getElementById('root');
   Modal.setAppElement(root);
   ReactDOM.render(<Root store={ store } />, root);
 });
-
-//test imports and invocations
-import{ fetchComments, createComment, updateComment, deleteComment } from './actions/comments_actions';
-window.fetchComments = fetchComments;
-window.createComment = createComment;
-window.updateComment = updateComment;
-window.deleteComment = deleteComment;
-
-import{ fetchFriend, fetchExpenses, createExpense, updateExpense, destroyExpense } from './actions/expenses_actions';
-window.fetchFriend = fetchFriend;
-window.fetchExpenses = fetchExpenses;
-window.createExpense = createExpense;
-window.updateExpense = updateExpense;
-window.destroyExpense = destroyExpense;
-window.success = (res) => console.log(res);
-window.error = (error) => console.log(error);
-window.goodExpense = {
-  expense: {
-    description: 'Wonka Bars',
-    date: '2016-10-05',
-    payer_id: 276,
-    total: 20,
-    payer_owes: 5
-  },
-  shares: {
-    281: 5,
-    282: 5,
-    279: 5
-  }
-};
-
-window.goodUpdate = {
-  expense: {
-    description: 'Wonka Bars',
-    date: '2016-10-05',
-    payer_id: 276,
-    total: 25,
-    payer_owes: 5
-  },
-  shares: {
-    281: 5,
-    282: 5,
-    279: 5,
-    280: 5
-  }
-};
-
-window.badExpense = {
-  expense: {
-    description: 'Wonka Bars',
-    date: '2016-10-05',
-    payer_id: 276,
-    total: 20.66666,
-    payer_owes: 5
-  },
-  shares: {
-    281: 5,
-    282: 5,
-    279: 5
-  }
-};

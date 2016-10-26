@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: './frontend/check_mate.jsx',
+  entry: "./frontend/check_mate.jsx",
   output: {
     path: "./app/assets/javascripts",
     filename: "bundle.js"

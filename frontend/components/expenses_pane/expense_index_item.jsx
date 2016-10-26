@@ -72,7 +72,7 @@ class ExpenseIndexItem extends React.Component {
             { this.toDollars(this.expense.shares[window.currentUser.id].payerLeant) }
           </h6>
         </li>
-        <button onClick={ this.deleteExpense }>{ `X` }</button>
+        <button onClick={ this.props.openExpenseDelete(this.props.expense.id) }>{ `X` }</button>
       </ul>
     );
     }

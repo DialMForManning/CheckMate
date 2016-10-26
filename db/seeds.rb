@@ -100,6 +100,19 @@ Comment.create(expense_id: fizzy_id, author_id: willy_id, body: "I expected more
 
 
 Expense.create(payer_id: charlie_id, payer_owes: 10, total: 60,
-  description: 'Oompa Loompa Food', date: '2016-10-17')
+  description: 'Oompa Loompa Food', date: '2016-10-15')
 ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
-  amount: 60)
+  amount: 50)
+Comment.create(expense_id: Expense.last.id, author_id: willy_id, body: "This stuff is getting expensive . . .")
+
+Expense.create(payer_id: grandpa_id, payer_owes: 5, total: 40,
+  description: 'Wonka Bars', date: '2016-3-15')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
+  amount: 35)
+Comment.create(expense_id: Expense.last.id, author_id: grandpa_id, body: "I've gotta admit, the gold did not make the chocolate taste terrible.")
+
+Expense.create(payer_id: grandpa_id, payer_owes: 10, total: 20,
+description: 'Toothpaste', date: '2016-3-15')
+ExpenseShare.create(expense_id: Expense.last.id, debtor_id: willy_id,
+amount: 10)
+Comment.create(expense_id: Expense.last.id, author_id: grandpa_id, body: "We needed a lot . . .")

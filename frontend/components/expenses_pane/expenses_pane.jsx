@@ -12,7 +12,9 @@ class ExpensesPane extends React.Component {
 
     this.state = {
       expenseFormOpen: false,
-      settleConfirmOpen: false
+      settleConfirmOpen: false,
+      expenseDeleteOpen: false,
+      idToDelete: ''
     }
 
     this.expenseList = this.expenseList.bind(this);
@@ -23,6 +25,10 @@ class ExpensesPane extends React.Component {
     this.closeSettle = this.closeSettle.bind(this);
     this.settleForm = this.settleForm.bind(this);
     this.handleSettle = this.handleSettle.bind(this);
+    this.openExpenseDelete = this.openExpenseDelete.bind(this);
+    this.closeExpenseDelete = this.closeExpenseDelete.bind(this);
+    this.deleteExpenseForm = this.deleteExpenseForm.bind(this);
+    this.handleDeleteExpense = this.handleDeleteExpense.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -69,7 +75,8 @@ class ExpensesPane extends React.Component {
         </header>
         <p>{ settleMessage }</p>
         <ul className="settle_buttons group">
-          <li className="settle" onClick={ this.handleSettle }>
+          <li className="settle"
+            onClick={ this.handleSettle }>
             { "Settle" }
           </li>
           <li className="cancel_settle" onClick={ this.closeSettle }>
@@ -93,6 +100,47 @@ class ExpensesPane extends React.Component {
     this.setState({ settleConfirmOpen: false });
   }
 
+  openExpenseDelete(expenseId) {
+    return (e) => {
+      this.setState({
+        expenseDeleteOpen: true,
+        idToDelete: expenseId });
+    }
+  }
+
+  closeExpenseDelete() {
+    this.setState({ expenseDeleteOpen: false })
+  }
+
+  handleDeleteExpense() {
+    this.props.destroyExpense(this.state.idToDelete, this.props.friend.id);
+    this.closeExpenseDelete();
+  }
+
+  deleteExpenseForm() {
+    return(
+      <div className="transaction_delete_modal">
+        <header className="form_header group">
+          { "Delete transaction" }
+          <aside onClick={ this.closeExpenseDelete }>X</aside>
+        </header>
+          <p>
+            { `Are your sure you want to delete this expense? This
+            will affect all users associated with the expense.` }
+            </p>
+        <ul className="settle_buttons group">
+          <li className="delete_transaction"
+            onClick={ this.handleDeleteExpense }>
+          { "Delete" }
+          </li>
+          <li className="cancel_transaction_delete" onClick={ this.closeExpenseDelete }>
+          { "Cancel" }
+          </li>
+        </ul>
+      </div>
+    )
+  }
+
   expenseList() {
     if (!this.props.items) { return <h4>{"Settled up!"}</h4>; }
 
@@ -107,7 +155,8 @@ class ExpensesPane extends React.Component {
                 comments={ that.props.comments[expense_id] }
                 createComment={ that.props.createComment }
                 updateComment={ that.props.updateComment }
-                deleteComment={ that.props.deleteComment } />
+                deleteComment={ that.props.deleteComment }
+                openExpenseDelete= { that.openExpenseDelete } />
     });
   }
 
@@ -166,6 +215,13 @@ class ExpensesPane extends React.Component {
             onRequestClose={ this.closeSettle }
             style={ confirmStyle() } >
             { this.settleForm() }
+          </Modal>
+
+          <Modal
+            isOpen={ this.state.expenseDeleteOpen }
+            onRequestClose={ this.closeExpenseDelete }
+            style={ confirmStyle() } >
+            { this.deleteExpenseForm() }
           </Modal>
 
           <Modal

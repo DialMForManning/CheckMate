@@ -23,14 +23,8 @@ class ExpenseIndexItem extends React.Component {
       "12": "DEC"
     };
     this.expenseSummary = this.expenseSummary.bind(this);
-    this.deleteExpense = this.deleteExpense.bind(this);
     this.expenseDetail = this.expenseDetail.bind(this);
     this.sharesDetail = this.sharesDetail.bind(this);
-  }
-
-  deleteExpense(e) {
-    e.preventDefault();
-    this.props.destroyExpense(this.props.expense.id, this.props.friendId);
   }
 
   toggleDetail(e) {
@@ -57,7 +51,10 @@ class ExpenseIndexItem extends React.Component {
               { Number(this.expense.shares[this.props.friendId].payerLeant).toFixed(2) }
             </h6>
           </li>
-          <button onClick={ this.deleteExpense }>{ `X` }</button>
+          <button
+            onClick={ this.props.openExpenseDelete(this.props.expense.id) }>
+            { `X` }
+          </button>
         </ul>
       );
     } else {

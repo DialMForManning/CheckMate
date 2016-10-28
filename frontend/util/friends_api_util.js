@@ -37,11 +37,10 @@ export const denyFriendship = (friend, success, error) => {
   });
 };
 
-export const searchUsers = (query, success, error) => {
+export const searchUsers = (fname_query, lname_query, success, error) => {
   $.ajax({
-    method: 'POST',
-    url: 'api/users/search',
-    data: { fname_query: query.fname_query, lname_query: query.lname_query },
+    method: 'GET',
+    url: `api/users/search?fname_query=${fname_query}&lname_query=${lname_query}`,
     success,
     error
   });

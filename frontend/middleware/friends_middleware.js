@@ -41,7 +41,10 @@ const FriendsMiddleware = ({getState, dispatch}) => (next) => (action) => {
       denyFriendship(action.friend, denySuccess, error);
       return next(action);
     case SEARCH_USERS:
-      searchUsers(action.query, searchSuccess, error)
+      searchUsers(action.query.fname_query,
+                  action.query.lname_query,
+                  searchSuccess,
+                  error)
       return next(action);
     default:
       return next(action);

@@ -1,5 +1,3 @@
-export const FETCH_EXPENSES = "FETCH_EXPENSES";
-export const RECEIVE_EXPENSES = "RECEIVE_EXPENSES";
 export const FETCH_FRIEND = "FETCH_FRIEND";
 export const RECEIVE_FRIEND_DETAILS = "RECEIVE_FRIEND_DETAILS";
 export const CREATE_EXPENSE = "CREATE_EXPENSE";
@@ -8,11 +6,6 @@ export const DESTROY_EXPENSE = "DESTROY_EXPENSE";
 export const RECEIVE_SINGLE_EXPENSE = "RECEIVE_SINGLE_EXPENSE";
 export const RECEIVE_DELETION = "RECEIVE_DELETION";
 export const RECEIVE_EXPENSE_ERRORS = "RECEIVE_EXPENSE_ERRORS";
-
-export const fetchExpenses = (friend_id) => ({
-  type: FETCH_EXPENSES,
-  friend_id
-});
 
 export const receiveExpenses = (expenses) => ({
   type: RECEIVE_EXPENSES,

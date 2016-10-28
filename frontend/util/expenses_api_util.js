@@ -1,12 +1,3 @@
-export const fetchAllExpenses = (friend_id, success, error) => {
-  $.ajax({
-    method: 'GET',
-    url: `api/friends/${friend_id}/expenses`,
-    success,
-    error
-  });
-};
-
 export const fetchFriendDetails = (friend_id, success, error) => {
   $.ajax({
     method: 'GET',

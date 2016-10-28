@@ -1,10 +1,8 @@
-import { FETCH_EXPENSES,
-         FETCH_FRIEND,
+import {  FETCH_FRIEND,
          CREATE_EXPENSE,
          UPDATE_EXPENSE,
          DESTROY_EXPENSE } from '../actions/expenses_actions';
-import { fetchExpenses,
-         receiveFriendDetails,
+import { receiveFriendDetails,
          receiveExpenses,
          createExpense,
          updateExpense,
@@ -26,9 +24,6 @@ const ExpensesMiddleWare = ({ getState, dispatch }) => (next) => (action) => {
   const error = (xhr) => dispatch(receiveErrors(xhr.responseJSON));
 
   switch(action.type) {
-    case FETCH_EXPENSES:
-      fetchAllExpenses(action.friend_id, fetchSuccess, error)
-      return next(action);
     case FETCH_FRIEND:
       fetchFriendDetails(action.friend_id, friendSuccess, error)
       return next(action);

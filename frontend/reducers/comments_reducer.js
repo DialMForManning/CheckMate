@@ -7,6 +7,7 @@ const CommentsReducer = (state = {}, action) => {
   switch(action.type) {
     case RECEIVE_COMMENTS:
       return action.comments;
+
     case RECEIVE_SINGLE_COMMENT:
       if (!state[action.comment.expense_id]) {
         return Object.assign({}, state, { [action.comment.expense_id]: [action.comment] });
@@ -35,6 +36,7 @@ const CommentsReducer = (state = {}, action) => {
       return Object.assign({}, state, {
         [action.comment.expense_id]: newComments
       });
+      
     default:
       return state;
   }

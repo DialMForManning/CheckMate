@@ -10,7 +10,7 @@ export const fetchAllFriends = (success, error) => {
 export const requestFriendship = (friend, success, error) => {
   $.ajax({
     method: 'POST',
-    url: '/api/friendships',
+    url: `/api/friendships/`,
     data: { friend_id: friend.id },
     success,
     error
@@ -20,8 +20,7 @@ export const requestFriendship = (friend, success, error) => {
 export const approveFriendship = (friend, success, error) => {
   $.ajax({
     method: 'PATCH',
-    url: '/api/friendships',
-    data: { friend_id: friend.id },
+    url: `/api/friendships/${friend.id}`,
     success,
     error
   });
@@ -30,8 +29,7 @@ export const approveFriendship = (friend, success, error) => {
 export const denyFriendship = (friend, success, error) => {
   $.ajax({
     method: 'DELETE',
-    url: 'api/friendships',
-    data: { friend_id: friend.id },
+    url: `api/friendships/${friend.id}`,
     success,
     error
   });

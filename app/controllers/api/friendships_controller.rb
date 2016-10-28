@@ -25,13 +25,13 @@ class Api::FriendshipsController < ApplicationController
 
   def update
     pending = Friendship.find_by({
-      user_id: params[:friend_id],
+      user_id: params[:id],
       friend_id: current_user.id
       })
 
     accepting = Friendship.find_by({
       user_id: current_user.id,
-      friend_id: params[:friend_id]
+      friend_id: params[:id]
       })
 
     @friendship = accepting
@@ -50,11 +50,11 @@ class Api::FriendshipsController < ApplicationController
   def destroy
     to_delete_1 = Friendship.find_by({
       user_id: current_user.id,
-      friend_id: params[:friend_id]
+      friend_id: params[:id]
       })
 
     to_delete_2 = Friendship.find_by({
-      user_id: params[:friend_id],
+      user_id: params[:id],
       friend_id: current_user.id
       })
 

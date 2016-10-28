@@ -1,5 +1,4 @@
 import {
-  RECEIVE_EXPENSES,
   RECEIVE_SINGLE_EXPENSE,
   RECEIVE_DELETION,
   RECEIVE_EXPENSE_ERRORS,
@@ -18,11 +17,6 @@ const defaultState = {
 
 const ExpensesReducer = ( state = defaultState, action ) => {
   switch(action.type) {
-    case RECEIVE_EXPENSES:
-      return Object.assign({}, state, {
-        items: action.expenses,
-        errors: []
-      });
     case RECEIVE_SINGLE_EXPENSE:
       return merge({}, state, {
         items: {[action.expense.id]: action.expense},

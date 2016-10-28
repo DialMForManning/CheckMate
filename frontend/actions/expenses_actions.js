@@ -7,11 +7,6 @@ export const RECEIVE_SINGLE_EXPENSE = "RECEIVE_SINGLE_EXPENSE";
 export const RECEIVE_DELETION = "RECEIVE_DELETION";
 export const RECEIVE_EXPENSE_ERRORS = "RECEIVE_EXPENSE_ERRORS";
 
-export const receiveExpenses = (expenses) => ({
-  type: RECEIVE_EXPENSES,
-  expenses
-});
-
 export const fetchFriend = (friend_id) => ({
   type: FETCH_FRIEND,
   friend_id

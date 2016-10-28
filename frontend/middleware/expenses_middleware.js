@@ -3,21 +3,18 @@ import {  FETCH_FRIEND,
          UPDATE_EXPENSE,
          DESTROY_EXPENSE } from '../actions/expenses_actions';
 import { receiveFriendDetails,
-         receiveExpenses,
          createExpense,
          updateExpense,
          destroyExpense,
          receiveSingleExpense,
          receiveDeletion,
          receiveErrors } from '../actions/expenses_actions';
-import { fetchAllExpenses,
-         fetchFriendDetails,
+import { fetchFriendDetails,
          reqCreateExpense,
          reqUpdateExpense,
          reqDestroyExpense } from '../util/expenses_api_util';
 
 const ExpensesMiddleWare = ({ getState, dispatch }) => (next) => (action) => {
-  const fetchSuccess = (expenses) => dispatch(receiveExpenses(expenses));
   const saveSuccess = (expense) => dispatch(receiveSingleExpense(expense));
   const destroySuccess = (expense) => dispatch(receiveDeletion(expense));
   const friendSuccess = (friend) => dispatch(receiveFriendDetails(friend));

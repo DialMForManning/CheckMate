@@ -1,13 +1,8 @@
-export const FETCH_TRANSACTIONS = "FETCH_TRANSACTIONS";
 export const RECEIVE_TRANSACTIONS = "RECEIVE_TRANSACTIONS";
 export const CREATE_TRANSACTION = "CREATE_TRANSACTION";
 export const RECEIVE_SINGLE_TRANSACTION = "RECEIVE_SINGLE_TRANSACTION";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 export const RECEIVE_TRANSACTION_DELETION = "RECEIVE_TRANSACTION_DELETION";
-
-export const fetchTransactions = () => ({
-  type: FETCH_TRANSACTIONS
-});
 
 export const receiveTransactions = (transactions) => ({
   type: RECEIVE_TRANSACTIONS,

@@ -31,13 +31,6 @@ class Api::TransactionsController < ApplicationController
     end
   end
 
-  def index
-    @transactions = Transaction.where("creditor_id = #{current_user.id}
-      OR debtor_id = #{current_user.id}")
-
-    render 'api/transactions/index'
-  end
-
   def destroy
     @transaction = Transaction.find(params[:id])
 

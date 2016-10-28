@@ -12,8 +12,7 @@ Rails.application.routes.draw do
     end
     resources :comments, only: [:update, :index, :destroy]
   end
-
-  get 'api/friends/:id/transactions', to: 'api/transactions#index', defaults: { format: :json }
+  
   post 'api/friends/:id/transactions', to: 'api/transactions#create', defaults: { format: :json }
 
   get 'api/balances', to: 'api/users#balances', defaults: { format: :json }

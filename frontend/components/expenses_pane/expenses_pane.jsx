@@ -19,12 +19,9 @@ class ExpensesPane extends React.Component {
 
     this.expenseList = this.expenseList.bind(this);
     this.expensePaneButtons = this.expensePaneButtons.bind(this);
-    this.openSettleForm = this.openSettleForm.bind(this);
-    this.closeSettle = this.closeSettle.bind(this);
     this.settleForm = this.settleForm.bind(this);
     this.handleSettle = this.handleSettle.bind(this);
     this.openExpenseDelete = this.openExpenseDelete.bind(this);
-    this.closeExpenseDelete = this.closeExpenseDelete.bind(this);
     this.deleteExpenseForm = this.deleteExpenseForm.bind(this);
     this.handleDeleteExpense = this.handleDeleteExpense.bind(this);
   }
@@ -46,8 +43,7 @@ class ExpensesPane extends React.Component {
   }
 
   showForm(type) {
-    return (e) => this.setState( { [type]: true });
-  }
+    return (e) => this.setState( { [type]: true })};
 
   closeForm(type) {
     return (e) => this.setState( { [type]: false });
@@ -69,7 +65,7 @@ class ExpensesPane extends React.Component {
       <div className="settle_modal">
         <header className="form_header group">
           { "Record cash settlement" }
-          <aside onClick={ this.closeSettle }>X</aside>
+          <aside onClick={ this.closeForm("settleConfirmOpen") }>X</aside>
         </header>
         <p>{ settleMessage }</p>
         <ul className="settle_buttons group">
@@ -77,7 +73,7 @@ class ExpensesPane extends React.Component {
             onClick={ this.handleSettle }>
             { "Settle" }
           </li>
-          <li className="cancel_settle" onClick={ this.closeSettle }>
+          <li className="cancel_settle" onClick={ this.closeForm("settleConfirmOpen") }>
             { "Cancel" }
           </li>
         </ul>
@@ -85,17 +81,10 @@ class ExpensesPane extends React.Component {
     )
   }
 
-  openSettleForm() {
-    this.setState({ settleConfirmOpen: true });
-  }
-
   handleSettle() {
+    debugger
+    this.closeForm("settleConfirmOpen")();
     this.props.createTransaction(this.props.friend.id);
-    this.closeSettle();
-  }
-
-  closeSettle() {
-    this.setState({ settleConfirmOpen: false });
   }
 
   openExpenseDelete(expenseId) {
@@ -106,13 +95,13 @@ class ExpensesPane extends React.Component {
     }
   }
 
-  closeExpenseDelete() {
-    this.setState({ expenseDeleteOpen: false })
-  }
-
   handleDeleteExpense() {
     this.props.destroyExpense(this.state.idToDelete, this.props.friend.id);
-    this.closeExpenseDelete();
+    this.closeForm("expenseDeleteOpen")();
+  }
+
+  focusAddExpense() {
+    document.getElementById("expense_form_description").focus();
   }
 
   deleteExpenseForm() {
@@ -120,7 +109,7 @@ class ExpensesPane extends React.Component {
       <div className="transaction_delete_modal">
         <header className="form_header group">
           { "Delete transaction" }
-          <aside onClick={ this.closeExpenseDelete }>X</aside>
+          <aside onClick={ this.closeForm("expenseDeleteOpen") }>X</aside>
         </header>
           <p>
             { `Are your sure you want to delete this expense? This
@@ -131,7 +120,7 @@ class ExpensesPane extends React.Component {
             onClick={ this.handleDeleteExpense }>
           { "Delete" }
           </li>
-          <li className="cancel_transaction_delete" onClick={ this.closeExpenseDelete }>
+          <li className="cancel_transaction_delete" onClick={ this.closeForm("expenseDeleteOpen") }>
           { "Cancel" }
           </li>
         </ul>
@@ -170,7 +159,7 @@ class ExpensesPane extends React.Component {
             </button>
           </li>
           <li>
-            <button id="record_transaction" onClick={ this.openSettleForm }>
+            <button id="record_transaction" onClick={ this.showForm("settleConfirmOpen") }>
               { "Record cash settlement"}
             </button>
           </li>
@@ -210,14 +199,14 @@ class ExpensesPane extends React.Component {
 
           <Modal
             isOpen={ this.state.settleConfirmOpen }
-            onRequestClose={ this.closeSettle }
+            onRequestClose={ this.closeForm("settleConfirmOpen") }
             style={ confirmStyle() } >
             { this.settleForm() }
           </Modal>
 
           <Modal
             isOpen={ this.state.expenseDeleteOpen }
-            onRequestClose={ this.closeExpenseDelete }
+            onRequestClose={ this.closeForm("expenseDeleteOpen") }
             style={ confirmStyle() } >
             { this.deleteExpenseForm() }
           </Modal>
@@ -225,6 +214,7 @@ class ExpensesPane extends React.Component {
           <Modal
             isOpen={ this.state.expenseFormOpen }
             onRequestClose={ this.closeForm("expenseFormOpen") }
+            onAfterOpen={ this.focusAddExpense }
             style={ expenseFormStyle() }>
 
             <ExpenseForm

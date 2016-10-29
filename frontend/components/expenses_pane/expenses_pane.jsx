@@ -19,8 +19,6 @@ class ExpensesPane extends React.Component {
 
     this.expenseList = this.expenseList.bind(this);
     this.expensePaneButtons = this.expensePaneButtons.bind(this);
-    this.showExpenseForm = this.showExpenseForm.bind(this);
-    this.closeExpenseForm = this.closeExpenseForm.bind(this);
     this.openSettleForm = this.openSettleForm.bind(this);
     this.closeSettle = this.closeSettle.bind(this);
     this.settleForm = this.settleForm.bind(this);
@@ -47,12 +45,12 @@ class ExpensesPane extends React.Component {
     this.props.fetchComments(this.props.params.id);
   }
 
-  showExpenseForm() {
-    this.setState({ expenseFormOpen: true });
+  showForm(type) {
+    return (e) => this.setState( { [type]: true });
   }
 
-  closeExpenseForm() {
-    this.setState({ expenseFormOpen: false });
+  closeForm(type) {
+    return (e) => this.setState( { [type]: false });
   }
 
   settleForm() {
@@ -166,7 +164,7 @@ class ExpensesPane extends React.Component {
         <ul className="expense_pane_buttons">
           <li>
             <button
-              onClick={ this.showExpenseForm }
+              onClick={ this.showForm("expenseFormOpen") }
               id="add_expense">
                 { "Add expense"}
             </button>
@@ -183,7 +181,7 @@ class ExpensesPane extends React.Component {
         <ul className="expense_pane_buttons">
         <li>
           <button
-            onClick={ this.showExpenseForm }
+            onClick={ this.showForm("expenseFormOpen") }
             id="add_expense">
               { "Add expense"}
           </button>
@@ -226,13 +224,13 @@ class ExpensesPane extends React.Component {
 
           <Modal
             isOpen={ this.state.expenseFormOpen }
-            onRequestClose={ this.closeExpenseForm }
+            onRequestClose={ this.closeForm("expenseFormOpen") }
             style={ expenseFormStyle() }>
 
             <ExpenseForm
               friend={ this.props.friend }
               createExpense={ this.props.createExpense }
-              closeExpenseForm={ this.closeExpenseForm }/>
+              closeExpenseForm={ this.closeForm("expenseFormOpen") }/>
           </Modal>
 
         </header>

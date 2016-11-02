@@ -53,3 +53,7 @@
   box-shadow: 0 0 1px #ccc;
   cursor: pointer;
 }
+
+.transaction_history button:hover {
+  background-color: rgb(255, 150, 47);
+}

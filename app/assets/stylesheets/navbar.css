@@ -59,7 +59,7 @@
 }
 
 .nav_login:hover {
-  background-color: rgb(91, 205, 167);
+  background-color: rgb(80, 220, 167);
 }
 
 .nav_signup {
@@ -73,7 +73,7 @@
 }
 
 .nav_signup:hover {
-  background-color: rgb(255, 120, 47);
+  background-color: rgb(255, 150, 47);
 }
 
 .nav_form_input {
@@ -110,7 +110,7 @@
 }
 
 .nav_form_input_displayed input[type=submit]:hover {
-  background-color: rgb(91, 205, 167);
+  background-color: rgb(80, 220, 167);
 }
 
 .nav_form_input_displayed input[type=text],
@@ -131,7 +131,7 @@ input[type=password] {
 }
 
 .nav_form_input_displayed > button:hover {
-  background-color: rgb(255, 120, 47);
+  background-color: rgb(255, 150, 47);
 }
 
 .nav_login_form .errors {
@@ -187,5 +187,5 @@ input[type=password] {
 }
 
 .account_menu > button:hover {
-  background-color: rgb(255, 120, 47);
+  background-color: rgb(255, 150, 47);
 }

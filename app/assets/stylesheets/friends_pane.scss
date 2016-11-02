@@ -90,7 +90,7 @@
 }
 
 .approve_friend:hover {
-  background-color: rgb(91, 205, 167);
+  background-color: rgb(80, 220, 167);
 }
 
 .deny_friend {
@@ -98,7 +98,7 @@
 }
 
 .deny_friend:hover {
-  background-color: rgb(255, 120, 47);
+  background-color: rgb(255, 150, 47);
 }
 
 .pending_name {
@@ -122,8 +122,8 @@
   cursor: pointer;
 }
 
-.user_serch input[type=submit]:hover {
-  background-color: rgb(91, 205, 167);
+.user_search input[type=submit]:hover {
+  background-color: rgb(80, 220, 167);
 }
 
 .req_button {
@@ -142,5 +142,5 @@
 }
 
 .req_button:hover {
-  background-color: rgb(91, 205, 167);
+  background-color: rgb(80, 220, 167);
 }

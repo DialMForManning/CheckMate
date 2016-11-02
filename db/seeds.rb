@@ -17,9 +17,15 @@ User.create(email: 'augustus', password: 'augustus', fname: 'Augustus', lname: '
 User.create(email: 'miketv', password: 'miketv', fname: 'Mike', lname: 'Teavee')
 User.create(email: 'veruca', password: 'veruca', fname: 'Veruca', lname: 'Salt')
 User.create(email: 'violet', password: 'violet', fname: 'Violet', lname: 'Beauregarde')
+User.create(email: 'amazhang', password: 'amazhang', fname: 'Anthony', lname: 'Zhang')
+User.create(email: 'rccola', password: 'rccola', fname: 'Ryan', lname: 'Caloras')
+User.create(email: 'kmurphy', password: 'kmurphy', fname: 'Katie', lname: 'Murphy')
+User.create(email: 'bmanning', password: 'bmanning', fname: 'Brian', lname: 'Manning')
+User.create(email: 'kevinli', password: 'kevinli', fname: 'Kevin', lname: 'Li')
+User.create(email: 'sammyjo', password: 'sammyjo', fname: 'Samuel', lname: 'Jo')
+User.create(email: 'albronca', password: 'albronca', fname: 'Alexander', lname: 'Bronca')
 
 #Seeded friendships
-Friendship.destroy_all
 willy_id = User.find_by(fname: 'Willy').id
 charlie_id = User.find_by(fname: 'Charlie').id
 grandpa_id = User.find_by(fname: 'Grandpa').id
@@ -27,6 +33,13 @@ violet_id = User.find_by(fname: 'Violet').id
 augustus_id = User.find_by(fname: 'Augustus').id
 mike_id = User.find_by(fname: 'Mike').id
 veruca_id = User.find_by(fname: 'Veruca').id
+anthony_id = User.find_by(fname: 'Anthony').id
+ryan_id = User.find_by(fname: 'Ryan').id
+katie_id = User.find_by(fname: 'Katie').id
+brian_id = User.find_by(fname: 'Brian').id
+alex_id = User.find_by(fname: 'Alexander').id
+sam_id = User.find_by(fname: 'Samuel').id
+
 
 Friendship.destroy_all
 #willy to charlie, accepted
@@ -52,6 +65,34 @@ Friendship.create(user_id: augustus_id, friend_id: willy_id, status: 'pending')
 #willy to veruca, requested
 Friendship.create(user_id: willy_id, friend_id: veruca_id, status: 'requested')
 Friendship.create(user_id: veruca_id, friend_id: willy_id, status: 'pending')
+
+#sam to alex, accepted
+Friendship.create(user_id: sam_id, friend_id: alex_id, status: 'accepted')
+Friendship.create(user_id: alex_id, friend_id: sam_id, status: 'accepted')
+
+#katie to brian, accepted
+Friendship.create(user_id: brian_id, friend_id: katie_id, status: 'accepted')
+Friendship.create(user_id: katie_id, friend_id: brian_id, status: 'accepted')
+
+#sam to brian, requested
+Friendship.create(user_id: sam_id, friend_id: brian_id, status: 'requested')
+Friendship.create(user_id: brian_id, friend_id: sam_id, status: 'pending')
+
+#alex to brian, requested
+Friendship.create(user_id: alex_id, friend_id: brian_id, status: 'requested')
+Friendship.create(user_id: brian_id, friend_id: alex_id, status: 'pending')
+
+#anthony to brian, requested
+Friendship.create(user_id: anthony_id, friend_id: brian_id, status: 'requested')
+Friendship.create(user_id: brian_id, friend_id: anthony_id, status: 'pending')
+
+#ryan to brian, requested
+Friendship.create(user_id: ryan_id, friend_id: brian_id, status: 'requested')
+Friendship.create(user_id: brian_id, friend_id: ryan_id, status: 'pending')
+
+#ryan to anthony, accepted
+Friendship.create(user_id: anthony_id, friend_id: ryan_id, status: 'accepted')
+Friendship.create(user_id: ryan_id, friend_id: anthony_id, status: 'accepted')
 
 Expense.destroy_all
 Transaction.destroy_all

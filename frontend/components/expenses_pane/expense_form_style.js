@@ -12,7 +12,7 @@ const expenseFormStyle = () => {
       position                   : 'absolute',
       margin                     : '0 auto',
       width                      : '520px',
-      height                     : '220px',
+      height                     : '250px',
       border                     : '1px solid #ccc',
       background                 : '#fff',
       overflow                   : 'auto',

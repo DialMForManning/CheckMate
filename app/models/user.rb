@@ -132,7 +132,7 @@ class User < ApplicationRecord
   def all_debts
     ExpenseShare.select("expense_shares.*, expenses.payer_id AS creditor_id")
                 .joins(:expense)
-                .where("debtor_id = #{self.id} AND settled = false")
+                .where(debtor_id: self.id, settled:false)
   end
 
   def all_loans

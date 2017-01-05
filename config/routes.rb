@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   post 'api/friends/:id/transactions', to: 'api/transactions#create', defaults: { format: :json }
 
   get 'api/balances', to: 'api/users#balances', defaults: { format: :json }
-  get 'api/friends/:id/expenses', to: 'api/expenses#index', defaults: { format: :json }
+  get 'api/friends/:id/settled_expenses', to: 'api/expenses#index', defaults: { format: :json }
   get 'api/friends', to: 'api/friends#index', defaults: { format: :json }
-
 end

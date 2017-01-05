@@ -2,7 +2,8 @@ import {
   RECEIVE_SINGLE_EXPENSE,
   RECEIVE_DELETION,
   RECEIVE_EXPENSE_ERRORS,
-  RECEIVE_FRIEND_DETAILS } from '../actions/expenses_actions';
+  RECEIVE_FRIEND_DETAILS,
+  RECEIVE_SETTLED_EXPENSES } from '../actions/expenses_actions';
 import { RECEIVE_SINGLE_TRANSACTION,
          RECEIVE_TRANSACTION_DELETION } from '../actions/transactions_actions';
 import merge from 'lodash/merge';
@@ -12,7 +13,8 @@ const defaultState = {
   items: {},
   balance: 0,
   transactions: {},
-  errors: []
+  errors: [],
+  settled: {}
 };
 
 const ExpensesReducer = ( state = defaultState, action ) => {
@@ -53,6 +55,10 @@ const ExpensesReducer = ( state = defaultState, action ) => {
     case RECEIVE_EXPENSE_ERRORS:
       return Object.assign({}, state, {
         errors: action.errors
+      });
+    case RECEIVE_SETTLED_EXPENSES:
+      return Object.assign({}, state, {
+        settled: action.expenses
       });
     default:
       return state;

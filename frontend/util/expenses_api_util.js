@@ -40,11 +40,11 @@ export const reqDestroyExpense = (id, friend_id, success, error) => {
   });
 };
 
-export const reqSettledExpenses = (friend_id, success, error) => {
+export const fetchSettledExpenses = (friend_id, success, error) => {
   $.ajax({
     method: 'GET',
     url: `api/friends/${friend_id}/settled_expenses`,
-    success: res => console.log(res),
+    success,
     error
   });
 };

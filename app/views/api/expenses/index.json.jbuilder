@@ -1,3 +1,7 @@
-json.array! @settled_expenses do |expense|
-  json.partial! 'expense', expense: expense
+json.expenses do
+  @settled_expenses.each do |expense|
+    json.set! expense.id do
+      json.partial! 'api/expenses/expense', expense: expense
+    end
+  end
 end

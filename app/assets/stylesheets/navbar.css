@@ -20,7 +20,7 @@
 }
 
 .logo:hover {
-  text-shadow: 0 0 1px #aaa;
+  text-shadow: 0 0 1px #000;
 }
 
 .nav_login_form {

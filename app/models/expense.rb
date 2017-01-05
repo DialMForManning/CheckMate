@@ -41,11 +41,11 @@ class Expense < ApplicationRecord
     dependent: :destroy
 
   def self.settled(current_user_id, friend_id)
-    ExpenseShare.joins(:expense)
-    .where(settled: true)
-    .where("debtor_id = ? AND payer_id = ? OR
-            debtor_id = ? AND payer_id = ?",
-            current_user_id, friend_id, friend_id, current_user_id)
+    Expense.joins(:expense_shares)
+      .where('expense_shares.settled': true)
+      .where("debtor_id = ? AND payer_id = ? OR
+              debtor_id = ? AND payer_id = ?",
+              current_user_id, friend_id, friend_id, current_user_id)
   end
 
   def owes_less_than_total

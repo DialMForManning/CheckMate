@@ -39,3 +39,12 @@ export const reqDestroyExpense = (id, friend_id, success, error) => {
     error
   });
 };
+
+export const reqSettledExpenses = (friend_id, success, error) => {
+  $.ajax({
+    method: 'GET',
+    url: `api/friends/${friend_id}/settled_expenses`,
+    success: res => console.log(res),
+    error
+  });
+};

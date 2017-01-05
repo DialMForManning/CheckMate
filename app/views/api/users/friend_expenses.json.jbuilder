@@ -10,7 +10,6 @@ json.expenses do
       json.partial! 'api/expenses/expense', expense: expense
     end
   end
-
 end
 
 json.transactions do

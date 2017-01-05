@@ -34,16 +34,24 @@ class Expense < ApplicationRecord
     through: :expense_shares,
     source: :debtor
 
-
   has_many :comments,
     class_name: 'Comment',
     primary_key: :id,
     foreign_key: :expense_id,
     dependent: :destroy
 
+  def self.settled(current_user_id, friend_id)
+    ExpenseShare.joins(:expense)
+    .where(settled: true)
+    .where("debtor_id = ? AND payer_id = ? OR
+            debtor_id = ? AND payer_id = ?",
+            current_user_id, friend_id, friend_id, current_user_id)
+  end
+
   def owes_less_than_total
     unless payer_owes.to_f < total.to_f
       errors.add(:payer_owes, "Payer must owe less than expense total")
     end
   end
+
 end

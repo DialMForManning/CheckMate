@@ -1,4 +1,9 @@
 class Api::ExpensesController < ApplicationController
+  def index
+    @settled_expenses = Expense.settled(current_user.id, params[:id])
+    render 'api/expenses/index'
+  end
+
   def create
     @expense = Expense.new(expense_params)
     @friend_id = params[:friend_id]

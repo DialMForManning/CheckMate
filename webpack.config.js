@@ -1,4 +1,5 @@
 const path = require('path');
+const WatchLiveReloadPlugin = require('webpack-watch-livereload-plugin');
 
 module.exports = {
   context: __dirname,
@@ -10,6 +11,14 @@ module.exports = {
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
+  plugins: [
+        new WatchLiveReloadPlugin({
+            port: 3000,
+            files: [
+                './frontend/*'
+            ]
+        }),
+    ],
   module: {
     loaders: [
       {
